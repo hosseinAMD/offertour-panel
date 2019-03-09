@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+p{
+  font-family: IRANSans !important;
+}
+
 .right-dir{
   direction: rtl;
 }
@@ -23,4 +27,39 @@ code {
 
 .grow{
   flex-grow: 1;
+}
+
+.my-header{
+  background-color: crimson !important;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.goldStar {
+  color: gold;
+}
+
+.grayStar {
+  color: gray;
+}
+
+.agency-logo{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.my-container{
+  margin:20px !important;
+}
+
+.agency-paper{
+  text-align: center;
+  padding: 10px;
+}
+
+.edit-button{
+  font-family: IRANSans !important;
+  background-color: #1976d2 !important;
 }

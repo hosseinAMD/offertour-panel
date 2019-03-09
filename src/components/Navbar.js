@@ -26,7 +26,7 @@ class Navbar extends React.Component {
     render() {
         return (
             <div className="right-dir">
-                <AppBar position="static">
+                <AppBar position="static" className="my-header">
                     <Toolbar>
                         <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer('right', true)} >
                             <Icon>menu</Icon>
