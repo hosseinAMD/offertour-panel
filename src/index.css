@@ -1,65 +1,74 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-p{
-  font-family: IRANSans !important;
+p {
+    font-family: IRANSans !important;
 }
 
-.right-dir{
-  direction: rtl;
+.right-dir {
+    direction: rtl;
 }
 
-.font-applied{
-  font-family: IRANSans !important;
+
+.font-applied {
+    font-family: IRANSans !important;
 }
 
-.grow{
-  flex-grow: 1;
+.grow {
+    flex-grow: 1;
 }
 
-.my-header{
-  background-color: crimson !important;
+.my-header {
+    background-color: crimson !important;
 }
 
-.bold{
-  font-weight: bold;
+.bold {
+    font-weight: bold;
 }
 
 .goldStar {
-  color: gold;
+    color: gold;
 }
 
 .grayStar {
-  color: gray;
+    color: gray;
 }
 
-.agency-logo{
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.my-container{
-  margin:20px !important;
+.agency-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
-.agency-paper{
-  text-align: center;
-  padding: 10px;
+.my-container {
+    margin: 20px 0px !important;
 }
 
-.edit-button{
-  font-family: IRANSans !important;
-  background-color: #1976d2 !important;
+.agency-paper {
+    text-align: center;
+    margin:0px 30px;
+    padding: 10px;
+}
+
+.edit-button {
+    font-family: IRANSans !important;
+    background-color: #1976d2 !important;
+}
+
+.user-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }

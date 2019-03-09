@@ -5,8 +5,8 @@ const agency = {
     city: 'تهران',
     address: 'شهرک غرب. بلوار دریا. پلاک ۱۲۸',
     logo: '/assets/tour-logo.png',
-    phone: '021 66885544',
-    mobile:'0912 1221049',
+    phone: '02166885544',
+    mobile:'09121221049',
     establishedDate: moment(),
     rate: 4,
     activityArea:'بین المللی'

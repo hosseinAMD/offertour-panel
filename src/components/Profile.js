@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import AgencyProfile from "./AgencyProfile";
+import UserProfile from "./UserProfile";
 
 
 const Profile = () => (
@@ -9,7 +10,7 @@ const Profile = () => (
             <AgencyProfile/>
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
-            <p>User</p>
+            <UserProfile/>
         </Grid>
     </Grid>
 );
