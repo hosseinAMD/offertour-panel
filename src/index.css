@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.right-dir{
+  direction: rtl;
+}
+
+.font-applied{
+  font-family: IRANSans !important;
+}
+
+.grow{
+  flex-grow: 1;
+}
