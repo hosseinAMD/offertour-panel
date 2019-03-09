@@ -9,8 +9,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Edit <code>src/App.js</code> and save to reload.width: {window.innerWidth > 1000 ? 'large' : 'small'}
           </p>
+          <span>تست فونت</span>
           <a
             className="App-link"
             href="https://reactjs.org"
