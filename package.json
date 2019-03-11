@@ -8,6 +8,7 @@
     "moment-jalaali": "^0.8.3",
     "numeral": "^2.0.6",
     "react": "^16.8.4",
+    "react-advance-jalaali-datepicker": "^1.0.0",
     "react-dom": "^16.8.4",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

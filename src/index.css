@@ -169,3 +169,26 @@ h1,h2,h3,h4,h5,h6{
     color: white !important;
     font-weight: bold !important;
 }
+
+.input-labels{
+    font-family: IRANSans !important;
+    right: 20px !important;
+    left: auto !important;
+}
+
+.main-form{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+}
+
+.sub-form{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.my-select-icon{
+    left: 0 !important;
+    right: auto !important;
+}
