@@ -2,10 +2,6 @@ import React from 'react';
 import Icon from '@material-ui/core/Icon';
 
 class Rate extends React.Component {
-    constructor(props) {
-        super(props);
-    };
-
 
     render() {
         let yellowRates = [];
