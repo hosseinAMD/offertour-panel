@@ -70,6 +70,13 @@ p {
     padding: 10px;
 }
 
+.plan-paper {
+    text-align: center;
+    margin:0px 30px;
+    padding: 10px;
+}
+
+
 .edit-button {
     font-family: IRANSans !important;
     background-color: #1976d2 !important;
@@ -119,4 +126,36 @@ p {
 .buy-button{
     background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
     width: 100%;
+}
+
+.green-duration{
+    color: white;
+    background-color: #1b5e20;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.red-duration{
+    color: white;
+    background-color: #d50000;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.available-count{
+    background-color: #2196f3;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.zero-count{
+    background-color: darkred;
+    color: white;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-weight: bold;
 }

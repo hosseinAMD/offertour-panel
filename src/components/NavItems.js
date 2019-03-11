@@ -11,7 +11,7 @@ const NavItems = () => (
     <div className="right-dir">
         <List>
             <div className="nav-user-info">
-                <img className="user-image" src={user.image}/>
+                <img className="user-image" src={user.image} alt="user"/>
                 <h5 className="font-applied">{user.name} {user.familyName}</h5>
             </div>
             <ListItem button component={NavLink} to="/">

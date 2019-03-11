@@ -5,7 +5,7 @@ import PlanItem from "./PlanItem";
 
 const PlansList = () => (
     <Grid container spacing={24} className="my-container">
-        {plans.map((plan) => (<PlanItem plan={plan}/>))}
+        {plans.map((plan) => (<PlanItem key={plan.normalTour} plan={plan}/>))}
     </Grid>
 );
 

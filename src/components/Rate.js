@@ -7,15 +7,15 @@ class Rate extends React.Component {
         let yellowRates = [];
         let grayRates = [];
         for (let i = 0; i < this.props.rate; i++) {
-            yellowRates.push('got');
+            yellowRates.push(i);
         }
         for (let j = 0; j < 5 - this.props.rate; j++) {
-            grayRates.push('failed');
+            grayRates.push(j);
         }
         return (
             <span>
-                {yellowRates.map(() => <Icon className="goldStar">star</Icon>)}
-                {grayRates.map(() => <Icon className="grayStar">star</Icon>)}
+                {yellowRates.map((item) => <Icon key={item} className="goldStar">star</Icon>)}
+                {grayRates.map((item) => <Icon key={item} className="grayStar">star</Icon>)}
             </span>
         );
     }
