@@ -17,6 +17,10 @@ p {
     font-family: IRANSans !important;
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family: IRANSans !important;
+}
+
 .right-dir {
     direction: rtl;
 }
@@ -158,4 +162,10 @@ p {
     border-radius: 5px;
     padding: 3px 8px;
     font-weight: bold;
+}
+
+.accept-buy-button{
+    background-color: #43a047 !important;
+    color: white !important;
+    font-weight: bold !important;
 }
