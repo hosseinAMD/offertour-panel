@@ -1201,6 +1201,7 @@ class TourForm extends React.Component {
                                     <TableCell align="center">مقصد</TableCell>
                                     <TableCell align="center">ساعت</TableCell>
                                     <TableCell align="center">مدت</TableCell>
+                                    <TableCell align="center">جزئیات</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -1223,6 +1224,7 @@ class TourForm extends React.Component {
                                     <TableCell align="center">یک تخته</TableCell>
                                     <TableCell align="center">کودک با تخت</TableCell>
                                     <TableCell align="center">کودک بدون تخت</TableCell>
+                                    <TableCell align="center">جزئیات</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
