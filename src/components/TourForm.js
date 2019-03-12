@@ -29,6 +29,7 @@ import Paper from "@material-ui/core/Paper";
 import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 import TripItem from "./TripItem";
+import HotelItem from "./HotelItem";
 
 
 class TourForm extends React.Component {
@@ -1205,6 +1206,28 @@ class TourForm extends React.Component {
                             <TableBody>
                                 {this.state.trips.map((trip) => (
                                     <TripItem trip={trip}/>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                    :
+                    ''}
+                {this.state.activeStep === 2 ?
+                    <Paper elevation={1} className="tour-trips-table right-dir">
+                        <Table className="font-applied">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">نام هتل</TableCell>
+                                    <TableCell align="center">منو غذا</TableCell>
+                                    <TableCell align="center">دوتخته</TableCell>
+                                    <TableCell align="center">یک تخته</TableCell>
+                                    <TableCell align="center">کودک با تخت</TableCell>
+                                    <TableCell align="center">کودک بدون تخت</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.hotels.map((hotel) => (
+                                    <HotelItem hotel={hotel}/>
                                 ))}
                             </TableBody>
                         </Table>

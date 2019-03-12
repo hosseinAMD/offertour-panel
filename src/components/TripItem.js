@@ -9,7 +9,7 @@ const TripItem = (props) => (
         <TableCell align="center">{props.trip.tripType === 1 ? <Icon className="trip-icon">flight</Icon> : <Icon className="trip-icon">directions_bus</Icon>}</TableCell>
         <TableCell align="center">{props.trip.tripTitle}</TableCell>
         <TableCell align="center">{<ItemRenderer id={props.trip.startCity} type="city"/>}</TableCell>
-        <TableCell align="center">{props.trip.destinationCity}</TableCell>
+        <TableCell align="center">{<ItemRenderer id={props.trip.destinationCity} type="city"/>}</TableCell>
         <TableCell align="center">{props.trip.tripDay}</TableCell>
         <TableCell align="center">{props.trip.tripTime}</TableCell>
     </TableRow>
