@@ -6,6 +6,11 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fab from '@material-ui/core/Fab';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import FormControl from '@material-ui/core/FormControl';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
@@ -23,6 +28,7 @@ import foodTypes from "../data/foodTypes";
 import Paper from "@material-ui/core/Paper";
 import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
+import TripItem from "./TripItem";
 
 
 class TourForm extends React.Component {
@@ -40,15 +46,16 @@ class TourForm extends React.Component {
             duration: '',
             flightCompany: '',
             tripType: 1,
-            startCategory:'',
-            startCountry:'',
+            startCategory: '',
+            startCountry: '',
             startCity: '',
-            destinationCategory:'',
-            destinationCountry:'',
+            destinationCategory: '',
+            destinationCountry: '',
             destinationCity: '',
             startAirport: '',
             destinationAirport: '',
             tripTime: '',
+            tripTitle:'',
             tripDay: '',
             tripFlightCompany: '',
             flightClass: '',
@@ -66,7 +73,7 @@ class TourForm extends React.Component {
             documents: '',
             services: '',
             fullDescription: '',
-            image:'',
+            image: '',
             trips: [],
             hotels: []
 
@@ -97,41 +104,42 @@ class TourForm extends React.Component {
     };
 
     handleAddTrip = () => {
-      const trips = this.state.trips;
-      trips.push({
-          tripType: this.state.tripType,
-          startCategory: this.state.startCategory,
-          startCountry: this.state.startCountry,
-          startCity: this.state.startCity,
-          destinationCategory: this.state.destinationCategory,
-          destinationCountry: this.state.destinationCountry,
-          destinationCity: this.state.destinationCity,
-          startAirport: this.state.startAirport,
-          destinationAirport: this.state.destinationAirport,
-          tripTime: this.state.tripTime,
-          tripDay: this.state.tripDay,
-          tripFlightCompany: this.state.tripFlightCompany,
-          flightClass: this.state.flightClass,
-          startTerminal: this.state.startTerminal,
-          destinationTerminal: this.state.destinationTerminal,
-          busClass: this.state.busClass,
-      });
-      this.setState(() => ({trips}));
+        const trips = this.state.trips;
+        trips.push({
+            tripType: this.state.tripType,
+            startCategory: this.state.startCategory,
+            startCountry: this.state.startCountry,
+            startCity: this.state.startCity,
+            destinationCategory: this.state.destinationCategory,
+            destinationCountry: this.state.destinationCountry,
+            destinationCity: this.state.destinationCity,
+            startAirport: this.state.startAirport,
+            destinationAirport: this.state.destinationAirport,
+            tripTime: this.state.tripTime,
+            tripTitle: this.state.tripTitle,
+            tripDay: this.state.tripDay,
+            tripFlightCompany: this.state.tripFlightCompany,
+            flightClass: this.state.flightClass,
+            startTerminal: this.state.startTerminal,
+            destinationTerminal: this.state.destinationTerminal,
+            busClass: this.state.busClass,
+        });
+        this.setState(() => ({trips}));
     };
 
     handleAddHotel = () => {
-      const hotels = this.state.hotels;
-      hotels.push({
-          hotelName: this.state.hotelName,
-          hotelStarts: this.state.hotelStarts,
-          hotelMenu: this.state.hotelMenu,
-          hotelDescription: this.state.hotelDescription,
-          singleBed: this.state.singleBed,
-          multiBed: this.state.multiBed,
-          babyWithBed: this.state.babyWithBed,
-          babyNoBed: this.state.babyNoBed,
-      });
-      this.setState(() => ({hotels}));
+        const hotels = this.state.hotels;
+        hotels.push({
+            hotelName: this.state.hotelName,
+            hotelStarts: this.state.hotelStarts,
+            hotelMenu: this.state.hotelMenu,
+            hotelDescription: this.state.hotelDescription,
+            singleBed: this.state.singleBed,
+            multiBed: this.state.multiBed,
+            babyWithBed: this.state.babyWithBed,
+            babyNoBed: this.state.babyNoBed,
+        });
+        this.setState(() => ({hotels}));
     };
 
 
@@ -364,6 +372,14 @@ class TourForm extends React.Component {
                                             </MenuItem>
                                         ))}
                                     </TextField>
+                                    <TextField
+                                        label="عنوان سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripTitle}
+                                        onChange={this.handleChange('tripTitle')}
+                                        margin="normal"
+                                    />
                                     <TextField
                                         label="زمان سفر"
                                         InputLabelProps={{className: 'input-labels'}}
@@ -681,6 +697,14 @@ class TourForm extends React.Component {
                                             </MenuItem>
                                         ))}
                                     </TextField>
+                                    <TextField
+                                        label="عنوان سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripTitle}
+                                        onChange={this.handleChange('tripTitle')}
+                                        margin="normal"
+                                    />
                                     <TextField
                                         label="زمان سفر"
                                         InputLabelProps={{className: 'input-labels'}}
@@ -1089,7 +1113,7 @@ class TourForm extends React.Component {
                             margin="normal"
                         />
                         <FormControl>
-                            <label style={{textAlign:'right',margin:'5px'}} htmlFor="tour-image">تصویر تور</label>
+                            <label style={{textAlign: 'right', margin: '5px'}} htmlFor="tour-image">تصویر تور</label>
                             <input id="tour-image" type="file" onChange={this.imageChange}/>
                         </FormControl>
                     </div>
@@ -1116,52 +1140,78 @@ class TourForm extends React.Component {
     render() {
         const steps = this.getSteps();
         return (
-            <Paper elevation={1} className="tour-form-paper">
-                <div className="right-dir">
-                    <Stepper activeStep={this.state.activeStep}>
-                        {steps.map((label, index) => {
-                            const props = {};
-                            const labelProps = {};
-                            return (
-                                <Step key={label} {...props}>
-                                    <StepLabel classes={{label: 'font-applied'}} {...labelProps}>{label}</StepLabel>
-                                </Step>
-                            );
-                        })}
-                    </Stepper>
-                    <div>
-                        {this.state.activeStep === steps.length ? (
-                            <div>
-                                <br/><br/>
-                                <p>
-                                    تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
-                                </p>
-                            </div>
-                        ) : (
-                            <div>
-                                <p>{this.getStepContent(this.state.activeStep)}</p>
+            <div>
+                <Paper elevation={1} className="tour-form-paper">
+                    <div className="right-dir">
+                        <Stepper activeStep={this.state.activeStep}>
+                            {steps.map((label, index) => {
+                                const props = {};
+                                const labelProps = {};
+                                return (
+                                    <Step key={label} {...props}>
+                                        <StepLabel classes={{label: 'font-applied'}} {...labelProps}>{label}</StepLabel>
+                                    </Step>
+                                );
+                            })}
+                        </Stepper>
+                        <div>
+                            {this.state.activeStep === steps.length ? (
                                 <div>
-                                    <Button
-                                        disabled={this.state.activeStep === 0}
-                                        onClick={this.handleBack}
-                                        className="font-applied"
-                                    >
-                                        مرحله قبل
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleNext}
-                                        className="font-applied"
-                                    >
-                                        {this.state.activeStep === steps.length - 1 ? 'اتمام' : 'مرحله بعد'}
-                                    </Button>
+                                    <br/><br/>
+                                    <p>
+                                        تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
+                                    </p>
                                 </div>
-                            </div>
-                        )}
+                            ) : (
+                                <div>
+                                    <div className="font-applied">{this.getStepContent(this.state.activeStep)}</div>
+                                    <br/>
+                                    <div>
+                                        <Button
+                                            disabled={this.state.activeStep === 0}
+                                            onClick={this.handleBack}
+                                            className="font-applied"
+                                        >
+                                            مرحله قبل
+                                        </Button>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={this.handleNext}
+                                            className="font-applied"
+                                        >
+                                            {this.state.activeStep === steps.length - 1 ? 'اتمام' : 'مرحله بعد'}
+                                        </Button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </Paper>
+                </Paper>
+                <br/>
+                {this.state.activeStep === 1 ?
+                    <Paper elevation={1} className="tour-trips-table right-dir">
+                        <Table className="font-applied">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="center">نوع</TableCell>
+                                    <TableCell align="center">عنوان</TableCell>
+                                    <TableCell align="center">مبدا</TableCell>
+                                    <TableCell align="center">مقصد</TableCell>
+                                    <TableCell align="center">ساعت</TableCell>
+                                    <TableCell align="center">مدت</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.trips.map((trip) => (
+                                    <TripItem trip={trip}/>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </Paper>
+                    :
+                    ''}
+            </div>
         );
     }
 }

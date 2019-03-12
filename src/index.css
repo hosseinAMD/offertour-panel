@@ -42,7 +42,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .my-header {
-    background-color: crimson !important;
+    background-color: #1976d2 !important;
 }
 
 .bold {
@@ -198,10 +198,20 @@ h1,h2,h3,h4,h5,h6{
 .tour-form-paper{
     padding: 15px;
     text-align: center;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.tour-trips-paper{
+    padding: 15px;
+    text-align: center;
 }
 
 .add-fab{
     position: absolute !important;
     left: 30px !important;
     background-color: crimson !important;
+}
+
+.trip-icon{
+    color: #2196f3;
 }
