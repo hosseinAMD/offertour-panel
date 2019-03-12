@@ -59,6 +59,7 @@ class TourForm extends React.Component {
             documents: '',
             services: '',
             fullDescription: '',
+            image:'',
             trips: [],
             hotels: []
 
@@ -81,6 +82,11 @@ class TourForm extends React.Component {
 
     handleChange = name => event => {
         this.setState({[name]: event.target.value});
+    };
+
+    imageChange = (e) => {
+        const image = e.target.files[0];
+        this.setState(() => ({image}));
     };
 
 
@@ -820,6 +826,10 @@ class TourForm extends React.Component {
                             onChange={this.handleChange('fullDescription')}
                             margin="normal"
                         />
+                        <FormControl>
+                            <label style={{textAlign:'right',margin:'5px'}} htmlFor="tour-image">تصویر تور</label>
+                            <input id="tour-image" type="file" onChange={this.imageChange}/>
+                        </FormControl>
                     </div>
                 );
             default:
@@ -860,6 +870,7 @@ class TourForm extends React.Component {
                     <div>
                         {this.state.activeStep === steps.length ? (
                             <div>
+                                <br/><br/>
                                 <p>
                                     تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
                                 </p>
