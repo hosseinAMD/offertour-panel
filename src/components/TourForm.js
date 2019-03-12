@@ -5,6 +5,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Fab from '@material-ui/core/Fab';
+import Icon from '@material-ui/core/Icon';
 import FormControl from '@material-ui/core/FormControl';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
 import moment from 'moment-jalaali';
@@ -22,6 +24,7 @@ import Paper from "@material-ui/core/Paper";
 import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 
+
 class TourForm extends React.Component {
     constructor(props) {
         super(props);
@@ -37,7 +40,11 @@ class TourForm extends React.Component {
             duration: '',
             flightCompany: '',
             tripType: 1,
+            startCategory:'',
+            startCountry:'',
             startCity: '',
+            destinationCategory:'',
+            destinationCountry:'',
             destinationCity: '',
             startAirport: '',
             destinationAirport: '',
@@ -87,6 +94,44 @@ class TourForm extends React.Component {
     imageChange = (e) => {
         const image = e.target.files[0];
         this.setState(() => ({image}));
+    };
+
+    handleAddTrip = () => {
+      const trips = this.state.trips;
+      trips.push({
+          tripType: this.state.tripType,
+          startCategory: this.state.startCategory,
+          startCountry: this.state.startCountry,
+          startCity: this.state.startCity,
+          destinationCategory: this.state.destinationCategory,
+          destinationCountry: this.state.destinationCountry,
+          destinationCity: this.state.destinationCity,
+          startAirport: this.state.startAirport,
+          destinationAirport: this.state.destinationAirport,
+          tripTime: this.state.tripTime,
+          tripDay: this.state.tripDay,
+          tripFlightCompany: this.state.tripFlightCompany,
+          flightClass: this.state.flightClass,
+          startTerminal: this.state.startTerminal,
+          destinationTerminal: this.state.destinationTerminal,
+          busClass: this.state.busClass,
+      });
+      this.setState(() => ({trips}));
+    };
+
+    handleAddHotel = () => {
+      const hotels = this.state.hotels;
+      hotels.push({
+          hotelName: this.state.hotelName,
+          hotelStarts: this.state.hotelStarts,
+          hotelMenu: this.state.hotelMenu,
+          hotelDescription: this.state.hotelDescription,
+          singleBed: this.state.singleBed,
+          multiBed: this.state.multiBed,
+          babyWithBed: this.state.babyWithBed,
+          babyNoBed: this.state.babyNoBed,
+      });
+      this.setState(() => ({hotels}));
     };
 
 
@@ -299,6 +344,99 @@ class TourForm extends React.Component {
                                     <TextField
                                         id="city"
                                         select
+                                        label="آژانس هواپیمایی"
+                                        value={this.state.tripFlightCompany}
+                                        onChange={this.handleChange('tripFlightCompany')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            }
+                                        }}
+                                        helperText="لطفا آژانس هواپیمایی را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {flightCompanies.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        label="زمان سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripDay}
+                                        onChange={this.handleChange('tripDay')}
+                                        margin="normal"
+                                    />
+                                    <TextField
+                                        label="مدت سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripTime}
+                                        onChange={this.handleChange('tripTime')}
+                                        margin="normal"
+                                    />
+                                </div>
+                                <div className="sub-form">
+                                    <TextField
+                                        id="startCatgory"
+                                        select
+                                        label="مبدا"
+                                        value={this.state.startCategory}
+                                        onChange={this.handleChange('startCategory')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا مبدا سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {categories.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        id="startCountry"
+                                        select
+                                        label="کشور مبدا"
+                                        value={this.state.startCountry}
+                                        onChange={this.handleChange('startCountry')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا کشور مبدا سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {countries.map((option) => {
+                                            if (option.category === this.state.startCategory) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
+                                    </TextField>
+                                    <TextField
+                                        id="city"
+                                        select
                                         label="شهر مبدا"
                                         value={this.state.startCity}
                                         onChange={this.handleChange('startCity')}
@@ -314,7 +452,7 @@ class TourForm extends React.Component {
                                         margin="normal"
                                     >
                                         {cities.map((option) => {
-                                            if (option.country === this.state.country) {
+                                            if (option.country === this.state.startCountry) {
                                                 return (
                                                     <MenuItem key={option.id} value={option.id}>
                                                         {option.title}
@@ -357,6 +495,58 @@ class TourForm extends React.Component {
                                 </div>
                                 <div className="sub-form">
                                     <TextField
+                                        id="destinationCategory"
+                                        select
+                                        label="مقصد"
+                                        value={this.state.destinationCategory}
+                                        onChange={this.handleChange('destinationCategory')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا مقصد سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {categories.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        id="destinationCountry"
+                                        select
+                                        label="کشور مقصد"
+                                        value={this.state.destinationCountry}
+                                        onChange={this.handleChange('destinationCountry')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا کشور مقصد سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {countries.map((option) => {
+                                            if (option.category === this.state.destinationCategory) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
+                                    </TextField>
+                                    <TextField
                                         id="city"
                                         select
                                         label="شهر مقصد"
@@ -374,7 +564,7 @@ class TourForm extends React.Component {
                                         margin="normal"
                                     >
                                         {cities.map((option) => {
-                                            if (option.country === this.state.country) {
+                                            if (option.country === this.state.destinationCountry) {
                                                 return (
                                                     <MenuItem key={option.id} value={option.id}>
                                                         {option.title}
@@ -438,47 +628,9 @@ class TourForm extends React.Component {
                                         ))}
                                     </TextField>
                                 </div>
-                                <div className="sub-form">
-                                    <TextField
-                                        id="city"
-                                        select
-                                        label="آژانس هواپیمایی"
-                                        value={this.state.tripFlightCompany}
-                                        onChange={this.handleChange('tripFlightCompany')}
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        FormHelperTextProps={{className: 'font-applied'}}
-                                        SelectProps={{
-                                            MenuProps: {
-                                                className: 'font-applied',
-                                            }
-                                        }}
-                                        helperText="لطفا آژانس هواپیمایی را انتخاب نمایید."
-                                        margin="normal"
-                                    >
-                                        {flightCompanies.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
-                                    </TextField>
-                                    <TextField
-                                        label="زمان سفر"
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        value={this.state.tripDay}
-                                        onChange={this.handleChange('tripDay')}
-                                        margin="normal"
-                                    />
-                                    <TextField
-                                        label="مدت سفر"
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        value={this.state.tripTime}
-                                        onChange={this.handleChange('tripTime')}
-                                        margin="normal"
-                                    />
-                                </div>
+                                <Fab onClick={this.handleAddTrip} className="add-fab" color="primary" aria-label="Add">
+                                    <Icon>add</Icon>
+                                </Fab>
                             </div>
                             :
                             <div className="main-form">
@@ -509,6 +661,99 @@ class TourForm extends React.Component {
                                     <TextField
                                         id="city"
                                         select
+                                        label="پایانه اتوبوسرانی"
+                                        value={this.state.tripFlightCompany}
+                                        onChange={this.handleChange('tripFlightCompany')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            }
+                                        }}
+                                        helperText="لطفا پایانه اتوبوسرانی را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {busCompanies.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        label="زمان سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripDay}
+                                        onChange={this.handleChange('tripDay')}
+                                        margin="normal"
+                                    />
+                                    <TextField
+                                        label="مدت سفر"
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        value={this.state.tripTime}
+                                        onChange={this.handleChange('tripTime')}
+                                        margin="normal"
+                                    />
+                                </div>
+                                <div className="sub-form">
+                                    <TextField
+                                        id="startCatgory"
+                                        select
+                                        label="مبدا"
+                                        value={this.state.startCategory}
+                                        onChange={this.handleChange('startCategory')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا مبدا سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {categories.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        id="startCountry"
+                                        select
+                                        label="کشور مبدا"
+                                        value={this.state.startCountry}
+                                        onChange={this.handleChange('startCountry')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا کشور مبدا سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {countries.map((option) => {
+                                            if (option.category === this.state.startCategory) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
+                                    </TextField>
+                                    <TextField
+                                        id="city"
+                                        select
                                         label="شهر مبدا"
                                         value={this.state.startCity}
                                         onChange={this.handleChange('startCity')}
@@ -524,7 +769,7 @@ class TourForm extends React.Component {
                                         margin="normal"
                                     >
                                         {cities.map((option) => {
-                                            if (option.country === this.state.country) {
+                                            if (option.country === this.state.startCountry) {
                                                 return (
                                                     <MenuItem key={option.id} value={option.id}>
                                                         {option.title}
@@ -567,6 +812,58 @@ class TourForm extends React.Component {
                                 </div>
                                 <div className="sub-form">
                                     <TextField
+                                        id="destinationCategory"
+                                        select
+                                        label="مقصد"
+                                        value={this.state.destinationCategory}
+                                        onChange={this.handleChange('destinationCategory')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا مقصد سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {categories.map(option => (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        id="destinationCountry"
+                                        select
+                                        label="کشور مقصد"
+                                        value={this.state.destinationCountry}
+                                        onChange={this.handleChange('destinationCountry')}
+                                        InputLabelProps={{className: 'input-labels'}}
+                                        InputProps={{className: 'font-applied'}}
+                                        FormHelperTextProps={{className: 'font-applied'}}
+                                        SelectProps={{
+                                            MenuProps: {
+                                                className: 'font-applied',
+                                            },
+                                        }}
+                                        helperText="لطفا کشور مقصد سفر را انتخاب نمایید."
+                                        margin="normal"
+                                    >
+                                        {countries.map((option) => {
+                                            if (option.category === this.state.destinationCategory) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
+                                    </TextField>
+                                    <TextField
                                         id="city"
                                         select
                                         label="شهر مقصد"
@@ -584,7 +881,7 @@ class TourForm extends React.Component {
                                         margin="normal"
                                     >
                                         {cities.map((option) => {
-                                            if (option.country === this.state.country) {
+                                            if (option.country === this.state.destinationCountry) {
                                                 return (
                                                     <MenuItem key={option.id} value={option.id}>
                                                         {option.title}
@@ -648,47 +945,9 @@ class TourForm extends React.Component {
                                         ))}
                                     </TextField>
                                 </div>
-                                <div className="sub-form">
-                                    <TextField
-                                        id="city"
-                                        select
-                                        label="پایانه اتوبوسرانی"
-                                        value={this.state.tripFlightCompany}
-                                        onChange={this.handleChange('tripFlightCompany')}
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        FormHelperTextProps={{className: 'font-applied'}}
-                                        SelectProps={{
-                                            MenuProps: {
-                                                className: 'font-applied',
-                                            }
-                                        }}
-                                        helperText="لطفا پایانه اتوبوسرانی را انتخاب نمایید."
-                                        margin="normal"
-                                    >
-                                        {busCompanies.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
-                                    </TextField>
-                                    <TextField
-                                        label="زمان سفر"
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        value={this.state.tripDay}
-                                        onChange={this.handleChange('tripDay')}
-                                        margin="normal"
-                                    />
-                                    <TextField
-                                        label="مدت سفر"
-                                        InputLabelProps={{className: 'input-labels'}}
-                                        InputProps={{className: 'font-applied'}}
-                                        value={this.state.tripTime}
-                                        onChange={this.handleChange('tripTime')}
-                                        margin="normal"
-                                    />
-                                </div>
+                                <Fab onClick={this.handleAddTrip} className="add-fab" color="primary" aria-label="Add">
+                                    <Icon>add</Icon>
+                                </Fab>
                             </div>
                         }
                     </div>
@@ -791,6 +1050,9 @@ class TourForm extends React.Component {
                                 margin="normal"
                             />
                         </div>
+                        <Fab onClick={this.handleAddHotel} className="add-fab" color="primary" aria-label="Add">
+                            <Icon>add</Icon>
+                        </Fab>
                     </div>
                 );
             case 3:

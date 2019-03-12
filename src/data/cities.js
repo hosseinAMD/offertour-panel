@@ -37,7 +37,7 @@ const cities = [
     {
         id:8,
         title:'ایروان',
-        country:9
+        country:10
     },
     {
         id:9,
