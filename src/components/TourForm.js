@@ -59,6 +59,7 @@ class TourForm extends React.Component {
             tripTitle:'',
             tripDay: '',
             tripFlightCompany: '',
+            tripBusCompany:'',
             flightClass: '',
             startTerminal: '',
             destinationTerminal: '',
@@ -120,6 +121,7 @@ class TourForm extends React.Component {
             tripTitle: this.state.tripTitle,
             tripDay: this.state.tripDay,
             tripFlightCompany: this.state.tripFlightCompany,
+            tripBusCompany:this.state.tripBusCompany,
             flightClass: this.state.flightClass,
             startTerminal: this.state.startTerminal,
             destinationTerminal: this.state.destinationTerminal,
@@ -679,8 +681,8 @@ class TourForm extends React.Component {
                                         id="city"
                                         select
                                         label="پایانه اتوبوسرانی"
-                                        value={this.state.tripFlightCompany}
-                                        onChange={this.handleChange('tripFlightCompany')}
+                                        value={this.state.tripBusCompany}
+                                        onChange={this.handleChange('tripBusCompany')}
                                         InputLabelProps={{className: 'input-labels'}}
                                         InputProps={{className: 'font-applied'}}
                                         FormHelperTextProps={{className: 'font-applied'}}
@@ -950,8 +952,8 @@ class TourForm extends React.Component {
                                         id="city"
                                         select
                                         label="کلاس اتوبوس"
-                                        value={this.state.flightClass}
-                                        onChange={this.handleChange('flightClass')}
+                                        value={this.state.busClass}
+                                        onChange={this.handleChange('busClass')}
                                         InputLabelProps={{className: 'input-labels'}}
                                         InputProps={{className: 'font-applied'}}
                                         FormHelperTextProps={{className: 'font-applied'}}

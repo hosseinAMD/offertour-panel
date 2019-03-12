@@ -30,7 +30,6 @@ class HotelItem extends React.Component{
 
     render() {
         return(
-
             <TableRow>
                 <TableCell align="center">{this.props.hotel.hotelName}</TableCell>
                 <TableCell align="center"><ItemRenderer id={this.props.hotel.hotelMenu} type="foodType"/></TableCell>

@@ -138,7 +138,7 @@ const ItemRenderer = (props) => {
             item = undefined;
     }
     return (
-        <span>{item.title}</span>
+        <span>{item ? <span>{item.title}</span> : 'نامشخص'}</span>
     );
 };
 
