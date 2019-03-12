@@ -18,6 +18,9 @@ import flightClasses from "../data/flightClasses";
 import airports from "../data/airports";
 import busClasses from "../data/busClasses";
 import foodTypes from "../data/foodTypes";
+import Paper from "@material-ui/core/Paper";
+import busTerminals from "../data/busTerminals";
+import busCompanies from "../data/busCompanies";
 
 class TourForm extends React.Component {
     constructor(props) {
@@ -45,19 +48,19 @@ class TourForm extends React.Component {
             startTerminal: '',
             destinationTerminal: '',
             busClass: '',
-            hotelName:'',
-            hotelStarts:'',
-            hotelMenu:'',
-            hotelDescription:'',
-            singleBed:'',
-            multiBed:'',
-            babyWithBed:'',
-            babyNoBed:'',
-            documents:'',
-            services:'',
-            fullDescription:'',
+            hotelName: '',
+            hotelStarts: '',
+            hotelMenu: '',
+            hotelDescription: '',
+            singleBed: '',
+            multiBed: '',
+            babyWithBed: '',
+            babyNoBed: '',
+            documents: '',
+            services: '',
+            fullDescription: '',
             trips: [],
-            hotels:[]
+            hotels: []
 
         }
     };
@@ -99,6 +102,7 @@ class TourForm extends React.Component {
                                 value={this.state.title}
                                 onChange={this.handleChange('title')}
                                 margin="normal"
+                                autoFocus={true}
                             />
                             <TextField
                                 id="startPrice"
@@ -162,11 +166,17 @@ class TourForm extends React.Component {
                                 helperText="لطفا کشور تور را انتخاب نمایید."
                                 margin="normal"
                             >
-                                {countries.map(option => (
-                                    <MenuItem key={option.id} value={option.id}>
-                                        {option.title}
-                                    </MenuItem>
-                                ))}
+                                {countries.map((option) => {
+                                    if (option.category === this.state.category) {
+                                        return (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        );
+                                    } else {
+                                        return ''
+                                    }
+                                })}
                             </TextField>
                             <TextField
                                 id="city"
@@ -185,11 +195,17 @@ class TourForm extends React.Component {
                                 helperText="لطفا شهر تور را انتخاب نمایید."
                                 margin="normal"
                             >
-                                {cities.map(option => (
-                                    <MenuItem key={option.id} value={option.id}>
-                                        {option.title}
-                                    </MenuItem>
-                                ))}
+                                {cities.map((option) => {
+                                    if (option.country === this.state.country) {
+                                        return (
+                                            <MenuItem key={option.id} value={option.id}>
+                                                {option.title}
+                                            </MenuItem>
+                                        );
+                                    } else {
+                                        return ''
+                                    }
+                                })}
                             </TextField>
                         </div>
                         <div className="sub-form">
@@ -291,11 +307,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا شهر مبدا را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {cities.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {cities.map((option) => {
+                                            if (option.country === this.state.country) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
@@ -314,11 +336,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا فرودگاه مبدا را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {airports.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {airports.map((option) => {
+                                            if (option.city === this.state.startCity) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                 </div>
                                 <div className="sub-form">
@@ -339,11 +367,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا شهر مقصد را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {cities.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {cities.map((option) => {
+                                            if (option.country === this.state.country) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
@@ -362,11 +396,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا فرودگاه مقصد را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {airports.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {airports.map((option) => {
+                                            if (option.city === this.state.destinationCity) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
@@ -477,18 +517,24 @@ class TourForm extends React.Component {
                                         helperText="لطفا شهر مبدا را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {cities.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {cities.map((option) => {
+                                            if (option.country === this.state.country) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
                                         select
                                         label="ترمینال مبدا"
-                                        value={this.state.startAirport}
-                                        onChange={this.handleChange('startAirport')}
+                                        value={this.state.startTerminal}
+                                        onChange={this.handleChange('startTerminal')}
                                         InputLabelProps={{className: 'input-labels'}}
                                         InputProps={{className: 'font-applied'}}
                                         FormHelperTextProps={{className: 'font-applied'}}
@@ -500,11 +546,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا ترمینال مبدا را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {airports.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {busTerminals.map((option) => {
+                                            if (option.city === this.state.startCity) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                 </div>
                                 <div className="sub-form">
@@ -525,18 +577,24 @@ class TourForm extends React.Component {
                                         helperText="لطفا شهر مقصد را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {cities.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {cities.map((option) => {
+                                            if (option.country === this.state.country) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
                                         select
                                         label="ترمینال مقصد"
-                                        value={this.state.destinationAirport}
-                                        onChange={this.handleChange('destinationAirport')}
+                                        value={this.state.destinationTerminal}
+                                        onChange={this.handleChange('destinationTerminal')}
                                         InputLabelProps={{className: 'input-labels'}}
                                         InputProps={{className: 'font-applied'}}
                                         FormHelperTextProps={{className: 'font-applied'}}
@@ -548,11 +606,17 @@ class TourForm extends React.Component {
                                         helperText="لطفا ترمینال مقصد را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {airports.map(option => (
-                                            <MenuItem key={option.id} value={option.id}>
-                                                {option.title}
-                                            </MenuItem>
-                                        ))}
+                                        {busTerminals.map((option) => {
+                                            if (option.city === this.state.destinationCity) {
+                                                return (
+                                                    <MenuItem key={option.id} value={option.id}>
+                                                        {option.title}
+                                                    </MenuItem>
+                                                );
+                                            } else {
+                                                return ''
+                                            }
+                                        })}
                                     </TextField>
                                     <TextField
                                         id="city"
@@ -596,7 +660,7 @@ class TourForm extends React.Component {
                                         helperText="لطفا پایانه اتوبوسرانی را انتخاب نمایید."
                                         margin="normal"
                                     >
-                                        {flightCompanies.map(option => (
+                                        {busCompanies.map(option => (
                                             <MenuItem key={option.id} value={option.id}>
                                                 {option.title}
                                             </MenuItem>
@@ -780,49 +844,51 @@ class TourForm extends React.Component {
     render() {
         const steps = this.getSteps();
         return (
-            <div className="right-dir">
-                <Stepper activeStep={this.state.activeStep}>
-                    {steps.map((label, index) => {
-                        const props = {};
-                        const labelProps = {};
-                        return (
-                            <Step key={label} {...props}>
-                                <StepLabel classes={{label: 'font-applied'}} {...labelProps}>{label}</StepLabel>
-                            </Step>
-                        );
-                    })}
-                </Stepper>
-                <div>
-                    {this.state.activeStep === steps.length ? (
-                        <div>
-                            <p>
-                                تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
-                            </p>
-                        </div>
-                    ) : (
-                        <div>
-                            <p>{this.getStepContent(this.state.activeStep)}</p>
+            <Paper elevation={1} className="tour-form-paper">
+                <div className="right-dir">
+                    <Stepper activeStep={this.state.activeStep}>
+                        {steps.map((label, index) => {
+                            const props = {};
+                            const labelProps = {};
+                            return (
+                                <Step key={label} {...props}>
+                                    <StepLabel classes={{label: 'font-applied'}} {...labelProps}>{label}</StepLabel>
+                                </Step>
+                            );
+                        })}
+                    </Stepper>
+                    <div>
+                        {this.state.activeStep === steps.length ? (
                             <div>
-                                <Button
-                                    disabled={this.state.activeStep === 0}
-                                    onClick={this.handleBack}
-                                    className="font-applied"
-                                >
-                                    مرحله قبل
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.handleNext}
-                                    className="font-applied"
-                                >
-                                    {this.state.activeStep === steps.length - 1 ? 'اتمام' : 'مرحله بعد'}
-                                </Button>
+                                <p>
+                                    تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
+                                </p>
                             </div>
-                        </div>
-                    )}
+                        ) : (
+                            <div>
+                                <p>{this.getStepContent(this.state.activeStep)}</p>
+                                <div>
+                                    <Button
+                                        disabled={this.state.activeStep === 0}
+                                        onClick={this.handleBack}
+                                        className="font-applied"
+                                    >
+                                        مرحله قبل
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleNext}
+                                        className="font-applied"
+                                    >
+                                        {this.state.activeStep === steps.length - 1 ? 'اتمام' : 'مرحله بعد'}
+                                    </Button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
+            </Paper>
         );
     }
 }

@@ -11,7 +11,7 @@ class App extends Component {
         return (
 
             <BrowserRouter>
-                <div>
+                <div className="main-background">
                     <Navbar/>
                         <Switch>
                             <Route path="/" exact={true} component={Dashboard}/>

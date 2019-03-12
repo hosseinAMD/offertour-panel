@@ -192,3 +192,17 @@ h1,h2,h3,h4,h5,h6{
     left: 0 !important;
     right: auto !important;
 }
+
+.main-background{
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.tour-form-paper{
+    padding: 15px;
+    text-align: center;
+}
