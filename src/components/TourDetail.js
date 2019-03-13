@@ -5,6 +5,7 @@ import Tab from '@material-ui/core/Tab';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import tours from '../data/tours';
+import TourInfo from "./TourInfo";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ class TourDetail extends React.Component {
                             <Tab classes={{label: 'font-applied'}} icon={<Icon>home</Icon>} label="لیست پکیج ها"/>
                             <Tab classes={{label: 'font-applied'}} icon={<Icon>help</Icon>} label="جزئیات تور"/>
                         </Tabs>
-                        {this.state.value === 0 ? <p>koli</p> : ''}
+                        {this.state.value === 0 ? <TourInfo tour={tour}/> : ''}
                     </Paper>
                 </Grid>
             </Grid>
