@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
+import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
 import moment from 'moment-jalaali';
@@ -30,6 +31,7 @@ import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 import TripItem from "./TripItem";
 import HotelItem from "./HotelItem";
+import ItemRenderer from "./ItemRenderer";
 
 
 class TourForm extends React.Component {
@@ -56,10 +58,10 @@ class TourForm extends React.Component {
             startAirport: '',
             destinationAirport: '',
             tripTime: '',
-            tripTitle:'',
+            tripTitle: '',
             tripDay: '',
             tripFlightCompany: '',
-            tripBusCompany:'',
+            tripBusCompany: '',
             flightClass: '',
             startTerminal: '',
             destinationTerminal: '',
@@ -121,7 +123,7 @@ class TourForm extends React.Component {
             tripTitle: this.state.tripTitle,
             tripDay: this.state.tripDay,
             tripFlightCompany: this.state.tripFlightCompany,
-            tripBusCompany:this.state.tripBusCompany,
+            tripBusCompany: this.state.tripBusCompany,
             flightClass: this.state.flightClass,
             startTerminal: this.state.startTerminal,
             destinationTerminal: this.state.destinationTerminal,
@@ -1162,8 +1164,76 @@ class TourForm extends React.Component {
                                 <div>
                                     <br/><br/>
                                     <p>
-                                        تور شما آماده انتشار در آفرتور می باشد.کافی است روی ذخیره کلیک نمایید.
+                                        تور شما آماده انتشار در آفرتور می باشد.لطفا پس از بررسی موارد به طور کامل روی ذخیره کلیک نمایید.
                                     </p>
+                                    <Grid container spacing={24} className="my-container">
+                                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                                            <p><span className="bold">عنوان تور: </span>{this.state.title}</p>
+                                            <p><span
+                                                className="bold">شروع قیمت: </span>{numeral(this.state.startPrice).format('0,0')}
+                                            </p>
+                                            <p><span className="bold">مدت تور: </span>{this.state.duration}</p>
+                                            <p><span className="bold">دسته بندی: </span><ItemRenderer
+                                                id={this.state.category} type="category"/></p>
+                                            <p><span className="bold">کشور: </span><ItemRenderer id={this.state.country}
+                                                                                                 type="country"/></p>
+                                            <p><span className="bold">شهر: </span><ItemRenderer id={this.state.city}
+                                                                                                type="city"/></p>
+                                            <p><span className="bold">هواپیمایی: </span><ItemRenderer
+                                                id={this.state.flightCompany} type="flightCompany"/></p>
+                                            <p><span
+                                                className="bold">تاریخ شروع: </span>{moment(this.state.startDate).format('jYYYY/jMM/jDD')}
+                                            </p>
+                                            <p><span
+                                                className="bold">تاریخ پایان: </span>{moment(this.state.endDate).format('jYYYY/jMM/jDD')}
+                                            </p>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+                                            <p><span className="bold">مدارک لازم: </span>{this.state.documents}</p>
+                                            <p><span className="bold">خدمات آژانس: </span>{this.state.services}</p>
+                                            <p><span className="bold">توضیحات: </span>{this.state.fullDescription}</p>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                            <Table className="font-applied">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell align="center">نوع</TableCell>
+                                                        <TableCell align="center">عنوان</TableCell>
+                                                        <TableCell align="center">مبدا</TableCell>
+                                                        <TableCell align="center">مقصد</TableCell>
+                                                        <TableCell align="center">ساعت</TableCell>
+                                                        <TableCell align="center">مدت</TableCell>
+                                                        <TableCell align="center">جزئیات</TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                    {this.state.trips.map((trip) => (
+                                                        <TripItem trip={trip}/>
+                                                    ))}
+                                                </TableBody>
+                                            </Table>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                                            <Table className="font-applied">
+                                                <TableHead>
+                                                    <TableRow>
+                                                        <TableCell align="center">نام هتل</TableCell>
+                                                        <TableCell align="center">منو غذا</TableCell>
+                                                        <TableCell align="center">دوتخته</TableCell>
+                                                        <TableCell align="center">یک تخته</TableCell>
+                                                        <TableCell align="center">کودک با تخت</TableCell>
+                                                        <TableCell align="center">کودک بدون تخت</TableCell>
+                                                        <TableCell align="center">جزئیات</TableCell>
+                                                    </TableRow>
+                                                </TableHead>
+                                                <TableBody>
+                                                    {this.state.hotels.map((hotel) => (
+                                                        <HotelItem hotel={hotel}/>
+                                                    ))}
+                                                </TableBody>
+                                            </Table>
+                                        </Grid>
+                                    </Grid>
                                 </div>
                             ) : (
                                 <div>

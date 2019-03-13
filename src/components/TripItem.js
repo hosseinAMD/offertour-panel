@@ -9,8 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Button from '@material-ui/core/Button';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import ItemRenderer from "./ItemRenderer";
-import PlanStars from "./HotelItem";
-import numeral from "numeral";
+
 
 class TripItem extends React.Component {
     constructor(props) {
