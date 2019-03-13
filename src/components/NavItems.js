@@ -30,6 +30,10 @@ const NavItems = () => (
                 <ListItemIcon><Icon>airplanemode_active</Icon></ListItemIcon>
                 <ListItemText classes={{primary: 'font-applied right-txt'}} primary="افزودن تور"/>
             </ListItem>
+            <ListItem button component={NavLink} to="/tours-list">
+                <ListItemIcon><Icon>list_alt</Icon></ListItemIcon>
+                <ListItemText classes={{primary: 'font-applied right-txt'}} primary="لیست تورها"/>
+            </ListItem>
         </List>
     </div>
 );

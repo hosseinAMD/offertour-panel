@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import Plan from "./components/Plan";
 import AddTour from "./components/AddTour";
+import ToursList from "./components/ToursList";
 
 class App extends Component {
     render() {
@@ -18,6 +19,7 @@ class App extends Component {
                             <Route path="/profile" component={Profile}/>
                             <Route path="/plan" component={Plan}/>
                             <Route path="/add-tour" component={AddTour}/>
+                            <Route path="/tours-list" component={ToursList}/>
                         </Switch>
                 </div>
             </BrowserRouter>
