@@ -8,6 +8,7 @@ import tours from '../data/tours';
 import TourInfo from "./TourInfo";
 import TourTimeline from "./TourTimeline";
 import TourHotels from "./TourHotels";
+import TourDesc from "./TourDesc";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -43,6 +44,7 @@ class TourDetail extends React.Component {
                         {this.state.value === 0 ? <TourInfo tour={tour}/> : ''}
                         {this.state.value === 1 ? <TourTimeline trips={tour.trips}/> : ''}
                         {this.state.value === 2 ? <TourHotels hotels={tour.hotels}/> : ''}
+                        {this.state.value === 3 ? <TourDesc tour={tour}/> : ''}
                     </Paper>
                 </Grid>
             </Grid>
