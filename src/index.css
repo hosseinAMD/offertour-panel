@@ -248,3 +248,9 @@ h1, h2, h3, h4, h5, h6 {
 .comments-paper{
     padding: 5px;
 }
+
+.plan-summary-paper{
+    padding: 5px;
+    text-align: center;
+    line-height: 40px;
+}

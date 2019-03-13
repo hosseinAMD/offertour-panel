@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Comments from "./Comments";
+import PlanSummary from "./PlanSummary";
 
 const Dashboard = () => (
     <Grid container spacing={24} className="my-container">
@@ -11,7 +12,7 @@ const Dashboard = () => (
             <Comments/>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
-            active plan
+            <PlanSummary/>
         </Grid>
     </Grid>
 );
