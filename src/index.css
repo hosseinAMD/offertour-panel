@@ -254,3 +254,8 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     line-height: 40px;
 }
+
+.report-summary-paper{
+    padding: 5px;
+    font-family: IRANSans !important;
+}
