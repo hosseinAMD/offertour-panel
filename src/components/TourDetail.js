@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import tours from '../data/tours';
 import TourInfo from "./TourInfo";
 import TourTimeline from "./TourTimeline";
+import TourHotels from "./TourHotels";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -22,7 +23,6 @@ class TourDetail extends React.Component {
 
     render() {
         const tour = tours.find((tour) => tour.id === parseInt(this.props.match.params.id));
-        console.log(tour);
         return (
             <Grid container spacing={24} className="my-container">
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -42,6 +42,7 @@ class TourDetail extends React.Component {
                         </Tabs>
                         {this.state.value === 0 ? <TourInfo tour={tour}/> : ''}
                         {this.state.value === 1 ? <TourTimeline trips={tour.trips}/> : ''}
+                        {this.state.value === 2 ? <TourHotels hotels={tour.hotels}/> : ''}
                     </Paper>
                 </Grid>
             </Grid>
