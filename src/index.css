@@ -17,7 +17,7 @@ p {
     font-family: IRANSans !important;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1, h2, h3, h4, h5, h6 {
     font-family: IRANSans !important;
 }
 
@@ -70,13 +70,13 @@ h1,h2,h3,h4,h5,h6{
 
 .agency-paper {
     text-align: center;
-    margin:0px 30px;
+    margin: 0px 30px;
     padding: 10px;
 }
 
 .plan-paper {
     text-align: center;
-    margin:0px 30px;
+    margin: 0px 30px;
     padding: 10px;
 }
 
@@ -92,47 +92,47 @@ h1,h2,h3,h4,h5,h6{
     border-radius: 50%;
 }
 
-.nav-user-info{
+.nav-user-info {
     text-align: center;
 }
 
-.free-plan{
+.free-plan {
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     padding: 3px;
     border-radius: 5px;
 }
 
-.bronze-plan{
+.bronze-plan {
     background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
     padding: 3px;
     border-radius: 5px;
     color: white;
 }
 
-.silver-plan{
+.silver-plan {
     background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
     padding: 3px;
     border-radius: 5px;
     color: white;
 }
 
-.gold-plan{
+.gold-plan {
     background-image: linear-gradient(to top, #cc208e 0%, #6713d2 100%);
     padding: 3px;
     border-radius: 5px;
     color: white;
 }
 
-.plan-col{
-    margin:0px 30px;
+.plan-col {
+    margin: 0px 30px;
 }
 
-.buy-button{
+.buy-button {
     background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
     width: 100%;
 }
 
-.green-duration{
+.green-duration {
     color: white;
     background-color: #1b5e20;
     padding: 3px 8px;
@@ -140,7 +140,7 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
 }
 
-.red-duration{
+.red-duration {
     color: white;
     background-color: #d50000;
     padding: 3px 8px;
@@ -148,7 +148,7 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
 }
 
-.available-count{
+.available-count {
     background-color: #2196f3;
     color: white;
     border-radius: 20px;
@@ -156,7 +156,7 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
 }
 
-.zero-count{
+.zero-count {
     background-color: darkred;
     color: white;
     border-radius: 5px;
@@ -164,62 +164,74 @@ h1,h2,h3,h4,h5,h6{
     font-weight: bold;
 }
 
-.accept-buy-button{
+.accept-buy-button {
     background-color: #43a047 !important;
     color: white !important;
     font-weight: bold !important;
 }
 
-.input-labels{
+.input-labels {
     font-family: IRANSans !important;
     right: 20px !important;
     left: auto !important;
 }
 
-.main-form{
+.main-form {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
 }
 
-.sub-form{
+.sub-form {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
 }
 
-.my-select-icon{
+.my-select-icon {
     left: 0 !important;
     right: auto !important;
 }
 
 
-
-.tour-form-paper{
+.tour-form-paper {
     padding: 15px;
     text-align: center;
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
-.tour-trips-paper{
+.tour-trips-paper {
     padding: 15px;
     text-align: center;
 }
 
-.add-fab{
+.add-fab {
     position: absolute !important;
     left: 30px !important;
     background-color: crimson !important;
 }
 
-.trip-icon{
+.trip-icon {
     color: #2196f3;
 }
 
-.disable-status{
+.disable-status {
     background-color: red !important;
 }
 
-.enable-status{
+.enable-status {
     background-color: green !important;
+}
+
+.featured-tour {
+    background-color: #ad1457 !important;
+}
+
+.normal-tour {
+    background-color: #1976d2 !important;
+}
+
+.chip-icon{
+    margin-right: unset !important;
+    margin-left: unset !important;
 }

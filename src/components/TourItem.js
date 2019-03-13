@@ -5,6 +5,7 @@ import ItemRenderer from "./ItemRenderer";
 import numeral from 'numeral';
 import moment from 'moment-jalaali';
 import StatusRenderer from "./StatusRenderer";
+import FeaturedStatusRenderer from "./FeaturedStatusRenderer";
 
 const TourItem = (props) => (
     <TableRow>
@@ -16,7 +17,7 @@ const TourItem = (props) => (
         <TableCell align="center">{moment(props.tour.endDate).format('jYYYY/jMM/jDD')}</TableCell>
         <TableCell align="center">{props.tour.duration}</TableCell>
         <TableCell align="center"><StatusRenderer status={props.tour.status}/></TableCell>
-        <TableCell align="center"></TableCell>
+        <TableCell align="center"><FeaturedStatusRenderer featured={props.tour.featured}/></TableCell>
     </TableRow>
 );
 
