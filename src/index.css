@@ -215,3 +215,11 @@ h1,h2,h3,h4,h5,h6{
 .trip-icon{
     color: #2196f3;
 }
+
+.disable-status{
+    background-color: red !important;
+}
+
+.enable-status{
+    background-color: green !important;
+}

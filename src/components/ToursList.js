@@ -6,13 +6,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import tours from '../data/tours';
+import TourItem from "./TourItem";
 
 const ToursList = () => (
     <Grid container spacing={24} className="my-container">
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <Table className="font-applied">
+            <Table className="font-applied right-dir">
                 <TableHead>
                     <TableRow>
+                        <TableCell align="center">کد تور</TableCell>
                         <TableCell align="center">عنوان تور</TableCell>
                         <TableCell align="center">کشور تور</TableCell>
                         <TableCell align="center">قیمت</TableCell>
@@ -24,7 +26,9 @@ const ToursList = () => (
                     </TableRow>
                 </TableHead>
                 <TableBody>
-
+                    {tours.map((tour) => (
+                        <TourItem tour={tour}/>
+                    ))}
                 </TableBody>
             </Table>
         </Grid>
