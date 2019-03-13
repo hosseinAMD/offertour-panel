@@ -6,11 +6,12 @@ import numeral from 'numeral';
 import moment from 'moment-jalaali';
 import StatusRenderer from "./StatusRenderer";
 import FeaturedStatusRenderer from "./FeaturedStatusRenderer";
+import {NavLink} from "react-router-dom";
 
 const TourItem = (props) => (
     <TableRow>
         <TableCell align="center">{props.tour.id}</TableCell>
-        <TableCell align="center"><span className="bold">{props.tour.title}</span></TableCell>
+        <TableCell component={NavLink} to={`/tour/${props.tour.id}`} align="center"><span className="bold">{props.tour.title}</span></TableCell>
         <TableCell align="center"><ItemRenderer id={props.tour.country} type="country"/></TableCell>
         <TableCell align="center">{numeral(props.tour.startPrice).format('0,0')}</TableCell>
         <TableCell align="center">{moment(props.tour.startDate).format('jYYYY/jMM/jDD')}</TableCell>
