@@ -10,6 +10,7 @@ import busClasses from "../data/busClasses";
 import foodTypes from "../data/foodTypes";
 import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
+import tours from '../data/tours';
 
 
 const ItemRenderer = (props) => {
@@ -126,6 +127,17 @@ const ItemRenderer = (props) => {
         case
         'busCompany':
             item = busCompanies.find((item) => {
+                if (item.id === props.id) {
+                    return item.title;
+                } else {
+                    return undefined;
+                }
+            })
+            ;
+            break;
+        case
+        'tour':
+            item = tours.find((item) => {
                 if (item.id === props.id) {
                     return item.title;
                 } else {
