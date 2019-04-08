@@ -14,7 +14,6 @@ const data = [
     {name: 'کشتی کروز', value: 5},
 ];
 
-const jsfiddleUrl = 'https://jsfiddle.net/alidingling/c9pL8k61/';
 
 const AgencyCategoriesReport = () => (
     <Paper elevation={1} className="report-summary-paper">

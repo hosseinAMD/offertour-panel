@@ -25,7 +25,7 @@ const RecentBills = () => (
             </TableHead>
             <TableBody>
                 {bills.map((bill) => (
-                    <RecentBillItem bill={bill}/>
+                    <RecentBillItem key={bill.id} bill={bill}/>
                 ))}
             </TableBody>
 

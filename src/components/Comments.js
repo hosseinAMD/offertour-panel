@@ -15,7 +15,7 @@ const Comments = () => (
         <HeaderChip label='آخرین نظرات' icon='comment' color='#e65100'/>
     <List className="right-dir font-applied">
         {comments.map((comment) => (
-            <ListItem alignItems="flex-start">
+            <ListItem key={comment.id} alignItems="flex-start">
                 <ListItemAvatar>
                     <Avatar alt={comment.name} src={comment.image}/>
                 </ListItemAvatar>

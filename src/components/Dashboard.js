@@ -10,22 +10,22 @@ import Slide from '@material-ui/core/Slide';
 const Dashboard = () => (
     <Grid container spacing={24} className="my-container">
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Slide direction="down" timeout={{enter: '1000ms'}} in={true} mountOnEnter unmountOnExit>
+            <Slide direction="down"  in={true} mountOnEnter>
                 <ToursVisitsReport/>
             </Slide>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Slide direction="left" timeout={{enter: '1000ms'}} in={true} mountOnEnter unmountOnExit>
+            <Slide direction="left"  in={true} mountOnEnter>
                 <AgencyProfileVisitsReport/>
             </Slide>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Slide direction="right" timeout={{enter: '1000ms'}} in={true} mountOnEnter unmountOnExit>
+            <Slide direction="right"  in={true} mountOnEnter>
                 <Comments/>
             </Slide>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Slide direction="up" timeout={{enter: '1000ms'}} in={true} mountOnEnter unmountOnExit>
+            <Slide direction="up"  in={true} mountOnEnter>
                 <AgencyCategoriesReport/>
             </Slide>
         </Grid>
