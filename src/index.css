@@ -231,91 +231,102 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #1976d2 !important;
 }
 
-.chip-icon{
+.chip-icon {
     margin-right: unset !important;
     margin-left: unset !important;
 }
 
-.tour-info{
+.tour-info {
     padding: 30px;
     text-align: center;
 }
 
-.article-form-paper{
+.article-form-paper {
     padding: 30px;
 }
 
-.comments-paper{
+.comments-paper {
     padding: 5px;
 }
 
-.plan-summary-paper{
+.plan-summary-paper {
     padding: 5px;
     text-align: center;
     line-height: 40px;
 }
 
-.report-summary-paper{
+.report-summary-paper {
     padding: 5px;
     font-family: IRANSans !important;
 }
 
-.login-wrapper{
+.login-wrapper {
     background-image: url("/assets/login-bg.jpg");
     background-size: cover;
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 }
 
-.login-paper{
+.login-paper {
     width: 400px;
     margin: auto;
     margin-top: 80px;
     display: flex;
     flex-flow: column;
     padding: 60px;
-    padding-top:20px!important;
+    padding-top: 20px !important;
 }
 
-.login-fields{
+.login-fields {
     margin-bottom: 30px !important;
 }
 
-.login-label{
+.login-label {
     right: 0px !important;
     left: auto !important;
 }
 
-.my-link{
+.my-link {
     color: #f50057;
     font-size: 12px;
 }
 
-.login-focused-label{
+.login-focused-label {
     color: #f50057 !important;
 }
 
-.login-logo{
+.login-logo {
     width: 250px;
     margin: auto;
 }
 
-.paper-header{
+.paper-header {
     direction: rtl;
     text-align: right;
-    margin-top:5px;
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 
-.paper-header-icon{
-    margin-right: 8px!important;
+.paper-header-icon {
+    margin-right: 8px !important;
     font-size: 30px !important;
 }
 
-.peper-header-label{
+.peper-header-label {
     font-weight: bold;
     font-size: 18px;
+}
+
+.user-panel {
+    display: flex;
+}
+
+.logout-menu {
+    background-color: #d32f2f !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
 }

@@ -2,11 +2,13 @@ import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import NavItems from "./NavItems";
+import NavbarUserPanel from "./NavbarUserPanel";
 
 
 class Navbar extends React.Component {
@@ -32,9 +34,9 @@ class Navbar extends React.Component {
                             <Icon>menu</Icon>
                         </IconButton>
                         <Typography variant="h6" color="inherit" className="grow font-applied">
-                            آفرتور
+                            آفرتور - پنل کاربری آمیتیس سفر ایرانیان
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <NavbarUserPanel/>
                     </Toolbar>
                 </AppBar>
                 <Drawer anchor="right" open={this.state.right} onClose={this.toggleDrawer('right', false)}>
