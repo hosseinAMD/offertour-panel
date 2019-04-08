@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Comments from "./Comments";
 import ToursVisitsReport from "./ToursVisitsReport";
 import AgencyProfileVisitsReport from "./AgencyProfileVisitsReport";
+import AgencyCategoriesReport from "./AgencyCategoriesReport";
 
 
 const Dashboard = () => (
@@ -15,6 +16,9 @@ const Dashboard = () => (
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Comments/>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+            <AgencyCategoriesReport/>
         </Grid>
     </Grid>
 );
