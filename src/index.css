@@ -320,6 +320,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 18px;
 }
 
+.payment-icon {
+    margin-right: 8px !important;
+    margin-left: -4px !important;
+}
+
+.payment-label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
 .user-panel {
     display: flex;
 }
@@ -331,7 +341,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold !important;
 }
 
-.navbar-time-date{
+.navbar-time-date {
     display: flex;
     flex-flow: column;
     text-align: center;

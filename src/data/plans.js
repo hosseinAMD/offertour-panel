@@ -1,5 +1,6 @@
 const plans = [
     {
+        id:0,
         title:'رایگان',
         duration:'۱ هفته',
         stars:0,
@@ -9,6 +10,7 @@ const plans = [
         adsCount:0,
     },
     {
+        id:1,
         title:'۱ ستاره',
         duration:'۳۰ روز',
         stars:1,
@@ -18,6 +20,7 @@ const plans = [
         adsCount:1,
     },
     {
+        id:2,
         title:'۲ ستاره',
         duration:'۳۰ روز',
         stars:2,
@@ -27,6 +30,7 @@ const plans = [
         adsCount:3,
     },
     {
+        id:3,
         title:'۳ ستاره',
         duration:'۳۰ روز',
         stars:3,

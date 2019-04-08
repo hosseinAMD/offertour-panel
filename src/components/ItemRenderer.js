@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from 'numeral';
 import categories from '../data/categories';
 import flightCompanies from '../data/flightCompanies';
 import countries from '../data/countries';
@@ -11,6 +12,7 @@ import foodTypes from "../data/foodTypes";
 import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 import tours from '../data/tours';
+import plans from '../data/plans';
 
 
 const ItemRenderer = (props) => {
@@ -146,11 +148,39 @@ const ItemRenderer = (props) => {
             })
             ;
             break;
+        case
+        'plan':
+            item = plans.find((item) => {
+                if (item.id === props.id) {
+                    return item.title;
+                } else {
+                    return undefined;
+                }
+            })
+            ;
+            break;
+        case
+        'planPrice':
+            item = plans.find((item) => {
+                if (item.id === props.id) {
+                    return item.title;
+                } else {
+                    return undefined;
+                }
+            })
+            ;
+            break;
         default:
             item = undefined;
     }
     return (
-        <span>{item ? <span>{item.title}</span> : 'نامشخص'}</span>
+        <span>
+        {props.type === 'planPrice' ?
+            <span>{item ? <span>{numeral(item.price).format('0,0')} تومان</span> : 'نامشخص'}</span>
+            :
+            <span>{item ? <span>{item.title}</span> : 'نامشخص'}</span>
+        }
+        </span>
     );
 };
 
