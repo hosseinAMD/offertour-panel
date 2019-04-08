@@ -10,11 +10,11 @@ class NavbarTimeDate extends React.Component{
         setInterval(() => {
             const now = moment();
             this.setState(() => ({now}));
-        },1000);
+        },60000);
         return (
             <div className="navbar-time-date">
                 <span className="right-dir font-applied">{moment().format('jDD jMMMM jYYYY')}</span>
-                <span>{moment().format('HH:mm:ss')}</span>
+                <span>{moment().format('HH:mm')}</span>
             </div>
         );
     }
