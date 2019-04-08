@@ -330,3 +330,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px !important;
     font-weight: bold !important;
 }
+
+.navbar-time-date{
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 15px;
+}
