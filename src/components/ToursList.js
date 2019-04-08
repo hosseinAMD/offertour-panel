@@ -27,7 +27,7 @@ const ToursList = () => (
                 </TableHead>
                 <TableBody>
                     {tours.map((tour) => (
-                        <TourItem tour={tour}/>
+                        <TourItem key={tour.id} tour={tour}/>
                     ))}
                 </TableBody>
             </Table>

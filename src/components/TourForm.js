@@ -1154,7 +1154,7 @@ class TourForm extends React.Component {
                                 const labelProps = {};
                                 return (
                                     <Step key={label} {...props}>
-                                        <StepLabel classes={{label: 'font-applied'}} {...labelProps}>{label}</StepLabel>
+                                        <StepLabel classes={{label: 'font-applied step-label'}} {...labelProps}>{label}</StepLabel>
                                     </Step>
                                 );
                             })}

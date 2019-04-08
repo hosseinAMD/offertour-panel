@@ -197,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
 .tour-form-paper {
     padding: 15px;
     text-align: center;
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    background-image: linear-gradient(to top, #fff1eb 0%, #eaecf9 100%);
 }
 
 .tour-trips-paper {
@@ -347,4 +347,8 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     font-weight: bold;
     margin-left: 15px;
+}
+
+.step-label{
+    margin-right: 5px!important;
 }

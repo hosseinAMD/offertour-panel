@@ -30,14 +30,14 @@ const bills = [
         date: moment().subtract(1, 'weeks')
     },
     {
-        id: 1,
+        id: 4,
         product: 3,
         paymentStatus: true,
         price: 1,
         date: moment().subtract(1, 'weeks')
     },
     {
-        id: 3,
+        id: 5,
         product: 3,
         paymentStatus: false,
         price: 3,
