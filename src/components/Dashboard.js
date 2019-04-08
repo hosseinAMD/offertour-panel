@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Comments from "./Comments";
-import PlanSummary from "./PlanSummary";
 import ToursVisitsReport from "./ToursVisitsReport";
 import AgencyProfileVisitsReport from "./AgencyProfileVisitsReport";
 
@@ -14,11 +13,8 @@ const Dashboard = () => (
         <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <AgencyProfileVisitsReport/>
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
+        <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <Comments/>
-        </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={3} xl={3}>
-            <PlanSummary/>
         </Grid>
     </Grid>
 );

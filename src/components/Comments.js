@@ -8,10 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import comments from '../data/comments';
 import moment from 'moment-jalaali';
+import HeaderChip from "./HeaderChip";
 
 const Comments = () => (
     <Paper elevation={1} className="comments-paper">
-        <h4 className="font-applied center-txt">آخرین نظرات</h4>
+        <HeaderChip label='آخرین نظرات' icon='comment' color='#e65100'/>
     <List className="right-dir font-applied">
         {comments.map((comment) => (
             <ListItem alignItems="flex-start">
