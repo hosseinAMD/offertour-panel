@@ -10,7 +10,7 @@ class UserProfile extends React.Component{
     render(){
         return(
             <Paper elevation={1} className="right-dir agency-paper">
-                <HeaderChip label='اطلاعات کاربری' color='#00838f' icon='account_circle'/>
+                <HeaderChip label='اطلاعات کاربری' color='#0288d1' icon='account_circle'/>
                 <Divider/>
                 <br/>
                 <img className="user-image" alt={user.username} src={user.image} />

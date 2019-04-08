@@ -11,7 +11,7 @@ class AgencyProfile extends React.Component{
     render() {
         return(
             <Paper elevation={1} className="right-dir agency-paper">
-                <HeaderChip label="اطلاعات آژانس" color="#4527a0" icon="account_balance"/>
+                <HeaderChip label="اطلاعات آژانس" color="#0288d1" icon="account_balance"/>
                 <Divider/>
                 <br/>
                 <img className="agency-logo" alt={agency.name} src={agency.logo} />
