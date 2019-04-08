@@ -26,6 +26,7 @@ class Login extends React.Component{
             <Grid container className="my-container">
                 <div className="login-wrapper">
                     <Paper elevation={1} className="login-paper right-dir">
+                        <img src='assets/logo.png' alt="logo" className="login-logo"/>
                         <h3 className="font-applied center-txt">ورود به پنل کاربری <span style={{color:'#f50057'}}>آفرتور</span></h3>
                         <FormControl className="login-fields">
                             <InputLabel classes={{focused:'login-focused-label'}} className="font-applied login-label" htmlFor="username">نام کاربری</InputLabel>

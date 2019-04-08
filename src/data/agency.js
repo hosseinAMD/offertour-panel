@@ -2,6 +2,8 @@ import moment from 'moment-jalaali';
 
 const agency = {
     name: 'آفاق ایرانیان',
+    ownerName:'',
+    ownerFamilyName:'',
     city: 'تهران',
     address: 'شهرک غرب. بلوار دریا. پلاک ۱۲۸',
     logo: '/assets/tour-logo.png',

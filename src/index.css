@@ -273,10 +273,11 @@ h1, h2, h3, h4, h5, h6 {
 .login-paper{
     width: 400px;
     margin: auto;
-    margin-top: 110px;
+    margin-top: 80px;
     display: flex;
     flex-flow: column;
     padding: 60px;
+    padding-top:20px!important;
 }
 
 .login-fields{
@@ -295,4 +296,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .login-focused-label{
     color: #f50057 !important;
+}
+
+.login-logo{
+    width: 250px;
+    margin: auto;
+}
+
+.paper-header{
+    direction: rtl;
+    text-align: right;
+    margin-top:5px;
+    margin-bottom: 15px;
+}
+
+.paper-header-icon{
+    margin-right: 8px!important;
+    font-size: 30px !important;
+}
+
+.peper-header-label{
+    font-weight: bold;
+    font-size: 18px;
 }

@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import {
     AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
 } from 'recharts';
+import HeaderChip from "./HeaderChip";
 
 const data = [
     {
@@ -22,9 +23,9 @@ const data = [
     }
 ];
 
-const ReportSummary = () => (
+const ToursVisitsReport = () => (
     <Paper elevation={1} className="report-summary-paper">
-        <h4 className="font-applied center-txt">بازدید تورها</h4>
+       <HeaderChip icon='bar_chart' label='بازدید تورها' />
         <AreaChart
             width={500}
             height={400}
@@ -43,4 +44,4 @@ const ReportSummary = () => (
 );
 
 
-export default ReportSummary;
+export default ToursVisitsReport;
