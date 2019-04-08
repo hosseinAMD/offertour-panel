@@ -7,19 +7,19 @@ import HeaderChip from "./HeaderChip";
 
 const data = [
     {
-        name: 'تور ابوظبی', views: 4000, pv: 2400, amt: 2400,
+        name: 'تور ابوظبی', views: 4000
     },
     {
-        name: 'تور دبی', views: 3000, pv: 1398, amt: 2210,
+        name: 'تور دبی', views: 3000
     },
     {
-        name: 'تور کیش', views: 2000, pv: 9800, amt: 2290,
+        name: 'تور کیش', views: 2000
     },
     {
-        name: 'تور مشهد', views: 2780, pv: 3908, amt: 2000,
+        name: 'تور مشهد', views: 2780
     },
     {
-        name: 'تور پاریس', views: 1890, pv: 4800, amt: 2181,
+        name: 'تور پاریس', views: 1890
     }
 ];
 
