@@ -6,6 +6,7 @@ const HeaderChip = (props) => (
     <div className="paper-header">
         <Chip
             color="secondary"
+            style={{backgroundColor:props.color}}
             icon={<Icon className="paper-header-icon">{props.icon}</Icon>}
             label={props.label}
             className="right-dir"

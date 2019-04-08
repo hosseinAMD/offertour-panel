@@ -25,7 +25,7 @@ const data = [
 
 const ToursVisitsReport = () => (
     <Paper elevation={1} className="report-summary-paper">
-       <HeaderChip icon='bar_chart' label='بازدید تورها' />
+       <HeaderChip icon='bar_chart' label='بازدید تورها' color='#c2185b' />
         <AreaChart
             width={500}
             height={400}
