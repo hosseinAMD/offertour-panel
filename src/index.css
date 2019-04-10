@@ -74,6 +74,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
 }
 
+.setting-forms-paper {
+    text-align: center;
+    margin: 0px 30px;
+    padding: 10px;
+}
+
 .plan-paper {
     text-align: center;
     margin: 0px 30px;

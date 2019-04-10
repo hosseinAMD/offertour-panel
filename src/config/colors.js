@@ -1,0 +1,1 @@
+export const headerBlue = '#0288d1';
