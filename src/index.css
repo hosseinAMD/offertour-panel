@@ -352,3 +352,21 @@ h1, h2, h3, h4, h5, h6 {
 .step-label{
     margin-right: 5px!important;
 }
+
+.settings-fab{
+    background-color: white !important;
+    color: #0288d1 !important;
+    width:70% !important;
+}
+
+
+.settings-fab:hover{
+    background-color: #0288d1  !important;
+    color: white !important;
+    width:70% !important;
+    transition: 500ms;
+}
+
+.settings-fab-wrapper{
+    margin-top: 15px;
+}

@@ -11,6 +11,7 @@ import AddArticle from "./components/AddArticle";
 import Login from "./components/Login";
 import Playground from "./components/Playground";
 import PanelSettings from "./components/PanelSettings";
+import CountriesSetting from "./components/CountriesSetting";
 
 class App extends Component {
     render() {
@@ -30,6 +31,7 @@ class App extends Component {
                             <Route path="/tour/:id" component={TourDetail}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/settings" component={PanelSettings}/>
+                            <Route path="/country-setting" component={CountriesSetting}/>
                             <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>
