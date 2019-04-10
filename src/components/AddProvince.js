@@ -34,7 +34,7 @@ class AddProvince extends React.Component {
     };
 
     handleClickOpen = () => {
-        const isExist = countries.find((item) => this.state.name === item.title);
+        const isExist = provinces.find((item) => this.state.name === item.title);
         if (isExist === undefined) {
             const error = '';
             this.setState({open: true, error});
