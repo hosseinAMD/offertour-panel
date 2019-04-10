@@ -5,12 +5,13 @@ import AddAirport from "./AddAirport";
 import FilterAirport from "./FilterAirport";
 import AirportsList from "./AirportsList";
 import AddTerminal from "./AddTerminal";
+import FilterTerminal from "./FilterTerminal";
 
 const TerminalsSetting = () => (
     <Grid container spacing={24} className="my-container">
         <Grid item lg={6} md={6} sm={12} xs={12}>
             <Slide direction="right" in={true} mountOnEnter>
-                <FilterAirport/>
+                <FilterTerminal/>
             </Slide>
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
