@@ -44,7 +44,7 @@ class FilterProvince extends React.Component {
                                     value={this.state.name}
                                     startAdornment={
                                         <InputAdornment position="start">
-                                            <Icon>gulf</Icon>
+                                            <Icon>golf_course</Icon>
                                         </InputAdornment>
                                     }
                                 />
