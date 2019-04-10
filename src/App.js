@@ -12,6 +12,10 @@ import Login from "./components/Login";
 import Playground from "./components/Playground";
 import PanelSettings from "./components/PanelSettings";
 import CountriesSetting from "./components/CountriesSetting";
+import ProvincesSetting from "./components/ProvincesSetting";
+import CitiesSetting from "./components/CitiesSetting";
+import AirportsSetting from "./components/AirportsSetting";
+import TerminalsSetting from "./components/TerminalsSetting";
 
 class App extends Component {
     render() {
@@ -32,6 +36,10 @@ class App extends Component {
                             <Route path="/login" component={Login}/>
                             <Route path="/settings" component={PanelSettings}/>
                             <Route path="/country-setting" component={CountriesSetting}/>
+                            <Route path="/province-setting" component={ProvincesSetting}/>
+                            <Route path="/city-setting" component={CitiesSetting}/>
+                            <Route path="/airport-setting" component={AirportsSetting}/>
+                            <Route path="/terminal-setting" component={TerminalsSetting}/>
                             <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>

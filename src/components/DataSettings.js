@@ -10,7 +10,10 @@ const DataSettings = () => (
         <Divider/>
         <br/>
         <DataSettingsItem icon="flag" label="کشورها" to="/country-setting"/>
-        <DataSettingsItem icon="golf_course" label="استان ها" to="country-setting"/>
+        <DataSettingsItem icon="golf_course" label="استان ها" to="/province-setting"/>
+        <DataSettingsItem icon="location_on" label="شهر ها" to="/city-setting"/>
+        <DataSettingsItem icon="local_airport" label="فرودگاه ها" to="/airport-setting"/>
+        <DataSettingsItem icon="directions_bus" label="ترمینال ها" to="/terminal-setting"/>
     </Paper>
 );
 
