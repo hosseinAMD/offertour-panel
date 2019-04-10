@@ -2,12 +2,13 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Slide from '@material-ui/core/Slide';
 import AddProvince from "./AddProvince";
+import FilterProvince from "./FilterProvince";
 
 const ProvincesSetting = () => (
     <Grid container spacing={24} className="my-container">
         <Grid item lg={6} md={6} sm={12} xs={12}>
             <Slide direction="right" in={true} mountOnEnter>
-                <div>province filte</div>
+                <FilterProvince/>
             </Slide>
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
