@@ -65,6 +65,7 @@ class FilterCity extends React.Component {
                                     startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                                 }}
                             >
+                                <MenuItem className="font-applied" value={categories.length + 1}>همه موارد</MenuItem>
                                 {categories.map(option => (
                                     <MenuItem className="font-applied" key={option.id} value={option.id}>
                                         {option.title}
@@ -85,6 +86,7 @@ class FilterCity extends React.Component {
                                     startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                                 }}
                             >
+                                <MenuItem className="font-applied" value={countries.length + 1}>همه موارد</MenuItem>
                                 {countries.map(option => {
                                     if (option.category === this.state.category) {
                                         return (
@@ -111,6 +113,7 @@ class FilterCity extends React.Component {
                                     startAdornment: <InputAdornment position="start"><Icon>golf_course</Icon></InputAdornment>,
                                 }}
                             >
+                                <MenuItem className="font-applied" value={provinces.length + 1}>همه موارد</MenuItem>
                                 {provinces.map(option => {
                                     if (option.country === this.state.country) {
                                         return (
