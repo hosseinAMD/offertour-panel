@@ -5,12 +5,13 @@ import AddProvince from "./AddProvince";
 import FilterProvince from "./FilterProvince";
 import ProvincesList from "./ProvincesList";
 import AddCity from "./AddCity";
+import FilterCity from "./FilterCity";
 
 const CitiesSetting = () => (
     <Grid container spacing={24} className="my-container">
         <Grid item lg={6} md={6} sm={12} xs={12}>
             <Slide direction="right" in={true} mountOnEnter>
-                <FilterProvince/>
+                <FilterCity/>
             </Slide>
         </Grid>
         <Grid item lg={6} md={6} sm={12} xs={12}>
