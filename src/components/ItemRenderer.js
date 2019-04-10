@@ -13,6 +13,7 @@ import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 import tours from '../data/tours';
 import plans from '../data/plans';
+import provinces from "../data/provinces";
 
 
 const ItemRenderer = (props) => {
@@ -41,6 +42,17 @@ const ItemRenderer = (props) => {
         case
         'country':
             item = countries.find((item) => {
+                if (item.id === props.id) {
+                    return item.title;
+                } else {
+                    return undefined;
+                }
+            })
+            ;
+            break;
+        case
+        'province':
+            item = provinces.find((item) => {
                 if (item.id === props.id) {
                     return item.title;
                 } else {
