@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Slide from '@material-ui/core/Slide';
 import AddProvince from "./AddProvince";
 import FilterProvince from "./FilterProvince";
+import ProvincesList from "./ProvincesList";
 
 const ProvincesSetting = () => (
     <Grid container spacing={24} className="my-container">
@@ -18,7 +19,7 @@ const ProvincesSetting = () => (
         </Grid>
         <Grid item lg={12} md={12} sm={12} xs={12}>
             <Slide direction="up" in={true} mountOnEnter>
-                <div>province list</div>
+                <ProvincesList/>
             </Slide>
         </Grid>
     </Grid>
