@@ -21,6 +21,8 @@ import countries from '../data/countries';
 import provinces from '../data/provinces';
 import cities from '../data/cities';
 import airports from '../data/airports';
+import axios from "axios";
+import baseUrl from "../config/config";
 
 class AddAirport extends React.Component {
     state = {
@@ -39,8 +41,22 @@ class AddAirport extends React.Component {
 
     handleClickOpen = () => {
         const isExist = airports.find((item) => this.state.name === item.title);
+        const token = JSON.parse(localStorage.getItem('user')).data.token;
         if (isExist === undefined) {
             const error = '';
+            const data = {
+                Data:{
+                    Name:this.state.name,
+                    CityID:this.state.city
+                },
+                Information:'Airport'
+            };
+            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
+                headers:{
+                    'Content-Type':'application/json',
+                    'token':token
+                }
+            });
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! فرودگاه ${this.state.name} در لیست فرودگاه ها موجود می باشد.`;
