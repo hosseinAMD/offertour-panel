@@ -42,6 +42,10 @@ const NavItems = () => (
                 <ListItemIcon><Icon>settings</Icon></ListItemIcon>
                 <ListItemText classes={{primary: 'font-applied right-txt'}} primary="تنظیمات"/>
             </ListItem>
+            <ListItem button component={NavLink} to="/rates-comments">
+                <ListItemIcon><Icon>star</Icon></ListItemIcon>
+                <ListItemText classes={{primary: 'font-applied right-txt'}} primary="نظرات و امتیازات"/>
+            </ListItem>
         </List>
     </div>
 );
