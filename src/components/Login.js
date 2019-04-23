@@ -35,7 +35,7 @@ class Login extends React.Component {
                 }
             }
         ).then(res => {
-            localStorage.setItem('user',JSON.stringify(res));
+            localStorage.setItem('user',JSON.stringify(res.data));
             window.location.assign('/');
         }).catch(err => console.log(err))
     };

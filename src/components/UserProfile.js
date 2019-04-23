@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import moment from 'moment-jalaali';
 import HeaderChip from "./HeaderChip";
 
+const loggedInUser = JSON.parse(localStorage.getItem('user')).data.information;
+console.log(loggedInUser.RegistrationDate)
 class UserProfile extends React.Component{
     render(){
         return(
@@ -13,13 +15,13 @@ class UserProfile extends React.Component{
                 <HeaderChip label='اطلاعات کاربری' color='#0288d1' icon='account_circle'/>
                 <Divider/>
                 <br/>
-                <img className="user-image" alt={user.username} src={user.image} />
-                <p><span className="bold">نام: </span>{user.name}</p>
-                <p><span className="bold">نام خانوادگی: </span>{user.familyName}</p>
-                <p><span className="bold">نام کاربری: </span>{user.username}</p>
-                <p><span className="bold">تلفن همراه: </span>{user.phone}</p>
-                <p><span className="bold">تاریخ تولد: </span>{moment().subtract(25,'years').format('jDD jMMMM jYYYY')}</p>
-                <p><span className="bold">تاریخ ثبت نام: </span>{moment().subtract(3,'months').format('jDD jMMMM jYYYY')}</p>
+                <img className="user-image" alt={loggedInUser.UserName} src={`data:image/jpeg;base64,${loggedInUser.Image}`} />
+                <p><span className="bold">نام: </span>{loggedInUser.Name}</p>
+                <p><span className="bold">نام خانوادگی: </span>{loggedInUser.FamilyName}</p>
+                <p><span className="bold">نام کاربری: </span>{loggedInUser.UserName}</p>
+                <p><span className="bold">تلفن همراه: </span>{loggedInUser.PhoneNumber}</p>
+                <p><span className="bold">تاریخ تولد: </span>{moment.unix(loggedInUser.BirthDate).format('jDD jMMMM jYYYY')}</p>
+                <p><span className="bold">تاریخ ثبت نام: </span>{moment.unix(loggedInUser.RegistrationDate).format('jDD jMMMM jYYYY')}</p>
                 <Button variant="contained" color="primary" className="edit-button">ویرایش</Button>
             </Paper>
         );
