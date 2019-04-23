@@ -20,6 +20,8 @@ import categories from '../data/categories';
 import countries from '../data/countries';
 import provinces from '../data/provinces';
 import cities from '../data/cities';
+import axios from "axios";
+import baseUrl from "../config/config";
 
 class AddCity extends React.Component {
     state = {
@@ -37,8 +39,22 @@ class AddCity extends React.Component {
 
     handleClickOpen = () => {
         const isExist = cities.find((item) => this.state.name === item.title);
+        const token = JSON.parse(localStorage.getItem('user')).data.token;
         if (isExist === undefined) {
             const error = '';
+            const data = {
+                Data:{
+                    Name:this.state.name,
+                    ProvinceID:this.state.province
+                },
+                Information:'City'
+            };
+            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
+                headers:{
+                    'Content-Type':'application/json',
+                    'token':token
+                }
+            });
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! شهر ${this.state.name} در لیست شهر ها موجود می باشد.`;
