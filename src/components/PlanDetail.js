@@ -10,27 +10,32 @@ const PlanDetail = (props) => (
     <List>
         <ListItem button>
             <ListItemIcon><Icon>update</Icon></ListItemIcon>
-            <ListItemText classes={{primary: 'font-applied center-txt'}} primary={props.plan.duration}/>
+            <ListItemText classes={{primary: 'font-applied center-txt'}} primary={`${props.plan.Duration} ماه`}/>
         </ListItem>
         <ListItem button>
             <ListItemIcon><Icon>done</Icon></ListItemIcon>
             <ListItemText classes={{primary: 'font-applied center-txt'}}
-                          primary={`${props.plan.normalTour} تور معمولی`}/>
+                          primary={`${props.plan.NormalTour} تور معمولی`}/>
         </ListItem>
         <ListItem button>
             <ListItemIcon><Icon>done_all</Icon></ListItemIcon>
             <ListItemText classes={{primary: 'font-applied center-txt'}}
-                          primary={`${props.plan.featuredTour} تور ویژه`}/>
-        </ListItem>
-        <ListItem button>
-            <ListItemIcon><Icon>note_add</Icon></ListItemIcon>
-            <ListItemText classes={{primary: 'font-applied center-txt'}}
-                          primary={`تعداد تبلیغات ${props.plan.adsCount} عدد`}/>
+                          primary={`${props.plan.FeaturedTour} تور ویژه`}/>
         </ListItem>
         <ListItem button>
             <ListItemIcon><Icon>attach_money</Icon></ListItemIcon>
             <ListItemText classes={{primary: 'font-applied center-txt'}}
-                          primary={`قیمت: ${numeral(props.plan.price).format('0,0')} تومان`}/>
+                          primary={`قیمت: ${numeral(props.plan.Price).format('0,0')} تومان`}/>
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon><Icon>done_all</Icon></ListItemIcon>
+            <ListItemText classes={{primary: 'font-applied center-txt'}}
+                          primary={props.plan.DiscountStatus ? 'با تخفیف' : 'بدون تخفیف'}/>
+        </ListItem>
+        <ListItem button>
+            <ListItemIcon><Icon>attach_money</Icon></ListItemIcon>
+            <ListItemText classes={{primary: 'font-applied center-txt'}}
+                          primary={`قیمت نهایی: ${numeral(props.plan.PriceAfterDiscount).format('0,0')} تومان`}/>
         </ListItem>
     </List>
 );

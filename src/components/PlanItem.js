@@ -39,8 +39,8 @@ class PlanItem extends React.Component {
             <Grid item xs={12} sm={6} md={3} lg={3} xl={3} className="plan-card">
                 <Card className="right-dir">
                     <CardContent className="center-txt">
-                        <PlanTitle title={plan.title}/>
-                        <PlanStars star={plan.stars}/>
+                        <PlanTitle title={plan.Title}/>
+                        <PlanStars star={plan.Id - 1}/>
                         <Divider/>
                         <br/>
                         <PlanDetail plan={plan}/>
@@ -63,11 +63,12 @@ class PlanItem extends React.Component {
                     <DialogTitle id="alert-dialog-title">فعالسازی پلن</DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            {`کاربر گرامی! آیا از فعالسازی پلن ${plan.title} به مدت ${plan.duration} تا تاریخ ${moment().add(1, 'month').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.price).format('0,0')} تومان اطمینان دارید؟`}
+                            {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration} تا تاریخ ${moment().add(plan.Duration, 'month').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary" className="font-applied accept-buy-button" autoFocus>
+                        <Button onClick={this.handleClose} color="primary" className="font-applied accept-buy-button"
+                                autoFocus>
                             تایید و انتقال به درگاه پرداخت
                         </Button>
                     </DialogActions>
