@@ -4,6 +4,7 @@ import plans from '../data/plans';
 import PlanItem from "./PlanItem";
 import axios from 'axios';
 import baseUrl from '../config/config';
+import Loading from "./Loading";
 
 class PlansList extends React.Component {
     state = {
@@ -26,7 +27,7 @@ class PlansList extends React.Component {
     render() {
         return (
             <Grid container spacing={24} className="my-container">
-                {this.state.isLoaded ? this.state.plans.map((plan) => (<PlanItem key={plan.Id} plan={plan}/>)) : 'Loading'}
+                {this.state.isLoaded ? this.state.plans.map((plan) => (<PlanItem key={plan.Id} plan={plan}/>)) : <Loading color="primary"/>}
             </Grid>
         );
     }
