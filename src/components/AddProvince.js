@@ -19,6 +19,8 @@ import {headerBlue} from "../config/colors";
 import categories from '../data/categories';
 import countries from '../data/countries';
 import provinces from '../data/provinces';
+import axios from 'axios';
+import baseUrl from '../config/config'
 
 class AddProvince extends React.Component {
     state = {
@@ -35,8 +37,22 @@ class AddProvince extends React.Component {
 
     handleClickOpen = () => {
         const isExist = provinces.find((item) => this.state.name === item.title);
+        const token = JSON.parse(localStorage.getItem('user')).data.token;
         if (isExist === undefined) {
             const error = '';
+            const data = {
+                Data:{
+                    Name:this.state.name,
+                    CountryID:this.state.country
+                },
+                Information:'Province'
+            };
+            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
+                headers:{
+                    'Content-Type':'application/json',
+                    'token':token
+                }
+            });
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! استان ${this.state.name} در لیست استان ها موجود می باشد.`;
