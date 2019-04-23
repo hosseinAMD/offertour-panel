@@ -7,13 +7,15 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import baseUrl from '../config/config';
+import axios from 'axios';
 
-class Login extends React.Component{
-    constructor(props){
+class Login extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            username:'',
-            password:''
+            username: '',
+            password: ''
         }
     }
 
@@ -21,15 +23,34 @@ class Login extends React.Component{
         this.setState({[name]: event.target.value});
     };
 
+    handleLogin = () => {
+        const username = this.state.username;
+        const password = this.state.password;
+        axios.post(`${baseUrl}/Agency/Login`, JSON.stringify({
+                UserName: username,
+                Password: password
+            }), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).then(res => {
+            localStorage.setItem('user',JSON.stringify(res));
+            window.location.assign('/');
+        }).catch(err => console.log(err))
+    };
+
     render() {
-        return(
+        return (
             <Grid container className="my-container">
                 <div className="login-wrapper">
                     <Paper elevation={1} className="login-paper right-dir">
                         <img src='assets/logo.png' alt="logo" className="login-logo"/>
-                        <h3 className="font-applied center-txt">ورود به پنل کاربری <span style={{color:'#f50057'}}>آفرتور</span></h3>
+                        <h3 className="font-applied center-txt">ورود به پنل کاربری <span
+                            style={{color: '#f50057'}}>آفرتور</span></h3>
                         <FormControl className="login-fields">
-                            <InputLabel classes={{focused:'login-focused-label'}} className="font-applied login-label" htmlFor="username">نام کاربری</InputLabel>
+                            <InputLabel classes={{focused: 'login-focused-label'}} className="font-applied login-label"
+                                        htmlFor="username">نام کاربری</InputLabel>
                             <Input
                                 id="username"
                                 className="font-applied"
@@ -42,8 +63,9 @@ class Login extends React.Component{
                                 }
                             />
                         </FormControl>
-                        <FormControl  className="login-fields">
-                            <InputLabel  classes={{focused:'login-focused-label'}} className="font-applied login-label" htmlFor="password">رمز عبور</InputLabel>
+                        <FormControl className="login-fields">
+                            <InputLabel classes={{focused: 'login-focused-label'}} className="font-applied login-label"
+                                        htmlFor="password">رمز عبور</InputLabel>
                             <Input
                                 type="password"
                                 id="password"
@@ -57,7 +79,8 @@ class Login extends React.Component{
                             />
                         </FormControl>
                         <p><a href="#" className="my-link">رمز عبور خود را فراموش کرده اید؟</a></p>
-                        <Button variant="contained" color="secondary" className="font-applied">
+                        <Button onClick={this.handleLogin} variant="contained" color="secondary"
+                                className="font-applied">
                             ورود به پنل کاربری
                         </Button>
                     </Paper>
