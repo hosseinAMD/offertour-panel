@@ -23,41 +23,45 @@ import cities from '../data/cities';
 import airports from '../data/airports';
 import axios from "axios";
 import baseUrl from "../config/config";
+import {token} from "../config/config";
+import {connect} from "react-redux";
 
 class AddAirport extends React.Component {
-    state = {
-        name: '',
-        category: 0,
-        country: 0,
-        province: 0,
-        city:0,
-        open: false,
-        error: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            category: 0,
+            country: 0,
+            province: 0,
+            city: 0,
+            open: false,
+            error: ''
+        };
+    }
 
     handleChange = name => event => {
         this.setState({[name]: event.target.value});
     };
 
     handleClickOpen = () => {
-        const isExist = airports.find((item) => this.state.name === item.title);
-        const token = JSON.parse(localStorage.getItem('user')).data.token;
+        const airports = this.props.airports;
+        const isExist = airports.find((item) => this.state.name === item.Name);
         if (isExist === undefined) {
             const error = '';
             const data = {
-                Data:{
-                    Name:this.state.name,
-                    CityID:this.state.city
+                Data: {
+                    Name: this.state.name,
+                    CityID: this.state.city
                 },
-                Information:'Airport'
+                Information: 'AirPort'
             };
-            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
-                headers:{
-                    'Content-Type':'application/json',
-                    'token':token
+            axios.post(`${baseUrl}/Admin/Information`, JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
                 }
-            });
-            this.setState({open: true, error});
+            }).then(res => this.setState({open: true, error}));
         } else {
             const error = `کاربر گرامی! فرودگاه ${this.state.name} در لیست فرودگاه ها موجود می باشد.`;
             this.setState({open: true, error})
@@ -104,9 +108,9 @@ class AddAirport extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                             }}
                         >
-                            {categories.map(option => (
-                                <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                    {option.title}
+                            {this.props.categories.map(option => (
+                                <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                    {option.Name}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -124,11 +128,11 @@ class AddAirport extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                             }}
                         >
-                            {countries.map(option => {
-                                if (option.category === this.state.category) {
+                            {this.props.countries.map(option => {
+                                if (option.CategoryID === this.state.category) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -147,14 +151,15 @@ class AddAirport extends React.Component {
                             value={this.state.province}
                             onChange={this.handleChange('province')}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><Icon>golf_course</Icon></InputAdornment>,
+                                startAdornment: <InputAdornment
+                                    position="start"><Icon>golf_course</Icon></InputAdornment>,
                             }}
                         >
-                            {provinces.map(option => {
-                                if (option.country === this.state.country) {
+                            {this.props.provinces.map(option => {
+                                if (option.CountryID === this.state.country) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -173,14 +178,15 @@ class AddAirport extends React.Component {
                             value={this.state.city}
                             onChange={this.handleChange('city')}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><Icon>location_on</Icon></InputAdornment>,
+                                startAdornment: <InputAdornment
+                                    position="start"><Icon>location_on</Icon></InputAdornment>,
                             }}
                         >
-                            {cities.map(option => {
-                                if (option.province === this.state.province) {
+                            {this.props.cities.map(option => {
+                                if (option.ProvinceID === this.state.province) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -245,4 +251,12 @@ class AddAirport extends React.Component {
     }
 }
 
-export default AddAirport;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countries: state.countries,
+    provinces: state.provinces,
+    cities: state.cities,
+    airports: state.airports
+});
+
+export default connect(mapStateToProps)(AddAirport);
