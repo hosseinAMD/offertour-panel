@@ -2,6 +2,12 @@ import React from 'react';
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Icon from '@material-ui/core/Icon';
 import Switch from '@material-ui/core/Switch';
 import numeral from 'numeral';
 import axios from 'axios';
@@ -18,7 +24,8 @@ class PlanForm extends React.Component {
             NormalTour: this.props.plan.NormalTour,
             Duration: this.props.plan.Duration,
             DiscountStatus: this.props.plan.DiscountStatus,
-            PriceAfterDiscount: this.props.plan.PriceAfterDiscount
+            PriceAfterDiscount: this.props.plan.PriceAfterDiscount,
+            open: false
         };
     }
 
@@ -47,7 +54,11 @@ class PlanForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => alert('done' + res)).catch(err => alert('failed' + err));
+        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('failed' + err));
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
     };
 
 
@@ -125,7 +136,7 @@ class PlanForm extends React.Component {
                         InputLabelProps={{className: 'input-labels'}}
                         InputProps={{className: 'font-applied'}}
                         FormHelperTextProps={{className: 'font-applied'}}
-                        helperText={`${numeral(this.state.Price).format('0,0')} تومان`}
+                        helperText={`${numeral(this.state.PriceAfterDiscount).format('0,0')} تومان`}
                         value={this.state.PriceAfterDiscount}
                         onChange={this.handleChange('PriceAfterDiscount')}
                         margin="normal"
@@ -134,6 +145,25 @@ class PlanForm extends React.Component {
                     <Button onClick={this.handleEditPlan} variant="contained"
                             color="primary" className="edit-button">ویرایش</Button>
                 </div>
+                <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'green'}}
+                                                                                         fontSize="large">check_circle</Icon>{"انجام شد!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            پلن با موفقیت ویرایش شد!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     }
