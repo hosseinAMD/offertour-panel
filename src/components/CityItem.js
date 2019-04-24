@@ -8,10 +8,10 @@ import ItemRenderer from "./ItemRenderer";
 const CityItem = (props) => (
     <TableRow>
         <TableCell align="center">{props.num + 1}</TableCell>
-        <TableCell align="center">{props.city.title}</TableCell>
-        <TableCell align="center"><ItemRenderer type="province" id={props.city.province}/></TableCell>
+        <TableCell align="center">{props.city.Name}</TableCell>
+        <TableCell align="center"><ItemRenderer type="province" id={props.city.ProvinceID}/></TableCell>
         <TableCell align="center">
-            <Fab color="primary" size="small" style={{marginLeft:'5px'}}><Icon>edit</Icon></Fab>
+            <Fab color="primary" size="small" style={{marginLeft: '5px'}}><Icon>edit</Icon></Fab>
             <Fab color="secondary" size="small"><Icon>delete</Icon></Fab>
         </TableCell>
     </TableRow>

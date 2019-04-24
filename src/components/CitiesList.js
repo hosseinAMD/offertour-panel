@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import cities from "../data/cities";
 import CityItem from "./CityItem";
+import {connect} from "react-redux";
 
-const CitiesList = () => (
+const CitiesList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
         <HeaderChip label="لیست شهر ها" icon="location_on" color={headerBlue}/>
         <Divider/>
@@ -25,10 +25,14 @@ const CitiesList = () => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {cities.map((item,index) => (<CityItem key={item.id} city={item} num={index}/>))}
+                {props.cities.map((item,index) => (<CityItem key={item.Id} city={item} num={index}/>))}
             </TableBody>
         </Table>
     </Paper>
 );
 
-export default CitiesList;
+const mapStateToProps = (state) => ({
+    cities: state.cities
+});
+
+export default connect(mapStateToProps)(CitiesList);
