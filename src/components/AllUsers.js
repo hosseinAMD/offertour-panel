@@ -11,6 +11,8 @@ import HeaderChip from './HeaderChip';
 import {NavLink} from "react-router-dom";
 import AgencyList from "./AgencyList";
 import SupportUsersList from "./SupportUsersList";
+import ManagerItem from "./ManagerItem";
+import ManagersList from "./ManagersList";
 
 class AllUsers extends React.Component {
     constructor(props) {
@@ -32,7 +34,7 @@ class AllUsers extends React.Component {
                         <div>
                             <Paper elevation={1} className="right-dir agency-paper">
                                 <div>
-                                <HeaderChip label='مدیریت کاربران' color='#0288d1' icon='account_circle'/>
+                                    <HeaderChip label='مدیریت کاربران' color='#0288d1' icon='account_circle'/>
                                 </div>
                                 <Divider/>
                                 <br/>
@@ -53,12 +55,13 @@ class AllUsers extends React.Component {
                                 </Tabs>
                                 <br/>
                                 {this.state.value === 0 ? <AgencyList/> : ''}
+                                {this.state.value === 1 ? <ManagersList/> : ''}
                                 {this.state.value === 2 ? <SupportUsersList/> : ''}
                                 {/*<Button component={NavLink} to="/add-support-admin" variant="contained"*/}
-                                        {/*color="primary" className="edit-button">افزودن پشتیبان</Button>*/}
+                                {/*color="primary" className="edit-button">افزودن پشتیبان</Button>*/}
                                 {/*<Button component={NavLink} to="/add-agency" variant="contained"*/}
 
-                                        {/*color="primary" className="edit-button">افزودن آژانس</Button>*/}
+                                {/*color="primary" className="edit-button">افزودن آژانس</Button>*/}
                             </Paper>
                         </div>
                     </Slide>
