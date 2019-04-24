@@ -25,7 +25,7 @@ const NavItems = () => {
                         <ListItemIcon><Icon>account_circle</Icon></ListItemIcon>
                         <ListItemText classes={{primary: 'font-applied right-txt'}} primary="اطلاعات کاربری"/>
                     </ListItem>
-                    <ListItem button component={NavLink} to="/agency-users">
+                    <ListItem button component={NavLink} to="/all-users">
                         <ListItemIcon><Icon>supervised_user_circle</Icon></ListItemIcon>
                         <ListItemText classes={{primary: 'font-applied right-txt'}} primary="لیست کاربران و آژانس ها"/>
                     </ListItem>
