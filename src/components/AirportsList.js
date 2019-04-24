@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import airports from '../data/airports';
+import {connect} from "react-redux";
 import AirportItem from "./AirportItem";
 
-const AirportsList = () => (
+const AirportsList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
         <HeaderChip label="لیست فرودگاه ها" icon="local_airport" color={headerBlue}/>
         <Divider/>
@@ -25,10 +25,14 @@ const AirportsList = () => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {airports.map((item,index) => (<AirportItem key={item.id} airport={item} num={index}/>))}
+                {props.airports.map((item,index) => (<AirportItem key={item.Id} airport={item} num={index}/>))}
             </TableBody>
         </Table>
     </Paper>
 );
 
-export default AirportsList;
+const mapStateToProps = (state) => ({
+    airports: state.airports
+});
+
+export default connect(mapStateToProps)(AirportsList);
