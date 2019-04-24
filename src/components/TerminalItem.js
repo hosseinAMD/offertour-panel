@@ -8,8 +8,8 @@ import ItemRenderer from "./ItemRenderer";
 const TerminalItem = (props) => (
     <TableRow>
         <TableCell align="center">{props.num + 1}</TableCell>
-        <TableCell align="center">{props.terminal.title}</TableCell>
-        <TableCell align="center"><ItemRenderer type="city" id={props.terminal.city}/></TableCell>
+        <TableCell align="center">{props.terminal.Name}</TableCell>
+        <TableCell align="center"><ItemRenderer type="city" id={props.terminal.CityID}/></TableCell>
         <TableCell align="center">
             <Fab color="primary" size="small" style={{marginLeft:'5px'}}><Icon>edit</Icon></Fab>
             <Fab color="secondary" size="small"><Icon>delete</Icon></Fab>

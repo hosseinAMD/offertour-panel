@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import terminals from '../data/busTerminals';
+import {connect} from "react-redux";
 import TerminalItem from "./TerminalItem";
 
-const TerminalsList = () => (
+const TerminalsList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
         <HeaderChip label="لیست ترمینال ها" icon="directions_bus" color={headerBlue}/>
         <Divider/>
@@ -25,10 +25,15 @@ const TerminalsList = () => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {terminals.map((item,index) => (<TerminalItem key={item.id} terminal={item} num={index}/>))}
+                {props.terminals.map((item,index) => (<TerminalItem key={item.Id} terminal={item} num={index}/>))}
             </TableBody>
         </Table>
     </Paper>
 );
 
-export default TerminalsList;
+const mapStateToProps = (state) => ({
+    terminals: state.terminals
+});
+
+
+export default connect(mapStateToProps)(TerminalsList);
