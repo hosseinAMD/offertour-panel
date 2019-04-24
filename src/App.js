@@ -21,6 +21,7 @@ import AgencyUsers from "./components/AgencyUsers";
 import AddAgencyUser from './components/AddAgencyUser';
 import EditAgencyUser from "./components/EditAgencyUser";
 import SupportLogin from "./components/SupportLogin";
+import EditPlan from "./components/EditPlan";
 
 class App extends Component {
     render() {
@@ -50,6 +51,7 @@ class App extends Component {
                             <Route path="/agency-users" component={AgencyUsers}/>
                             <Route path="/add-agency-user" component={AddAgencyUser}/>
                             <Route path="/edit-agency-user" component={EditAgencyUser}/>
+                            <Route path="/edit-plan/:id" component={EditPlan}/>
                             <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>

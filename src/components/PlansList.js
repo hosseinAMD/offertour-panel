@@ -20,7 +20,8 @@ class PlansList extends React.Component {
                 'token': token
             }
         }).then(res => {
-            this.setState(() => ({plans: res.data, isLoaded: true}))
+            localStorage.setItem('plans',JSON.stringify(res.data));
+            this.setState(() => ({plans: res.data, isLoaded: true}));
         }).catch(err => console.log(err))
     }
 

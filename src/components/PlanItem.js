@@ -16,6 +16,8 @@ import PlanDetail from "./PlanDetail";
 import {Icon} from "@material-ui/core";
 import moment from 'moment-jalaali';
 import numeral from 'numeral';
+import{role} from "../config/config";
+import {NavLink} from "react-router-dom";
 
 class PlanItem extends React.Component {
     constructor(props) {
@@ -35,46 +37,69 @@ class PlanItem extends React.Component {
 
     render() {
         const plan = this.props.plan;
-        return (
-            <Grid item xs={12} sm={6} md={3} lg={3} xl={3} className="plan-card">
-                <Card className="right-dir">
-                    <CardContent className="center-txt">
-                        <PlanTitle title={plan.Title}/>
-                        <PlanStars star={plan.Id - 1}/>
-                        <Divider/>
-                        <br/>
-                        <PlanDetail plan={plan}/>
-                    </CardContent>
-                    <CardActions>
-                        <Button variant="contained" color="primary" className="buy-button"
-                                onClick={this.handleClickOpen}>
-                            <Icon>add_shopping_cart</Icon>
-                            <span className="font-applied" style={{marginRight: '6px'}}>فعالسازی پلن</span>
-                        </Button>
-                    </CardActions>
-                </Card>
-                <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    className="right-dir"
-                >
-                    <DialogTitle id="alert-dialog-title">فعالسازی پلن</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                            {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration} تا تاریخ ${moment().add(plan.Duration, 'month').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="primary" className="font-applied accept-buy-button"
-                                autoFocus>
-                            تایید و انتقال به درگاه پرداخت
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </Grid>
-        );
+        if(role==='support'){
+            return (
+                <Grid item xs={12} sm={6} md={3} lg={3} xl={3} className="plan-card">
+                    <Card className="right-dir">
+                        <CardContent className="center-txt">
+                            <PlanTitle title={plan.Title}/>
+                            <PlanStars star={plan.Id - 1}/>
+                            <Divider/>
+                            <br/>
+                            <PlanDetail plan={plan}/>
+                        </CardContent>
+                        <CardActions>
+                            <Button component={NavLink} to={`/edit-plan/${plan.Id}`} variant="contained" color="primary" className="buy-button">
+                                <Icon>add_shopping_cart</Icon>
+                                <span className="font-applied" style={{marginRight: '6px'}}>ویرایش پلن</span>
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </Grid>
+            );
+        } else {
+            return (
+                <Grid item xs={12} sm={6} md={3} lg={3} xl={3} className="plan-card">
+                    <Card className="right-dir">
+                        <CardContent className="center-txt">
+                            <PlanTitle title={plan.Title}/>
+                            <PlanStars star={plan.Id - 1}/>
+                            <Divider/>
+                            <br/>
+                            <PlanDetail plan={plan}/>
+                        </CardContent>
+                        <CardActions>
+                            <Button variant="contained" color="primary" className="buy-button"
+                                    onClick={this.handleClickOpen}>
+                                <Icon>add_shopping_cart</Icon>
+                                <span className="font-applied" style={{marginRight: '6px'}}>فعالسازی پلن</span>
+                            </Button>
+                        </CardActions>
+                    </Card>
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                        className="right-dir"
+                    >
+                        <DialogTitle id="alert-dialog-title">فعالسازی پلن</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration} تا تاریخ ${moment().add(plan.Duration, 'month').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose} color="primary" className="font-applied accept-buy-button"
+                                    autoFocus>
+                                تایید و انتقال به درگاه پرداخت
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </Grid>
+            );
+        }
+
     }
 }
 
