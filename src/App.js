@@ -20,6 +20,7 @@ import LastCommentsAndRates from "./components/LastCommentsAndRates";
 import AgencyUsers from "./components/AgencyUsers";
 import AddAgencyUser from './components/AddAgencyUser';
 import EditAgencyUser from "./components/EditAgencyUser";
+import SupportLogin from "./components/SupportLogin";
 
 class App extends Component {
     render() {
@@ -38,6 +39,7 @@ class App extends Component {
                             <Route path="/tours-list" component={ToursList}/>
                             <Route path="/tour/:id" component={TourDetail}/>
                             <Route path="/login" component={Login}/>
+                            <Route path="/support-login" component={SupportLogin}/>
                             <Route path="/settings" component={PanelSettings}/>
                             <Route path="/country-setting" component={CountriesSetting}/>
                             <Route path="/province-setting" component={ProvincesSetting}/>
