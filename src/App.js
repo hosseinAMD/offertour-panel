@@ -24,6 +24,7 @@ import SupportLogin from "./components/SupportLogin";
 import EditPlan from "./components/EditPlan";
 import AddSupportAdmin from "./components/AddSupportAdmin";
 import AllUsers from "./components/AllUsers";
+import AddAgency from "./components/AddAgency";
 
 class App extends Component {
     render() {
@@ -52,6 +53,7 @@ class App extends Component {
                             <Route path="/rates-comments" component={LastCommentsAndRates}/>
                             <Route path="/agency-users" component={AgencyUsers}/>
                             <Route path="/all-users" component={AllUsers}/>
+                            <Route path="/add-agency" component={AddAgency}/>
                             <Route path="/add-agency-user" component={AddAgencyUser}/>
                             <Route path="/add-support-admin" component={AddSupportAdmin}/>
                             <Route path="/edit-agency-user" component={EditAgencyUser}/>

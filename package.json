@@ -17,6 +17,7 @@
     "react-advance-jalaali-datepicker": "^1.0.0",
     "react-apollo": "^2.5.4",
     "react-dom": "^16.8.4",
+    "react-redux": "^7.0.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
