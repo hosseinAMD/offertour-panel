@@ -10,7 +10,7 @@ const PlanDetail = (props) => (
     <List>
         <ListItem button>
             <ListItemIcon><Icon>update</Icon></ListItemIcon>
-            <ListItemText classes={{primary: 'font-applied center-txt'}} primary={`${props.plan.Duration} ماه`}/>
+            <ListItemText classes={{primary: 'font-applied center-txt'}} primary={`${props.plan.Duration} روز`}/>
         </ListItem>
         <ListItem button>
             <ListItemIcon><Icon>done</Icon></ListItemIcon>
