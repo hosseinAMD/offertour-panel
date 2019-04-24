@@ -20,37 +20,43 @@ import categories from '../data/categories';
 import countries from '../data/countries';
 import provinces from '../data/provinces';
 import axios from 'axios';
-import baseUrl from '../config/config'
+import baseUrl from '../config/config';
+import {token} from "../config/config";
+import {connect} from 'react-redux';
 
 class AddProvince extends React.Component {
-    state = {
-        name: '',
-        category: 0,
-        country: 0,
-        open: false,
-        error: ''
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            name: '',
+            category: 0,
+            country: 0,
+            open: false,
+            error: ''
+        };
+    }
+
 
     handleChange = name => event => {
         this.setState({[name]: event.target.value});
     };
 
     handleClickOpen = () => {
-        const isExist = provinces.find((item) => this.state.name === item.title);
-        const token = JSON.parse(localStorage.getItem('user')).data.token;
+        const provinces = this.props.provinces;
+        const isExist = provinces.find((item) => this.state.name === item.Name);
         if (isExist === undefined) {
             const error = '';
             const data = {
-                Data:{
-                    Name:this.state.name,
-                    CountryID:this.state.country
+                Data: {
+                    Name: this.state.name,
+                    CountryID: this.state.country
                 },
-                Information:'Province'
+                Information: 'Province'
             };
-            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
-                headers:{
-                    'Content-Type':'application/json',
-                    'token':token
+            axios.post(`${baseUrl}/Admin/Information`, JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
                 }
             });
             this.setState({open: true, error});
@@ -100,9 +106,9 @@ class AddProvince extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                             }}
                         >
-                            {categories.map(option => (
-                                <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                    {option.title}
+                            {this.props.categories.map(option => (
+                                <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                    {option.Name}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -120,11 +126,11 @@ class AddProvince extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                             }}
                         >
-                            {countries.map(option => {
-                                if (option.category === this.state.category) {
+                            {this.props.countries.map(option => {
+                                if (option.CategoryID === this.state.category) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -189,4 +195,10 @@ class AddProvince extends React.Component {
     }
 }
 
-export default AddProvince;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countries: state.countries,
+    provinces: state.provinces
+});
+
+export default connect(mapStateToProps)(AddProvince);
