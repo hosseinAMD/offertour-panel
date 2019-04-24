@@ -1,28 +1,23 @@
 import React from 'react';
 import numeral from 'numeral';
-import categories from '../data/categories';
 import flightCompanies from '../data/flightCompanies';
-import countries from '../data/countries';
-import cities from '../data/cities';
 import tripTypes from "../data/tripTypes";
 import flightClasses from "../data/flightClasses";
-import airports from "../data/airports";
 import busClasses from "../data/busClasses";
 import foodTypes from "../data/foodTypes";
-import busTerminals from "../data/busTerminals";
 import busCompanies from "../data/busCompanies";
 import tours from '../data/tours';
 import plans from '../data/plans';
-import provinces from "../data/provinces";
+import {connect} from "react-redux";
 
 
 const ItemRenderer = (props) => {
     let item = '';
     switch (props.type) {
         case 'category':
-            item = categories.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.categories.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -41,9 +36,9 @@ const ItemRenderer = (props) => {
             break;
         case
         'country':
-            item = countries.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.countries.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -52,9 +47,9 @@ const ItemRenderer = (props) => {
             break;
         case
         'province':
-            item = provinces.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.provinces.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -63,9 +58,9 @@ const ItemRenderer = (props) => {
             break;
         case
         'city':
-            item = cities.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.cities.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -96,9 +91,9 @@ const ItemRenderer = (props) => {
             break;
         case
         'airport':
-            item = airports.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.airports.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -129,9 +124,9 @@ const ItemRenderer = (props) => {
             break;
         case
         'busTerminal':
-            item = busTerminals.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+            item = props.busTerminals.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
                 } else {
                     return undefined;
                 }
@@ -190,10 +185,21 @@ const ItemRenderer = (props) => {
         {props.type === 'planPrice' ?
             <span>{item ? <span>{numeral(item.price).format('0,0')} تومان</span> : 'نامشخص'}</span>
             :
-            <span>{item ? <span>{item.title}</span> : 'نامشخص'}</span>
+            <span>{item ? <span>{item.Name}</span> : 'نامشخص'}</span>
         }
         </span>
     );
 };
 
-export default ItemRenderer;
+const mapStateToProps = (state) => (
+    {
+        categories:state.categories,
+        countries:state.countries,
+        provinces:state.provinces,
+        cities:state.cities,
+        airports:state.airports,
+        terminals:state.terminals
+    }
+);
+
+export default connect(mapStateToProps)(ItemRenderer);
