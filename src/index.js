@@ -1,19 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import configureStore from './store/configureStore';
+import {Provider} from 'react-redux';
+import axios from 'axios';
+import baseUrl from './config/config';
+import {setCategories} from "./actions/categories";
 
-const client = new ApolloClient({
-    uri: 'https://countries.trevorblades.com/',
-});
+const store = configureStore();
+
+axios.get(baseUrl + '/App/Information')
+    .then(res => {
+        store.dispatch(setCategories(res.data.Categories));
+    }).catch(err => console.log(err));
 
 const jsx = (
-    <ApolloProvider client={client}>
+    <Provider store={store}>
         <App/>
-    </ApolloProvider>
+    </Provider>
 );
 
 ReactDOM.render(jsx, document.getElementById('root'));
