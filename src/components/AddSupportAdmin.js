@@ -6,7 +6,7 @@ import AgencyUserForm from "./AgencyUserForm";
 
 const AddAgencyUser = () => (
     <Paper elevation={1} className="right-dir agency-paper">
-        <HeaderChip label='افزودن کاربر' color='#0288d1' icon='person_add'/>
+        <HeaderChip label='افزودن پشتیبان' color='#0288d1' icon='person_add'/>
         <Divider/>
         <br/>
         <AgencyUserForm/>
