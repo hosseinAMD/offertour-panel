@@ -10,6 +10,7 @@ import Icon from '@material-ui/core/Icon';
 import HeaderChip from './HeaderChip';
 import {NavLink} from "react-router-dom";
 import AgencyList from "./AgencyList";
+import SupportUsersList from "./SupportUsersList";
 
 class AllUsers extends React.Component {
     constructor(props) {
@@ -52,6 +53,7 @@ class AllUsers extends React.Component {
                                 </Tabs>
                                 <br/>
                                 {this.state.value === 0 ? <AgencyList/> : ''}
+                                {this.state.value === 2 ? <SupportUsersList/> : ''}
                                 {/*<Button component={NavLink} to="/add-support-admin" variant="contained"*/}
                                         {/*color="primary" className="edit-button">افزودن پشتیبان</Button>*/}
                                 {/*<Button component={NavLink} to="/add-agency" variant="contained"*/}
