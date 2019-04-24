@@ -1,6 +1,6 @@
 //Agencies
 
 export const setAgencies = (agenciesArray) => ({
-    type: 'SET_Agency',
+    type: 'SET_AGENCY',
     agenciesArray
 });

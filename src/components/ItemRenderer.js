@@ -46,6 +46,17 @@ const ItemRenderer = (props) => {
             ;
             break;
         case
+        'agency':
+            item = props.agencies.find((item) => {
+                if (item.Id === props.id) {
+                    return item.Name;
+                } else {
+                    return undefined;
+                }
+            })
+            ;
+            break;
+        case
         'province':
             item = props.provinces.find((item) => {
                 if (item.Id === props.id) {
@@ -193,12 +204,13 @@ const ItemRenderer = (props) => {
 
 const mapStateToProps = (state) => (
     {
-        categories:state.categories,
-        countries:state.countries,
-        provinces:state.provinces,
-        cities:state.cities,
-        airports:state.airports,
-        terminals:state.terminals
+        categories: state.categories,
+        countries: state.countries,
+        provinces: state.provinces,
+        cities: state.cities,
+        airports: state.airports,
+        terminals: state.terminals,
+        agencies: state.agencies
     }
 );
 

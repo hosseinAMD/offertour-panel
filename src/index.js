@@ -6,13 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import axios from 'axios';
-import baseUrl from './config/config';
+import baseUrl, {token, role} from './config/config';
 import {setCategories} from "./actions/categories";
 import {setCountries} from "./actions/countries";
 import {setProvinces} from "./actions/provinces";
 import {setCities} from "./actions/cities";
 import {setAirports} from "./actions/airports";
 import {setTerminals} from "./actions/terminals";
+import {setAgencies} from "./actions/agencies";
 
 const store = configureStore();
 
@@ -25,6 +26,15 @@ axios.get(baseUrl + '/App/Information')
         store.dispatch(setAirports(res.data.AirPorts));
         store.dispatch(setTerminals(res.data.Terminal));
     }).catch(err => console.log(err));
+if (role === 'support') {
+    axios.get(baseUrl + '/Admin/Agencies', {
+        headers: {
+            'Content-Type': 'application/json',
+            'token': token
+        }
+    }).then(res => store.dispatch(setAgencies(res.data)));
+}
+
 
 const jsx = (
     <Provider store={store}>
