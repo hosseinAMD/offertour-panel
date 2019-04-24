@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import countries from "../data/countries";
 import CountryItem from "./CountryItem";
+import {connect} from "react-redux";
 
-const CountriesList = () => (
+const CountriesList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
         <HeaderChip label="لیست کشورها" icon="flag" color={headerBlue}/>
         <Divider/>
@@ -25,10 +25,14 @@ const CountriesList = () => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {countries.map((item,index) => (<CountryItem key={item.id} country={item} num={index}/>))}
+                {props.countries.map((item, index) => (<CountryItem key={item.id} country={item} num={index}/>))}
             </TableBody>
         </Table>
     </Paper>
 );
 
-export default CountriesList;
+const mapStateToProps = (state) => ({
+    countries: state.countries
+});
+
+export default connect(mapStateToProps)(CountriesList);
