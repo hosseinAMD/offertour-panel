@@ -8,10 +8,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import provinces from "../data/provinces";
 import ProvinceItem from "./ProvinceItem";
+import {connect} from "react-redux";
 
-const ProvincesList = () => (
+const ProvincesList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
         <HeaderChip label="لیست استان ها" icon="golf_course" color={headerBlue}/>
         <Divider/>
@@ -25,10 +25,14 @@ const ProvincesList = () => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {provinces.map((item,index) => (<ProvinceItem key={item.id} province={item} num={index}/>))}
+                {props.provinces.map((item,index) => (<ProvinceItem key={item.Id} province={item} num={index}/>))}
             </TableBody>
         </Table>
     </Paper>
 );
 
-export default ProvincesList;
+const mapStateToProps = (state) => ({
+    provinces: state.provinces
+});
+
+export default connect(mapStateToProps)(ProvincesList);
