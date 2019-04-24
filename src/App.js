@@ -17,6 +17,7 @@ import CitiesSetting from "./components/CitiesSetting";
 import AirportsSetting from "./components/AirportsSetting";
 import TerminalsSetting from "./components/TerminalsSetting";
 import LastCommentsAndRates from "./components/LastCommentsAndRates";
+import AgencyUsers from "./components/AgencyUsers";
 
 class App extends Component {
     render() {
@@ -42,6 +43,7 @@ class App extends Component {
                             <Route path="/airport-setting" component={AirportsSetting}/>
                             <Route path="/terminal-setting" component={TerminalsSetting}/>
                             <Route path="/rates-comments" component={LastCommentsAndRates}/>
+                            <Route path="/agency-users" component={AgencyUsers}/>
                             <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>
