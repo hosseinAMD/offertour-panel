@@ -3,6 +3,12 @@ import moment from 'moment-jalaali';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import baseUrl, {token} from '../config/config';
@@ -21,7 +27,8 @@ class AgencyUserForm extends React.Component {
             BirthDate: this.props.agencyUser ? this.props.agencyUser.BirthDate : '',
             Password: this.props.agencyUser ? this.props.agencyUser.Password : '',
             ConfirmPassword: this.props.agencyUser ? this.props.agencyUser.Password : '',
-            RoleID: 1
+            RoleID: 1,
+            open: false
         };
     }
 
@@ -61,7 +68,7 @@ class AgencyUserForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => alert('done' + res)).catch(err => alert('error' + err));
+        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
     };
 
     handleEdit = () => {
@@ -78,7 +85,11 @@ class AgencyUserForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => alert('done' + res)).catch(err => alert('error' + err));
+        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
     };
 
     render() {
@@ -181,6 +192,25 @@ class AgencyUserForm extends React.Component {
                     <Button onClick={this.props.agencyUser ? this.handleEdit : this.handleSubmit} variant="contained"
                             color="primary" className="edit-button">افزودن</Button>
                 </div>
+                <Dialog
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'green'}}
+                                                                                         fontSize="large">check_circle</Icon>{"انجام شد!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            تغییرات مد نظر شما موفقیت آمیز انجام شد!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     }
