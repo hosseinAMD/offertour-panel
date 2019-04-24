@@ -22,37 +22,42 @@ import provinces from '../data/provinces';
 import cities from '../data/cities';
 import axios from "axios";
 import baseUrl from "../config/config";
+import {connect} from "react-redux";
+import {token} from "../config/config";
 
 class AddCity extends React.Component {
-    state = {
-        name: '',
-        category: 0,
-        country: 0,
-        province: 0,
-        open: false,
-        error: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            category: 0,
+            country: 0,
+            province: 0,
+            open: false,
+            error: ''
+        };
+    }
 
     handleChange = name => event => {
         this.setState({[name]: event.target.value});
     };
 
     handleClickOpen = () => {
-        const isExist = cities.find((item) => this.state.name === item.title);
-        const token = JSON.parse(localStorage.getItem('user')).data.token;
+        const cities = this.props.cities;
+        const isExist = cities.find((item) => this.state.name === item.Name);
         if (isExist === undefined) {
             const error = '';
             const data = {
-                Data:{
-                    Name:this.state.name,
-                    ProvinceID:this.state.province
+                Data: {
+                    Name: this.state.name,
+                    ProvinceID: this.state.province
                 },
-                Information:'City'
+                Information: 'City'
             };
-            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
-                headers:{
-                    'Content-Type':'application/json',
-                    'token':token
+            axios.post(`${baseUrl}/Admin/Information`, JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
                 }
             });
             this.setState({open: true, error});
@@ -102,9 +107,9 @@ class AddCity extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                             }}
                         >
-                            {categories.map(option => (
-                                <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                    {option.title}
+                            {this.props.categories.map(option => (
+                                <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                    {option.Name}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -122,11 +127,11 @@ class AddCity extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                             }}
                         >
-                            {countries.map(option => {
-                                if (option.category === this.state.category) {
+                            {this.props.countries.map(option => {
+                                if (option.CategoryID === this.state.category) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -145,14 +150,15 @@ class AddCity extends React.Component {
                             value={this.state.province}
                             onChange={this.handleChange('province')}
                             InputProps={{
-                                startAdornment: <InputAdornment position="start"><Icon>golf_course</Icon></InputAdornment>,
+                                startAdornment: <InputAdornment
+                                    position="start"><Icon>golf_course</Icon></InputAdornment>,
                             }}
                         >
-                            {provinces.map(option => {
-                                if (option.country === this.state.country) {
+                            {this.props.provinces.map(option => {
+                                if (option.CountryID === this.state.country) {
                                     return (
-                                        <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                            {option.title}
+                                        <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                            {option.Name}
                                         </MenuItem>
                                     );
                                 } else {
@@ -217,4 +223,11 @@ class AddCity extends React.Component {
     }
 }
 
-export default AddCity;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countries: state.countries,
+    provinces: state.provinces,
+    cities: state.cities
+});
+
+export default connect(mapStateToProps)(AddCity);

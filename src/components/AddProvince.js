@@ -25,7 +25,7 @@ import {token} from "../config/config";
 import {connect} from 'react-redux';
 
 class AddProvince extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             name: '',
