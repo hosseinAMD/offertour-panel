@@ -16,39 +16,43 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
 import axios from 'axios';
 import baseUrl from '../config/config';
+import {connect} from "react-redux";
+import {token} from "../config/config";
 
 class AddCountry extends React.Component {
-    state = {
-        name: '',
-        category: 0,
-        open: false,
-        error: ''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            category: 0,
+            open: false,
+            error: ''
+        };
+    }
+
 
     handleChange = name => event => {
         this.setState({[name]: event.target.value});
     };
 
     handleClickOpen = () => {
-        const isExist = countries.find((item) => this.state.name === item.title);
-        const token = JSON.parse(localStorage.getItem('user')).data.token;
+        const countries = this.props.countries;
+        const isExist = countries.find((item) => this.state.name === item.Name);
         if (isExist === undefined) {
             const error = '';
             const data = {
-              Data:{
-                  Name:this.state.name,
-                  CategoryID:this.state.category
-              },
-                Information:'Country'
+                Data: {
+                    Name: this.state.name,
+                    CategoryID: this.state.category
+                },
+                Information: 'Country'
             };
-            axios.post(`${baseUrl}/Admin/Information`,JSON.stringify(data),{
-                headers:{
-                    'Content-Type':'application/json',
-                    'token':token
+            axios.post(`${baseUrl}/Admin/Information`, JSON.stringify(data), {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
                 }
             });
             this.setState({open: true, error});
@@ -98,9 +102,9 @@ class AddCountry extends React.Component {
                                 startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                             }}
                         >
-                            {categories.map(option => (
-                                <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                    {option.title}
+                            {this.props.categories.map(option => (
+                                <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                    {option.Name}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -161,4 +165,9 @@ class AddCountry extends React.Component {
     }
 }
 
-export default AddCountry;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countries: state.countries
+});
+
+export default connect(mapStateToProps)(AddCountry);
