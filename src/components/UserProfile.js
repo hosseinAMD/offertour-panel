@@ -8,6 +8,7 @@ import HeaderChip from "./HeaderChip";
 class UserProfile extends React.Component {
     render() {
         const loggedInUser = JSON.parse(localStorage.getItem('user')).data.information;
+        console.log(loggedInUser.RegistrationDate);
         return (
             <Paper elevation={1} className="right-dir agency-paper">
                 <HeaderChip label='اطلاعات کاربری' color='#0288d1' icon='account_circle'/>
@@ -23,7 +24,7 @@ class UserProfile extends React.Component {
                     className="bold">تاریخ تولد: </span>{moment.unix(loggedInUser.BirthDate).format('jDD jMMMM jYYYY')}
                 </p>
                 <p><span
-                    className="bold">تاریخ ثبت نام: </span>{moment.unix(loggedInUser.RegistrationDate).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ ثبت نام: </span>{moment(parseInt(loggedInUser.RegistrationDate)).format('jDD jMMMM jYYYY')}
                 </p>
                 <Button variant="contained" color="primary" className="edit-button">ویرایش</Button>
             </Paper>
