@@ -38,6 +38,16 @@ class AllUsers extends React.Component {
                                 </div>
                                 <Divider/>
                                 <br/>
+                                <div className="add-user-buttons">
+                                    <Button component={NavLink} to="/add-agency" variant="contained"
+                                            color="primary" className="edit-button">افزودن آژانس</Button>
+                                    <Button component={NavLink} to="/add-agency" variant="contained"
+                                            color="primary" className="edit-button">افزودن مدیر آژانس</Button>
+                                    <Button component={NavLink} to="/add-support-admin" variant="contained"
+                                            color="primary" className="edit-button">افزودن پشتیبان</Button>
+
+                                </div>
+                                <br/>
                                 <Tabs
                                     value={this.state.value}
                                     onChange={this.handleChange}
@@ -57,11 +67,6 @@ class AllUsers extends React.Component {
                                 {this.state.value === 0 ? <AgencyList/> : ''}
                                 {this.state.value === 1 ? <ManagersList/> : ''}
                                 {this.state.value === 2 ? <SupportUsersList/> : ''}
-                                {/*<Button component={NavLink} to="/add-support-admin" variant="contained"*/}
-                                {/*color="primary" className="edit-button">افزودن پشتیبان</Button>*/}
-                                {/*<Button component={NavLink} to="/add-agency" variant="contained"*/}
-
-                                {/*color="primary" className="edit-button">افزودن آژانس</Button>*/}
                             </Paper>
                         </div>
                     </Slide>
