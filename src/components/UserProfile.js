@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider';
 import Button from "@material-ui/core/Button";
 import moment from 'moment-jalaali';
 import HeaderChip from "./HeaderChip";
+import {NavLink} from "react-router-dom";
 
 class UserProfile extends React.Component {
     render() {
@@ -26,7 +27,7 @@ class UserProfile extends React.Component {
                 <p><span
                     className="bold">تاریخ ثبت نام: </span>{moment(parseInt(loggedInUser.RegistrationDate)).format('jDD jMMMM jYYYY')}
                 </p>
-                <Button variant="contained" color="primary" className="edit-button">ویرایش</Button>
+                <Button component={NavLink} to="/edit-agency-user" variant="contained" color="primary" className="edit-button">ویرایش</Button>
             </Paper>
         );
     }

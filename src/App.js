@@ -18,6 +18,8 @@ import AirportsSetting from "./components/AirportsSetting";
 import TerminalsSetting from "./components/TerminalsSetting";
 import LastCommentsAndRates from "./components/LastCommentsAndRates";
 import AgencyUsers from "./components/AgencyUsers";
+import AddAgencyUser from './components/AddAgencyUser';
+import EditAgencyUser from "./components/EditAgencyUser";
 
 class App extends Component {
     render() {
@@ -44,6 +46,8 @@ class App extends Component {
                             <Route path="/terminal-setting" component={TerminalsSetting}/>
                             <Route path="/rates-comments" component={LastCommentsAndRates}/>
                             <Route path="/agency-users" component={AgencyUsers}/>
+                            <Route path="/add-agency-user" component={AddAgencyUser}/>
+                            <Route path="/edit-agency-user" component={EditAgencyUser}/>
                             <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>

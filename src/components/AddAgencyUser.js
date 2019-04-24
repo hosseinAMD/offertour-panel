@@ -9,7 +9,7 @@ const AddAgencyUser = () => (
         <HeaderChip label='افزودن کاربر' color='#0288d1' icon='person_add'/>
         <Divider/>
         <br/>
-        <AgencyUserForm/>
+        <AgencyUserForm agencyUser={'hi'}/>
     </Paper>
 );
 

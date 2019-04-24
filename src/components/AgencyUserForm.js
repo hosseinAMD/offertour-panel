@@ -12,15 +12,15 @@ class AgencyUserForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Name: '',
-            FamilyName: '',
-            Image: '',
-            UserName: '',
-            PhoneNumber: '',
-            RegistrationDate: moment().unix(),
-            BirthDate: '',
-            Password: '',
-            ConfirmPassword: '',
+            Name: this.props.agencyUser ? this.props.agencyUser.Name : '',
+            FamilyName: this.props.agencyUser ? this.props.agencyUser.FamilyName : '',
+            Image: this.props.agencyUser ? this.props.agencyUser.Image : '',
+            UserName: this.props.agencyUser ? this.props.agencyUser.UserName : '',
+            PhoneNumber: this.props.agencyUser ? this.props.agencyUser.PhoneNumber : '',
+            RegistrationDate: this.props.agencyUser ? this.props.agencyUser.RegistrationDate : moment().unix(),
+            BirthDate: this.props.agencyUser ? this.props.agencyUser.BirthDate : '',
+            Password: this.props.agencyUser ? this.props.agencyUser.Password : '',
+            ConfirmPassword: this.props.agencyUser ? this.props.agencyUser.Password : '',
             RoleID: 1
         };
     }
@@ -61,7 +61,24 @@ class AgencyUserForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => console.log(res)).catch(err => console.log(err))
+        }).then(res => alert('done' + res)).catch(err => alert('error' + err));
+    };
+
+    handleEdit = () => {
+        let agencyUserDetail = new FormData();
+        agencyUserDetail.append('Name', this.state.Name);
+        agencyUserDetail.append('FamilyName', this.state.FamilyName);
+        agencyUserDetail.append('PhoneNumber', this.state.PhoneNumber);
+        agencyUserDetail.append('UserName', this.state.UserName);
+        agencyUserDetail.append('Password', this.state.Password);
+        agencyUserDetail.append('Image', this.state.Image);
+        agencyUserDetail.append('BirthDate', this.state.BirthDate);
+        axios.put(baseUrl + '/Agency/AgencyUserInformation', agencyUserDetail, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => alert('done' + res)).catch(err => alert('error' + err));
     };
 
     render() {
@@ -154,7 +171,7 @@ class AgencyUserForm extends React.Component {
                             format="jYYYY/jMM/jDD"
                             onChange={this.birthDateChange}
                             id="birthDate"
-                            preSelected={moment().format('jYYYY/jMM/jDD')}
+                            preSelected={this.props.agencyUser ? moment.unix(this.state.BirthDate).format('jYYYY/jMM/jDD') : moment().format('jYYYY/jMM/jDD')}
                         />
                     </FormControl>
                     <FormControl>
