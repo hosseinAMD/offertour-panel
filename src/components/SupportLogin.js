@@ -36,6 +36,7 @@ class SupportLogin extends React.Component {
             }
         ).then(res => {
             localStorage.setItem('user',JSON.stringify(res.data));
+            localStorage.setItem('role','support');
             window.location.assign('/');
         }).catch(err => console.log(err))
     };

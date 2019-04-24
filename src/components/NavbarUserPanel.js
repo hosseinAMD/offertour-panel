@@ -10,6 +10,7 @@ import MenuList from '@material-ui/core/MenuList';
 import user from '../data/user';
 import PlanStars from "./PlanStars";
 import {NavLink} from "react-router-dom";
+import {loggedInUser} from "../config/config";
 
 class NavbarUserPanel extends React.Component {
     state = {
@@ -38,7 +39,7 @@ class NavbarUserPanel extends React.Component {
                 }}
                         aria-owns={open ? 'menu-list-grow' : undefined}
                         aria-haspopup="true"
-                        onClick={this.handleToggle}><span><span className="bold">{`${user.name} ${user.familyName}`}</span> خوش آمدید</span></Button>
+                        onClick={this.handleToggle}><span><span className="bold">{`${loggedInUser.Name} ${loggedInUser.FamilyName}`}</span> خوش آمدید</span></Button>
                 <Popper style={{zIndex: '1000'}}
                         open={open}
                         anchorEl={this.anchorEl}
