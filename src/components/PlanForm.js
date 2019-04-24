@@ -12,7 +12,7 @@ class PlanForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            PlanID: this.props.plan.PlanID,
+            PlanID: this.props.plan.Id,
             Price: this.props.plan.Price,
             FeaturedTour: this.props.plan.FeaturedTour,
             NormalTour: this.props.plan.NormalTour,
@@ -32,6 +32,23 @@ class PlanForm extends React.Component {
         this.setState(() => ({DiscountStatus: !DiscountStatus}))
     };
 
+    handleEditPlan = () => {
+        const data = JSON.stringify({
+            PlanID: `${this.state.PlanID}`,
+            Price: `${this.state.Price}`,
+            FeaturedTour: `${this.state.FeaturedTour}`,
+            NormalTour: `${this.state.NormalTour}`,
+            Duration: `${this.state.Duration}`,
+            DiscountStatus: this.state.DiscountStatus ? `1` : `0`,
+            PriceAfterDiscount: `${this.state.PriceAfterDiscount}`
+        });
+        axios.put(baseUrl + '/Admin/Plan', data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => alert('done' + res)).catch(err => alert('failed' + err));
+    };
 
 
     render() {
