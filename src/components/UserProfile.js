@@ -5,10 +5,11 @@ import Button from "@material-ui/core/Button";
 import moment from 'moment-jalaali';
 import HeaderChip from "./HeaderChip";
 import {NavLink} from "react-router-dom";
+import {loggedInUser} from "../config/config";
+import {role} from "../config/config";
 
 class UserProfile extends React.Component {
     render() {
-        const loggedInUser = JSON.parse(localStorage.getItem('user')).data.information;
         console.log(loggedInUser.RegistrationDate);
         return (
             <Paper elevation={1} className="right-dir agency-paper">
@@ -20,14 +21,15 @@ class UserProfile extends React.Component {
                 <p><span className="bold">نام: </span>{loggedInUser.Name}</p>
                 <p><span className="bold">نام خانوادگی: </span>{loggedInUser.FamilyName}</p>
                 <p><span className="bold">نام کاربری: </span>{loggedInUser.UserName}</p>
-                <p><span className="bold">تلفن همراه: </span>{loggedInUser.PhoneNumber}</p>
                 <p><span
                     className="bold">تاریخ تولد: </span>{moment.unix(loggedInUser.BirthDate).format('jDD jMMMM jYYYY')}
                 </p>
                 <p><span
-                    className="bold">تاریخ ثبت نام: </span>{moment(parseInt(loggedInUser.RegistrationDate)).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ ثبت نام: </span>{moment.unix(loggedInUser.RegistartionDate).format('jDD jMMMM jYYYY')}
                 </p>
-                <Button component={NavLink} to="/edit-agency-user" variant="contained" color="primary" className="edit-button">ویرایش</Button>
+                {role === 'support' ? '' :
+                    <Button component={NavLink} to="/edit-agency-user" variant="contained" color="primary"
+                            className="edit-button">ویرایش</Button>}
             </Paper>
         );
     }
