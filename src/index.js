@@ -8,12 +8,22 @@ import {Provider} from 'react-redux';
 import axios from 'axios';
 import baseUrl from './config/config';
 import {setCategories} from "./actions/categories";
+import {setCountries} from "./actions/countries";
+import {setProvinces} from "./actions/provinces";
+import {setCities} from "./actions/cities";
+import {setAirports} from "./actions/airports";
+import {setTerminals} from "./actions/terminals";
 
 const store = configureStore();
 
 axios.get(baseUrl + '/App/Information')
     .then(res => {
         store.dispatch(setCategories(res.data.Categories));
+        store.dispatch(setCountries(res.data.Country));
+        store.dispatch(setProvinces(res.data.Provinces));
+        store.dispatch(setCities(res.data.Cities));
+        store.dispatch(setAirports(res.data.AirPorts));
+        store.dispatch(setTerminals(res.data.Terminal));
     }).catch(err => console.log(err));
 
 const jsx = (
