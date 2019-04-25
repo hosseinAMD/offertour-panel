@@ -16,14 +16,17 @@ import PlanDetail from "./PlanDetail";
 import {Icon} from "@material-ui/core";
 import moment from 'moment-jalaali';
 import numeral from 'numeral';
-import{role} from "../config/config";
+import baseUrl, {role, token} from "../config/config";
 import {NavLink} from "react-router-dom";
+import axios from 'axios'
 
 class PlanItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            message: '',
+            error: ''
         }
     }
 
@@ -32,12 +35,26 @@ class PlanItem extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({open: false, message: '', error: ''});
+    };
+
+    handleSubmit = () => {
+        axios.post(baseUrl + '/Agency/ActivePlan', JSON.stringify({
+            PlanID: this.props.plan.Id
+        }), {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => this.setState(() => ({
+            error: '',
+            message: 'درخواست شما با موفقیت ثبت شد.'
+        }))).catch(err => this.setState(() => ({error: 'مشکلی پیش  آمده است'})))
     };
 
     render() {
         const plan = this.props.plan;
-        if(role==='support'){
+        if (role === 'support') {
             return (
                 <Grid item xs={12} sm={6} md={3} lg={3} xl={3} className="plan-card">
                     <Card className="right-dir">
@@ -49,7 +66,8 @@ class PlanItem extends React.Component {
                             <PlanDetail plan={plan}/>
                         </CardContent>
                         <CardActions>
-                            <Button component={NavLink} to={`/edit-plan/${plan.Id}`} variant="contained" color="primary" className="buy-button">
+                            <Button component={NavLink} to={`/edit-plan/${plan.Id}`} variant="contained" color="primary"
+                                    className="buy-button">
                                 <Icon>add_shopping_cart</Icon>
                                 <span className="font-applied" style={{marginRight: '6px'}}>ویرایش پلن</span>
                             </Button>
@@ -86,13 +104,22 @@ class PlanItem extends React.Component {
                         <DialogTitle id="alert-dialog-title">فعالسازی پلن</DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration} تا تاریخ ${moment().add(plan.Duration, 'month').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
+                                {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration}  روز تا تاریخ ${moment().add(plan.Duration, 'days').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
+                                {this.state.message ?
+                                    <p style={{color: 'green', fontWeight: 'bold'}}>{this.state.message}</p> : ''}
+                                {this.state.error ?
+                                    <p style={{color: 'red', fontWeight: 'bold'}}>{this.state.error}</p> : ''}
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={this.handleClose} color="primary" className="font-applied accept-buy-button"
+                            <Button onClick={this.handleSubmit} color="primary"
+                                    className="font-applied accept-buy-button"
                                     autoFocus>
                                 تایید و انتقال به درگاه پرداخت
+                            </Button>
+                            <Button onClick={this.handleClose} color="primary" className="font-applied"
+                                    autoFocus>
+                                بستن
                             </Button>
                         </DialogActions>
                     </Dialog>
