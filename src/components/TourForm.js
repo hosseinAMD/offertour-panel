@@ -150,20 +150,21 @@ class TourForm extends React.Component {
     };
 
     handleAddTrip = () => {
-        let tripFields = new FormData();
-        tripFields.append('TourID', this.state.id);
-        tripFields.append('StepTypeID', this.state.tripType);
-        tripFields.append('Title', this.state.tripTitle);
-        tripFields.append('OriginCityID', this.state.startCity);
-        tripFields.append('DestinationCityID', this.state.destinationCity);
-        tripFields.append('StepDateTime', this.state.tripDay);
-        tripFields.append('StepDuration', this.state.tripTime);
-        tripFields.append('OriginAirport', this.state.startAirport);
-        tripFields.append('OriginTerminalID', this.state.startTerminal);
-        tripFields.append('DestinationAirportID', this.state.destinationAirport);
-        tripFields.append('DestinationTerminalID', this.state.destinationTerminal);
-        this.state.tripType === 1 ? tripFields.append('ClassID', this.state.flightClass) : tripFields.append('ClassID', this.state.busClass);
-        axios.post(baseUrl + '/Agency/TourStep', tripFields, {
+        let tripFields = {
+            TourID: this.state.id,
+            StepTypeID: this.state.tripType,
+            Title: this.state.tripTitle,
+            OriginCityID: this.state.startCity,
+            DestinationCityID: this.state.destinationCity,
+            StepDateTime: this.state.tripDay,
+            StepDuration: this.state.tripTime,
+            OriginAirport: this.state.startAirport,
+            OriginTerminalID: this.state.startTerminal,
+            DestinationAirportID: this.state.destinationAirport,
+            DestinationTerminalID: this.state.destinationTerminal,
+            ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
+        };
+        axios.post(baseUrl + '/Agency/TourStep', JSON.stringify(tripFields), {
             headers: {
                 'Content-Type': 'application/json',
                 'token': token
@@ -197,28 +198,23 @@ class TourForm extends React.Component {
     };
 
     handleAddHotel = () => {
-        let hotelFields = new FormData();
-        hotelFields.append('TourID', this.state.id);
-        hotelFields.append('HotelName', this.state.hotelName);
-        hotelFields.append('HotelStar', this.state.hotelStarts);
-        hotelFields.append('HotelCityID', this.state.hotelCity);
-        if (this.state.hotelMenu === 1) {
-            hotelFields.append('BreakFastService', true);
-            hotelFields.append('LunchService', false);
-            hotelFields.append('DinnerService', false);
-        } else {
-            hotelFields.append('BreakFastService', true);
-            hotelFields.append('LunchService', true);
-            hotelFields.append('DinnerService', true);
-        }
-        hotelFields.append('PriceOF4BedStead', '#');
-        hotelFields.append('PriceOF3BedStead', '#');
-        hotelFields.append('PriceOF2BedStead', this.state.multiBed);
-        hotelFields.append('PriceOF1BedStead', this.state.singleBed);
-        hotelFields.append('PriceOFChildWithBedStead', this.state.babyWithBed);
-        hotelFields.append('PriceOfChildWithOutBedStead', this.state.babyNoBed);
-        hotelFields.append('Description', this.state.hotelDescription);
-        axios.post(baseUrl + '/Agency/Hotel', hotelFields, {
+        let hotelFields = {
+            TourID: this.state.id,
+            HotelName: this.state.hotelName,
+            HotelStar: this.state.hotelStarts,
+            HotelCityID: this.state.hotelCity,
+            BreakFastService: true,
+            LunchService: this.state.hotelMenu !== 1,
+            DinnerService: this.state.hotelMenu !== 1,
+            PriceOF4BedStead: '#',
+            PriceOF3BedStead: '#',
+            PriceOF2BedStead: this.state.multiBed,
+            PriceOF1BedStead: this.state.singleBed,
+            PriceOFChildWithBedStead: this.state.babyWithBed,
+            PriceOfChildWithOutBedStead: this.state.babyNoBed,
+            Description: this.state.hotelDescription,
+        };
+        axios.post(baseUrl + '/Agency/Hotel', JSON.stringify(hotelFields), {
             headers: {
                 'Content-Type': 'application/json',
                 'token': token
@@ -1547,7 +1543,7 @@ class TourForm extends React.Component {
             }).then(res => {
                     this.setState({
                         activeStep: activeStep + 1,
-                        id:res.data.id
+                        id: res.data.id
                     });
                 }
             ).catch(err => alert(err));
