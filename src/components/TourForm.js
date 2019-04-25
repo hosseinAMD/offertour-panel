@@ -98,13 +98,13 @@ class TourForm extends React.Component {
     };
 
     startDateChange = (unix, formatted) => {
-        const startDate = moment(formatted, 'jYYYY/jMM/jDD').format('YYYY-MM-DD');
-        this.setState(() => ({startDate}));
+        const startDate = unix;
+        this.setState(() => ({startDate}))
     };
 
     endDateChange = (unix, formatted) => {
-        const endDate = moment(formatted, 'jYYYY/jMM/jDD').format('YYYY-MM-DD');
-        this.setState(() => ({endDate}));
+        const endDate = unix;
+        this.setState(() => ({endDate}))
     };
 
     addTag = () => {
