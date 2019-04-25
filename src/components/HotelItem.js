@@ -12,31 +12,37 @@ import numeral from 'numeral';
 import ItemRenderer from "./ItemRenderer";
 import PlanStars from "./PlanStars";
 
-class HotelItem extends React.Component{
-    constructor(props){
+class HotelItem extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            open:false
+            open: false
         }
     }
 
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({open: true});
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
 
     render() {
-        return(
+        let foodType = 1;
+        if (this.props.hotel.LunchService === true) {
+            foodType = 2;
+        }
+        return (
             <TableRow>
-                <TableCell align="center">{this.props.hotel.hotelName}</TableCell>
-                <TableCell align="center"><ItemRenderer id={this.props.hotel.hotelMenu} type="foodType"/></TableCell>
-                <TableCell align="center">{numeral(this.props.hotel.multiBed).format('0,0')}</TableCell>
-                <TableCell align="center">{numeral(this.props.hotel.singleBed).format('0,0')}</TableCell>
-                <TableCell align="center">{numeral(this.props.hotel.babyWithBed).format('0,0')}</TableCell>
-                <TableCell align="center">{numeral(this.props.hotel.babyNoBed).format('0,0')}</TableCell>
+                <TableCell align="center">{this.props.hotel.HotelName}</TableCell>
+                <TableCell align="center"><ItemRenderer id={foodType}
+                                                        type="foodType"/></TableCell>
+                <TableCell align="center">{numeral(this.props.hotel.PriceOF2BedStead).format('0,0')}</TableCell>
+                <TableCell align="center">{numeral(this.props.hotel.PriceOF1BedStead).format('0,0')}</TableCell>
+                <TableCell align="center">{numeral(this.props.hotel.PriceOFChildWithBedStead).format('0,0')}</TableCell>
+                <TableCell
+                    align="center">{numeral(this.props.hotel.PriceOfChildWithOutBedStead).format('0,0')}</TableCell>
                 <TableCell align="center">
                     <Fab onClick={this.handleClickOpen} color="secondary" aria-label="Edit">
                         <Icon>search</Icon>
@@ -51,14 +57,25 @@ class HotelItem extends React.Component{
                 >
                     <DialogTitle id="alert-dialog-title">مشاهده جزئیات هتل</DialogTitle>
                     <DialogContent>
-                       <p><span className="bold">نام هتل: </span>{this.props.hotel.hotelName}</p>
-                       <p><span className="bold">ستاره هتل: </span><PlanStars star={this.props.hotel.hotelStarts}/></p>
-                       <p><span className="bold">منو غذا: </span><ItemRenderer id={this.props.hotel.hotelMenu} type="foodType" /></p>
-                       <p><span className="bold">قیمت دوتخته: </span>{`${numeral(this.props.hotel.multiBed).format('0,0')} تومان`}</p>
-                       <p><span className="bold">قیمت یک تخته: </span>{`${numeral(this.props.hotel.singleBed).format('0,0')} تومان`}</p>
-                       <p><span className="bold">قیمت کودک با تخت: </span>{`${numeral(this.props.hotel.babyWithBed).format('0,0')} تومان`}</p>
-                       <p><span className="bold">قیمت کودک بدون تخت: </span>{`${numeral(this.props.hotel.babyNoBed).format('0,0')} تومان`}</p>
-                       <p><span className="bold">توضیحات: </span>{this.props.hotel.hotelDescription}</p>
+                        <p><span className="bold">نام هتل: </span>{this.props.hotel.HotelName}</p>
+                        <p><span className="bold">ستاره هتل: </span><PlanStars star={this.props.hotel.HotelStar}/></p>
+                        <p><span className="bold">منو غذا: </span><ItemRenderer
+                            id={this.props.hotel.LunchService ? 1 : 0} type="foodType"/></p>
+                        <p><span className="bold">شهر هتل: </span><ItemRenderer id={this.props.hotel.HotelCityID}
+                                                                                type="city"/></p>
+                        <p><span
+                            className="bold">قیمت دوتخته: </span>{`${numeral(this.props.hotel.PriceOF2BedStead).format('0,0')} تومان`}
+                        </p>
+                        <p><span
+                            className="bold">قیمت یک تخته: </span>{`${numeral(this.props.hotel.PriceOF1BedStead).format('0,0')} تومان`}
+                        </p>
+                        <p><span
+                            className="bold">قیمت کودک با تخت: </span>{`${numeral(this.props.hotel.PriceOFChildWithBedStead).format('0,0')} تومان`}
+                        </p>
+                        <p><span
+                            className="bold">قیمت کودک بدون تخت: </span>{`${numeral(this.props.hotel.PriceOfChildWithOutBedStead).format('0,0')} تومان`}
+                        </p>
+                        <p><span className="bold">توضیحات: </span>{this.props.hotel.PriceOfChildWithOutBedStead}</p>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary" autoFocus>
