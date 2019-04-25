@@ -17,7 +17,7 @@ import TourDesc from "./TourDesc";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import axios from 'axios';
-import baseUrl,{token} from "../config/config";
+import baseUrl, {token} from "../config/config";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -34,11 +34,30 @@ class TourDetail extends React.Component {
     };
 
     handleAccept = () => {
-      this.setState(() => ({openAccept: true}))
+        const TourID = parseInt(this.props.match.params.id)
+        axios.put(baseUrl + '/Admin/Tour', JSON.stringify({
+            TourID,
+            Status: true
+        }), {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => this.setState(() => ({openAccept: true}))).catch(err => alert(err))
+
     };
 
     handleReject = () => {
-        this.setState(() => ({openReject: true}))
+        const TourID = parseInt(this.props.match.params.id)
+        axios.put(baseUrl + '/Admin/Tour', JSON.stringify({
+            TourID,
+            Status: false
+        }), {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => this.setState(() => ({openReject: true}))).catch(err => alert(err))
     };
 
     render() {
@@ -67,7 +86,8 @@ class TourDetail extends React.Component {
                         <div className="tour-handlers">
                             <Button onClick={this.handleAccept} variant="contained" color="primary"
                                     className="edit-button">تایید تور</Button>
-                            <Button onClick={this.handleReject} variant="contained" color="secondary" className="reject-button">حذف تور</Button>
+                            <Button onClick={this.handleReject} variant="contained" color="secondary"
+                                    className="reject-button">حذف تور</Button>
                         </div>
                         <Dialog
                             open={this.state.openReject}
@@ -84,7 +104,8 @@ class TourDetail extends React.Component {
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                <Button component={NavLink} to="/admin-tours-list" variant="contained" className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                                <Button component={NavLink} to="/admin-tours-list" variant="contained"
+                                        className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
                                     لیست تورها
                                 </Button>
                             </DialogActions>
@@ -105,7 +126,8 @@ class TourDetail extends React.Component {
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
-                                <Button component={NavLink} to="/admin-tours-list"  variant="contained" className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                                <Button component={NavLink} to="/admin-tours-list" variant="contained"
+                                        className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
                                     لیست تورها
                                 </Button>
                             </DialogActions>
