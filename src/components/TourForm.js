@@ -203,13 +203,13 @@ class TourForm extends React.Component {
         hotelFields.append('HotelStar', this.state.hotelStarts);
         hotelFields.append('HotelCityID', this.state.hotelCity);
         if (this.state.hotelMenu === 1) {
-            hotelFields.append('BreakFastService', '1');
-            hotelFields.append('LunchService', '0');
-            hotelFields.append('DinnerService', '0');
+            hotelFields.append('BreakFastService', true);
+            hotelFields.append('LunchService', false);
+            hotelFields.append('DinnerService', false);
         } else {
-            hotelFields.append('BreakFastService', '1');
-            hotelFields.append('LunchService', '1');
-            hotelFields.append('DinnerService', '1');
+            hotelFields.append('BreakFastService', true);
+            hotelFields.append('LunchService', true);
+            hotelFields.append('DinnerService', true);
         }
         hotelFields.append('PriceOF4BedStead', '#');
         hotelFields.append('PriceOF3BedStead', '#');
@@ -1544,9 +1544,12 @@ class TourForm extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            }).then(res => this.setState({
-                    activeStep: activeStep + 1,
-                })
+            }).then(res => {
+                    this.setState({
+                        activeStep: activeStep + 1,
+                        id:res.data.id
+                    });
+                }
             ).catch(err => alert(err));
         } else {
             this.setState({
