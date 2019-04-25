@@ -104,7 +104,7 @@ class PlanItem extends React.Component {
                         <DialogTitle id="alert-dialog-title">فعالسازی پلن</DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                {`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration}  روز تا تاریخ ${moment().add(plan.Duration, 'days').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}
+                                {/*{`کاربر گرامی! آیا از فعالسازی پلن ${plan.Title} به مدت ${plan.Duration}  روز تا تاریخ ${moment().add(plan.Duration, 'days').format('jYYYY/jMM/jDD')} به مبلغ ${numeral(plan.PriceAfterDiscount).format('0,0')} تومان اطمینان دارید؟`}*/}
                                 {this.state.message ?
                                     <p style={{color: 'green', fontWeight: 'bold'}}>{this.state.message}</p> : ''}
                                 {this.state.error ?
