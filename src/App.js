@@ -26,6 +26,7 @@ import AllUsers from "./components/AllUsers";
 import AddAgency from "./components/AddAgency";
 import PhoneNumbersList from "./components/PhoneNumbersList";
 import AddManager from "./components/AddManager";
+import AdminTourList from "./components/AdminTourList";
 
 class App extends Component {
     render() {
@@ -42,6 +43,7 @@ class App extends Component {
                             <Route path="/add-tour" component={AddTour}/>
                             <Route path="/add-article" component={AddArticle}/>
                             <Route path="/tours-list" component={ToursList}/>
+                            <Route path="/admin-tours-list" component={AdminTourList}/>
                             <Route path="/tour/:id" component={TourDetail}/>
                             <Route path="/login" component={Login}/>
                             <Route path="/settings" component={PanelSettings}/>
