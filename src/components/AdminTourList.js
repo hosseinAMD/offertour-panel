@@ -29,6 +29,7 @@ class AdminTourList extends React.Component {
         }).then(res => {
             this.props.setTours(res.data);
             this.setState(() => ({tours: res.data, isLoaded: true}));
+            console.log(res.data);
         })
             .catch(err => alert(err))
     }

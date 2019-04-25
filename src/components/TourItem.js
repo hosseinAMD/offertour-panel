@@ -15,8 +15,8 @@ const TourItem = (props) => (
             className="bold">{props.tour.Title}</span></TableCell>
         <TableCell align="center"><ItemRenderer id={props.tour.TourCityID} type="city"/></TableCell>
         <TableCell align="center">{numeral(props.tour.StartPrice).format('0,0')}</TableCell>
-        <TableCell align="center">{moment(props.tour.TourDate).format('jYYYY/jMM/jDD')}</TableCell>
-        <TableCell align="center">{moment(props.tour.TourReturnDate).format('jYYYY/jMM/jDD')}</TableCell>
+        <TableCell align="center">{moment(parseInt(props.tour.TourDate)).format('jYYYY/jMM/jDD')}</TableCell>
+        <TableCell align="center">{moment(parseInt(props.tour.TourReturnDate)).format('jYYYY/jMM/jDD')}</TableCell>
         <TableCell align="center">{props.tour.Duration}</TableCell>
         <TableCell align="center"><StatusRenderer status={props.tour.Status}/></TableCell>
         <TableCell align="center"><FeaturedStatusRenderer featured={props.tour.TourModelID}/></TableCell>

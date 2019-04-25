@@ -18,17 +18,21 @@ class AgencyProfile extends React.Component {
                 <HeaderChip label="اطلاعات آژانس" color="#0288d1" icon="account_balance"/>
                 <Divider/>
                 <br/>
-                <img className="agency-logo" alt={loggedInAgency.Name} src={`data:image/jpeg;base64,${loggedInAgency.Image}`}/>
+                <img className="agency-logo" alt={loggedInAgency.Name}
+                     src={`data:image/jpeg;base64,${loggedInAgency.Image}`}/>
                 <p><span className="bold">نام آژانس: </span>{loggedInAgency.Name}</p>
                 <p><span className="bold">شهر: </span><ItemRenderer id={loggedInAgency.CityID} type="city"/></p>
                 <p><span className="bold">آدرس: </span>{loggedInAgency.Address}</p>
                 <p><span className="bold">مالک: </span>{loggedInAgency.OwnerName} {loggedInAgency.OwnerFamilyName}</p>
                 <p><span className="bold">تلفن ها: </span></p>
-                {agencyPhoneNumbers.PhoneNumber1 ? <p>{agencyPhoneNumbers.PhoneNumber1}</p> : ''}
-                {agencyPhoneNumbers.PhoneNumber2 ? <p>{agencyPhoneNumbers.PhoneNumber2}</p> : ''}
-                {agencyPhoneNumbers.PhoneNumber3 ? <p>{agencyPhoneNumbers.PhoneNumber3}</p> : ''}
-                {agencyPhoneNumbers.PhoneNumber4 ? <p>{agencyPhoneNumbers.PhoneNumber4}</p> : ''}
-                {agencyPhoneNumbers.PhoneNumber5 ? <p>{agencyPhoneNumbers.PhoneNumber5}</p> : ''}
+                {agencyPhoneNumbers ?
+                    <div>{agencyPhoneNumbers.PhoneNumber1 ? <p>{agencyPhoneNumbers.PhoneNumber1}</p> : ''}
+                        {agencyPhoneNumbers.PhoneNumber2 ? <p>{agencyPhoneNumbers.PhoneNumber2}</p> : ''}
+                        {agencyPhoneNumbers.PhoneNumber3 ? <p>{agencyPhoneNumbers.PhoneNumber3}</p> : ''}
+                        {agencyPhoneNumbers.PhoneNumber4 ? <p>{agencyPhoneNumbers.PhoneNumber4}</p> : ''}
+                        {agencyPhoneNumbers.PhoneNumber5 ? <p>{agencyPhoneNumbers.PhoneNumber5}</p> : ''}</div> :
+                    ''}
+
                 <p><span
                     className="bold">تاریخ تاسیس: </span>{moment.unix(loggedInAgency.EstabilishedDate).format('jDD jMMMM jYYYY')}
                 </p>
