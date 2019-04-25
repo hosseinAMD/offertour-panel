@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import HeaderChip from "./HeaderChip";
 import {loggedInAgency} from "../config/config";
 import ItemRenderer from "./ItemRenderer";
+import {NavLink} from "react-router-dom";
 
 class AgencyProfile extends React.Component{
     render() {
@@ -25,7 +26,7 @@ class AgencyProfile extends React.Component{
                 <p><span className="bold">تلفن همراه: </span>{agency.mobile}</p>
                 <p><span className="bold">تاریخ تاسیس: </span>{moment.unix(loggedInAgency.EstabilishedDate).format('jDD jMMMM jYYYY')}</p>
                 <p><Rate rate={agency.rate}/></p>
-                <Button variant="contained" color="primary" className="edit-button">ویرایش</Button>
+                <Button component={NavLink} to="/phone-numbers" variant="contained" color="primary" className="edit-button">مدیریت تلفن ها</Button>
             </Paper>
         );
     }
