@@ -10,7 +10,6 @@ const ActivePlanItem = (props) => {
     const startDate = moment(parseFloat(props.plan.StartDateTime));
     const ExpireDateTime = moment(parseFloat(props.plan.ExpireDateTime));
     const duration = moment.duration(ExpireDateTime.diff(startDate)).as('days');
-    console.log(duration);
     return (
         <TableRow>
             <TableCell align="center"><ItemRenderer type="plan" id={props.plan.PlanID}/></TableCell>
