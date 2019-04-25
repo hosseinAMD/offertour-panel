@@ -70,6 +70,10 @@ class TourForm extends React.Component {
             busClass: '',
             hotelName: '',
             hotelStarts: '',
+            hotelCategory: '',
+            hotelCountry: '',
+            hotelProvince: '',
+            hotelCity: '',
             hotelMenu: '',
             hotelDescription: '',
             singleBed: '',
@@ -177,6 +181,27 @@ class TourForm extends React.Component {
     };
 
     handleAddHotel = () => {
+        let hotelFields = new FormData();
+        hotelFields.append('TourID', this.state.id);
+        hotelFields.append('HotelName', this.state.hotelName);
+        hotelFields.append('HotelStar', this.state.hotelStarts);
+        hotelFields.append('HotelCityID', this.state.hotelCity);
+        if (this.state.hotelMenu === 1) {
+            hotelFields.append('BreakFastService', '1');
+            hotelFields.append('LunchService', '0');
+            hotelFields.append('DinnerService', '0');
+        } else {
+            hotelFields.append('BreakFastService', '1');
+            hotelFields.append('LunchService', '1');
+            hotelFields.append('DinnerService', '1');
+        }
+        hotelFields.append('PriceOF4BedStead', '#');
+        hotelFields.append('PriceOF3BedStead', '#');
+        hotelFields.append('PriceOF2BedStead', this.state.multiBed);
+        hotelFields.append('PriceOF1BedStead', this.state.singleBed);
+        hotelFields.append('PriceOFChildWithBedStead', this.state.babyWithBed);
+        hotelFields.append('PriceOfChildWithOutBedStead', this.state.babyNoBed);
+        hotelFields.append('Description', this.state.hotelDescription);
         const hotels = this.state.hotels;
         hotels.push({
             hotelName: this.state.hotelName,
@@ -1261,6 +1286,118 @@ class TourForm extends React.Component {
                                 onChange={this.handleChange('hotelDescription')}
                                 margin="normal"
                             />
+                        </div>
+                        <div className="sub-form">
+                            <TextField
+                                id="hotelCategory"
+                                select
+                                label="دسته بندی"
+                                value={this.state.hotelCategory}
+                                onChange={this.handleChange('hotelCategory')}
+                                InputLabelProps={{className: 'input-labels'}}
+                                InputProps={{className: 'font-applied'}}
+                                FormHelperTextProps={{className: 'font-applied'}}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: 'font-applied',
+                                    },
+                                }}
+                                helperText="لطفا دسته بندی هتل را انتخاب نمایید."
+                                margin="normal"
+                            >
+                                {this.props.categories.map(option => (
+                                    <MenuItem key={option.Id} value={option.Id}>
+                                        {option.Name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                id="hotelCountry"
+                                select
+                                label="کشور"
+                                value={this.state.hotelCountry}
+                                onChange={this.handleChange('hotelCountry')}
+                                InputLabelProps={{className: 'input-labels'}}
+                                InputProps={{className: 'font-applied'}}
+                                FormHelperTextProps={{className: 'font-applied'}}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: 'font-applied',
+                                    },
+                                }}
+                                helperText="لطفا کشور هتل را انتخاب نمایید."
+                                margin="normal"
+                            >
+                                {this.props.countries.map((option) => {
+                                    if (option.CategoryID === this.state.hotelCategory) {
+                                        return (
+                                            <MenuItem key={option.Id} value={option.Id}>
+                                                {option.Name}
+                                            </MenuItem>
+                                        );
+                                    } else {
+                                        return ''
+                                    }
+                                })}
+                            </TextField>
+                            <TextField
+                                id="hotelProvince"
+                                select
+                                label="استان"
+                                value={this.state.hotelProvince}
+                                onChange={this.handleChange('hotelProvince')}
+                                InputLabelProps={{className: 'input-labels'}}
+                                InputProps={{className: 'font-applied'}}
+                                FormHelperTextProps={{className: 'font-applied'}}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: 'font-applied',
+                                    }
+                                }}
+                                helperText="لطفا استان هتل را انتخاب نمایید."
+                                margin="normal"
+                            >
+                                {this.props.provinces.map((option) => {
+                                    if (option.CountryID === this.state.hotelCountry) {
+                                        return (
+                                            <MenuItem key={option.Id} value={option.Id}>
+                                                {option.Name}
+                                            </MenuItem>
+                                        );
+                                    } else {
+                                        return ''
+                                    }
+                                })}
+                            </TextField>
+                            <TextField
+                                id="hotelCity"
+                                select
+                                label="شهر"
+                                value={this.state.hotelCity}
+                                onChange={this.handleChange('hotelCity')}
+                                InputLabelProps={{className: 'input-labels'}}
+                                InputProps={{className: 'font-applied'}}
+                                FormHelperTextProps={{className: 'font-applied'}}
+                                SelectProps={{
+                                    MenuProps: {
+                                        className: 'font-applied',
+                                    }
+                                }}
+                                helperText="لطفا شهر هتل را انتخاب نمایید."
+                                margin="normal"
+                            >
+                                {this.props.cities.map((option) => {
+                                    if (option.ProvinceID === this.state.hotelProvince) {
+                                        return (
+                                            <MenuItem key={option.Id} value={option.Id}>
+                                                {option.Name}
+                                            </MenuItem>
+                                        );
+                                    } else {
+                                        return ''
+                                    }
+                                })}
+                            </TextField>
                         </div>
                         <div className="sub-form">
                             <TextField
