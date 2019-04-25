@@ -30,74 +30,74 @@ class TripItem extends React.Component {
     render() {
         return (
             <TableRow>
-                <TableCell align="center">{this.props.trip.tripType === 1 ? <Icon className="trip-icon">flight</Icon> :
+                <TableCell align="center">{this.props.trip.StepTypeID === 1 ? <Icon className="trip-icon">flight</Icon> :
                     <Icon className="trip-icon">directions_bus</Icon>}</TableCell>
-                <TableCell align="center">{this.props.trip.tripTitle}</TableCell>
-                <TableCell align="center">{<ItemRenderer id={this.props.trip.startCity} type="city"/>}</TableCell>
-                <TableCell align="center">{<ItemRenderer id={this.props.trip.destinationCity} type="city"/>}</TableCell>
-                <TableCell align="center">{this.props.trip.tripDay}</TableCell>
-                <TableCell align="center">{this.props.trip.tripTime}</TableCell>
-                <TableCell align="center">
-                    <Fab onClick={this.handleClickOpen} color="secondary" aria-label="Edit">
-                        <Icon>search</Icon>
-                    </Fab>
-                </TableCell>
-                <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    className="right-dir font-applied"
-                >
-                    <DialogTitle id="alert-dialog-title">مشاهده جزئیات سفر</DialogTitle>
-                    <DialogContent>
-                        {this.props.trip.tripType === 1 ?
-                            <div>
-                                <p><span className="bold">نوع سفر: </span>هوایی</p>
-                                <p><span className="bold">عنوان سفر: </span>{this.props.trip.tripTitle}</p>
-                                <p><span className="bold">زمان سفر: </span>{this.props.trip.tripDay}</p>
-                                <p><span className="bold">مدت سفر: </span>{this.props.trip.tripTime}</p>
-                                <p><span className="bold">مبدا سفر: </span>کشور <ItemRenderer
-                                    id={this.props.trip.startCountry} type="country"/> شهر <ItemRenderer
-                                    id={this.props.trip.startCity} type="city"/> فرودگاه <ItemRenderer
-                                    id={this.props.trip.startAirport} type="airport"/></p>
-                                <p><span className="bold">مقصد سفر: </span>کشور <ItemRenderer
-                                    id={this.props.trip.destinationCountry} type="country"/> شهر <ItemRenderer
-                                    id={this.props.trip.destinationCity} type="city"/> فرودگاه <ItemRenderer
-                                    id={this.props.trip.destinationAirport} type="airport"/></p>
-                                <p><span className="bold">آژانس هواپیمایی: </span><ItemRenderer
-                                    id={this.props.trip.tripFlightCompany} type="flightCompany"/></p>
-                                <p><span className="bold">کلاس پرواز: </span><ItemRenderer
-                                    id={this.props.trip.flightClass} type="flightClass"/></p>
-                            </div>
-                            :
-                            <div>
-                                <p><span className="bold">نوع سفر: </span>زمینی</p>
-                                <p><span className="bold">عنوان سفر: </span>{this.props.trip.tripTitle}</p>
-                                <p><span className="bold">زمان سفر: </span>{this.props.trip.tripDay}</p>
-                                <p><span className="bold">مدت سفر: </span>{this.props.trip.tripTime}</p>
-                                <p><span className="bold">مبدا سفر: </span>کشور <ItemRenderer
-                                    id={this.props.trip.startCountry} type="country"/> شهر <ItemRenderer
-                                    id={this.props.trip.startCity} type="city"/> ترمینال <ItemRenderer
-                                    id={this.props.trip.startTerminal} type="busTerminal"/></p>
-                                <p><span className="bold">مقصد سفر: </span>کشور <ItemRenderer
-                                    id={this.props.trip.destinationCountry} type="country"/> شهر <ItemRenderer
-                                    id={this.props.trip.destinationCity} type="city"/> ترمینال <ItemRenderer
-                                    id={this.props.trip.destinationTerminal} type="busTerminal"/></p>
-                                <p><span className="bold">تعاونی مسافربری: </span><ItemRenderer
-                                    id={this.props.trip.tripBusCompany} type="busCompany"/></p>
-                                <p><span className="bold">کلاس اتوبوس: </span><ItemRenderer
-                                    id={this.props.trip.busClass} type="busClass"/></p>
-                            </div>
+                <TableCell align="center">{this.props.trip.Title}</TableCell>
+                <TableCell align="center">{<ItemRenderer id={this.props.trip.OriginCityID} type="city"/>}</TableCell>
+                <TableCell align="center">{<ItemRenderer id={this.props.trip.DestinationCityID} type="city"/>}</TableCell>
+                <TableCell align="center">{this.props.trip.StepDateTime}</TableCell>
+                <TableCell align="center">{this.props.trip.StepDuration}</TableCell>
+                {/*<TableCell align="center">*/}
+                    {/*<Fab onClick={this.handleClickOpen} color="secondary" aria-label="Edit">*/}
+                        {/*<Icon>search</Icon>*/}
+                    {/*</Fab>*/}
+                {/*</TableCell>*/}
+                {/*<Dialog*/}
+                    {/*open={this.state.open}*/}
+                    {/*onClose={this.handleClose}*/}
+                    {/*aria-labelledby="alert-dialog-title"*/}
+                    {/*aria-describedby="alert-dialog-description"*/}
+                    {/*className="right-dir font-applied"*/}
+                {/*>*/}
+                    {/*<DialogTitle id="alert-dialog-title">مشاهده جزئیات سفر</DialogTitle>*/}
+                    {/*<DialogContent>*/}
+                        {/*{this.props.trip.tripType === 1 ?*/}
+                            {/*<div>*/}
+                                {/*<p><span className="bold">نوع سفر: </span>هوایی</p>*/}
+                                {/*<p><span className="bold">عنوان سفر: </span>{this.props.trip.tripTitle}</p>*/}
+                                {/*<p><span className="bold">زمان سفر: </span>{this.props.trip.tripDay}</p>*/}
+                                {/*<p><span className="bold">مدت سفر: </span>{this.props.trip.tripTime}</p>*/}
+                                {/*<p><span className="bold">مبدا سفر: </span>کشور <ItemRenderer*/}
+                                    {/*id={this.props.trip.startCountry} type="country"/> شهر <ItemRenderer*/}
+                                    {/*id={this.props.trip.startCity} type="city"/> فرودگاه <ItemRenderer*/}
+                                    {/*id={this.props.trip.startAirport} type="airport"/></p>*/}
+                                {/*<p><span className="bold">مقصد سفر: </span>کشور <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationCountry} type="country"/> شهر <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationCity} type="city"/> فرودگاه <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationAirport} type="airport"/></p>*/}
+                                {/*<p><span className="bold">آژانس هواپیمایی: </span><ItemRenderer*/}
+                                    {/*id={this.props.trip.tripFlightCompany} type="flightCompany"/></p>*/}
+                                {/*<p><span className="bold">کلاس پرواز: </span><ItemRenderer*/}
+                                    {/*id={this.props.trip.flightClass} type="flightClass"/></p>*/}
+                            {/*</div>*/}
+                            {/*:*/}
+                            {/*<div>*/}
+                                {/*<p><span className="bold">نوع سفر: </span>زمینی</p>*/}
+                                {/*<p><span className="bold">عنوان سفر: </span>{this.props.trip.tripTitle}</p>*/}
+                                {/*<p><span className="bold">زمان سفر: </span>{this.props.trip.tripDay}</p>*/}
+                                {/*<p><span className="bold">مدت سفر: </span>{this.props.trip.tripTime}</p>*/}
+                                {/*<p><span className="bold">مبدا سفر: </span>کشور <ItemRenderer*/}
+                                    {/*id={this.props.trip.startCountry} type="country"/> شهر <ItemRenderer*/}
+                                    {/*id={this.props.trip.startCity} type="city"/> ترمینال <ItemRenderer*/}
+                                    {/*id={this.props.trip.startTerminal} type="busTerminal"/></p>*/}
+                                {/*<p><span className="bold">مقصد سفر: </span>کشور <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationCountry} type="country"/> شهر <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationCity} type="city"/> ترمینال <ItemRenderer*/}
+                                    {/*id={this.props.trip.destinationTerminal} type="busTerminal"/></p>*/}
+                                {/*<p><span className="bold">تعاونی مسافربری: </span><ItemRenderer*/}
+                                    {/*id={this.props.trip.tripBusCompany} type="busCompany"/></p>*/}
+                                {/*<p><span className="bold">کلاس اتوبوس: </span><ItemRenderer*/}
+                                    {/*id={this.props.trip.busClass} type="busClass"/></p>*/}
+                            {/*</div>*/}
 
-                        }
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="primary" autoFocus>
-                            بستن
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+                        {/*}*/}
+                    {/*</DialogContent>*/}
+                    {/*<DialogActions>*/}
+                        {/*<Button onClick={this.handleClose} color="primary" autoFocus>*/}
+                            {/*بستن*/}
+                        {/*</Button>*/}
+                    {/*</DialogActions>*/}
+                {/*</Dialog>*/}
             </TableRow>
         );
     }

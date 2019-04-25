@@ -43,8 +43,8 @@ class TourDetail extends React.Component {
                             <Tab classes={{label: 'font-applied'}} icon={<Icon>help</Icon>} label="جزئیات تور"/>
                         </Tabs>
                         {this.state.value === 0 ? <TourInfo tour={tour}/> : ''}
-                        {this.state.value === 1 ? <TourTimeline trips={tour.Id}/> : ''}
-                        {this.state.value === 2 ? <TourHotels hotels={tour.Id}/> : ''}
+                        {this.state.value === 1 ? <TourTimeline id={tour.Id}/> : ''}
+                        {this.state.value === 2 ? <TourHotels id={tour.Id}/> : ''}
                         {this.state.value === 3 ? <TourDesc tour={tour}/> : ''}
                     </Paper>
                 </Grid>

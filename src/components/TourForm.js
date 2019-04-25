@@ -33,8 +33,8 @@ class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 2,
-            id: 16,
+            activeStep: 0,
+            id: '',
             title: '',
             category: '',
             country: '',
