@@ -92,6 +92,11 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #1976d2 !important;
 }
 
+.reject-button {
+    font-family: IRANSans !important;
+    margin-left: 5px!important;
+}
+
 .user-image {
     width: 100px;
     height: 100px;
@@ -355,53 +360,60 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 15px;
 }
 
-.step-label{
-    margin-right: 5px!important;
+.step-label {
+    margin-right: 5px !important;
 }
 
-.settings-fab{
+.settings-fab {
     background-color: white !important;
     color: #0288d1 !important;
-    width:70% !important;
+    width: 70% !important;
 }
 
 
-.settings-fab:hover{
-    background-color: #0288d1  !important;
+.settings-fab:hover {
+    background-color: #0288d1 !important;
     color: white !important;
-    width:70% !important;
+    width: 70% !important;
     transition: 500ms;
 }
 
-.ads-fab{
+.ads-fab {
     background-color: white !important;
     color: #512da8 !important;
-    width:70% !important;
+    width: 70% !important;
 }
 
-.ads-fab:hover{
-    background-color: #512da8  !important;
+.ads-fab:hover {
+    background-color: #512da8 !important;
     color: white !important;
-    width:70% !important;
+    width: 70% !important;
     transition: 500ms;
 }
-.settings-fab-wrapper{
+
+.settings-fab-wrapper {
     margin-top: 15px;
 }
 
-.add-form{
+.add-form {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
 }
 
-.field-margin{
-    margin-top: 15px!important;
+.field-margin {
+    margin-top: 15px !important;
     width: 60%;
 }
 
-.add-user-buttons{
+.add-user-buttons {
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
+}
+
+.tour-handlers{
+    position: absolute;
+    left: 30px;
+    bottom: 10px;
 }
