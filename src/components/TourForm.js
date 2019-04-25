@@ -33,8 +33,8 @@ class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0,
-            id: '',
+            activeStep: 2,
+            id: 16,
             title: '',
             category: '',
             country: '',
@@ -150,20 +150,35 @@ class TourForm extends React.Component {
     };
 
     handleAddTrip = () => {
-        let tripFields = {
-            TourID: this.state.id,
-            StepTypeID: this.state.tripType,
-            Title: this.state.tripTitle,
-            OriginCityID: this.state.startCity,
-            DestinationCityID: this.state.destinationCity,
-            StepDateTime: this.state.tripDay,
-            StepDuration: this.state.tripTime,
-            OriginAirport: this.state.startAirport,
-            OriginTerminalID: this.state.startTerminal,
-            DestinationAirportID: this.state.destinationAirport,
-            DestinationTerminalID: this.state.destinationTerminal,
-            ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
-        };
+        let tripFields = {};
+        if(this.state.tripType === 1){
+            tripFields = {
+                TourID: this.state.id,
+                StepTypeID: this.state.tripType,
+                Title: this.state.tripTitle,
+                OriginCityID: this.state.startCity,
+                DestinationCityID: this.state.destinationCity,
+                StepDateTime: this.state.tripDay,
+                StepDuration: this.state.tripTime,
+                OriginAirportID: this.state.startAirport,
+                DestinationAirportID: this.state.destinationAirport,
+                ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
+            };
+        } else {
+            tripFields = {
+                TourID: this.state.id,
+                StepTypeID: this.state.tripType,
+                Title: this.state.tripTitle,
+                OriginCityID: this.state.startCity,
+                DestinationCityID: this.state.destinationCity,
+                StepDateTime: this.state.tripDay,
+                StepDuration: this.state.tripTime,
+                OriginTerminalID: this.state.startTerminal,
+                DestinationTerminalID: this.state.destinationTerminal,
+                ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
+            };
+        }
+
         axios.post(baseUrl + '/Agency/TourStep', JSON.stringify(tripFields), {
             headers: {
                 'Content-Type': 'application/json',
