@@ -41,7 +41,7 @@ class AllUsers extends React.Component {
                                 <div className="add-user-buttons">
                                     <Button component={NavLink} to="/add-agency" variant="contained"
                                             color="primary" className="edit-button">افزودن آژانس</Button>
-                                    <Button component={NavLink} to="/add-agency" variant="contained"
+                                    <Button component={NavLink} to="/add-manager" variant="contained"
                                             color="primary" className="edit-button">افزودن مدیر آژانس</Button>
                                     <Button component={NavLink} to="/add-support-admin" variant="contained"
                                             color="primary" className="edit-button">افزودن پشتیبان</Button>
