@@ -45,7 +45,6 @@ class PlanForm extends React.Component {
             Price: `${this.state.Price}`,
             FeaturedTour: `${this.state.FeaturedTour}`,
             NormalTour: `${this.state.NormalTour}`,
-            Duration: `${this.state.Duration}`,
             DiscountStatus: this.state.DiscountStatus ? `1` : `0`,
             PriceAfterDiscount: `${this.state.PriceAfterDiscount}`
         });
@@ -106,18 +105,6 @@ class PlanForm extends React.Component {
 
                 </div>
                 <div className="sub-form">
-                    <TextField
-                        id="Duration"
-                        label="مدت"
-                        InputLabelProps={{className: 'input-labels'}}
-                        InputProps={{className: 'font-applied'}}
-                        FormHelperTextProps={{className: 'font-applied'}}
-                        helperText="مدت زمان فعال بودن پلن بر اساس ماه"
-                        value={this.state.Duration}
-                        onChange={this.handleChange('Duration')}
-                        margin="normal"
-                        variant="filled"
-                    />
                     <FormControlLabel
                         control={
                             <Switch
