@@ -48,7 +48,7 @@ class ToursList extends React.Component {
                                 </TableHead>
                                 <TableBody>
                                     {this.state.tours.map((tour) => (
-                                        <TourItem key={tour.id} tour={tour}/>
+                                        <TourItem key={tour.Id} tour={tour}/>
                                     ))}
                                 </TableBody>
                             </Table>
