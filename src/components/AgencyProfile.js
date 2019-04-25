@@ -6,7 +6,7 @@ import Rate from "./Rate";
 import moment from 'moment-jalaali';
 import Button from "@material-ui/core/Button";
 import HeaderChip from "./HeaderChip";
-import {loggedInAgency} from "../config/config";
+import {loggedInAgency, loggedInUser} from "../config/config";
 import ItemRenderer from "./ItemRenderer";
 import {NavLink} from "react-router-dom";
 import {agencyPhoneNumbers} from "../config/config";
@@ -18,7 +18,7 @@ class AgencyProfile extends React.Component {
                 <HeaderChip label="اطلاعات آژانس" color="#0288d1" icon="account_balance"/>
                 <Divider/>
                 <br/>
-                <img className="agency-logo" alt={loggedInAgency.Name} src={agency.logo}/>
+                <img className="agency-logo" alt={loggedInAgency.Name} src={`data:image/jpeg;base64,${loggedInAgency.Image}`}/>
                 <p><span className="bold">نام آژانس: </span>{loggedInAgency.Name}</p>
                 <p><span className="bold">شهر: </span><ItemRenderer id={loggedInAgency.CityID} type="city"/></p>
                 <p><span className="bold">آدرس: </span>{loggedInAgency.Address}</p>
