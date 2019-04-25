@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import NavItems from "./NavItems";
 import NavbarUserPanel from "./NavbarUserPanel";
 import NavbarTimeDate from "./NavbarTimeDate";
-
+import {loggedInAgency} from "../config/config";
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
                             <Icon>menu</Icon>
                         </IconButton>
                         <Typography variant="h6" color="inherit" className="grow font-applied">
-                            آفرتور - پنل کاربری آمیتیس سفر ایرانیان
+                            آفرتور - پنل کاربری {loggedInAgency.Name}
                         </Typography>
                         <NavbarTimeDate/>
                         <NavbarUserPanel/>

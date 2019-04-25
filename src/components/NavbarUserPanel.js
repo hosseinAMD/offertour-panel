@@ -33,7 +33,7 @@ class NavbarUserPanel extends React.Component {
         const {open} = this.state;
         return (
             <div className="user-panel">
-                <Avatar alt="Remy Sharp" src={user.image}/>
+                <Avatar alt="Remy Sharp" src={`data:image/jpeg;base64,${loggedInUser.Image}`}/>
                 <Button className="font-applied" color="inherit" buttonRef={node => {
                     this.anchorEl = node;
                 }}

@@ -6,15 +6,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 import user from '../data/user';
-import {role,loggedInUser} from "../config/config";
+import {role, loggedInUser} from "../config/config";
 
 const NavItems = () => {
-    if(role==='support'){
-        return(
+    if (role === 'support') {
+        return (
             <div className="right-dir">
                 <List>
                     <div className="nav-user-info">
-                        <img className="user-image" src={user.image} alt="user"/>
+                        <img className="user-image" alt={loggedInUser.UserName}
+                             src={`data:image/jpeg;base64,${loggedInUser.Image}`}/>
                         <h5 className="font-applied">{loggedInUser.Name} {loggedInUser.FamilyName}</h5>
                     </div>
                     <ListItem button component={NavLink} to="/">
@@ -53,11 +54,12 @@ const NavItems = () => {
             </div>
         );
     } else {
-        return(
+        return (
             <div className="right-dir">
                 <List>
                     <div className="nav-user-info">
-                        <img className="user-image" src={user.image} alt="user"/>
+                        <img className="user-image" alt={loggedInUser.UserName}
+                             src={`data:image/jpeg;base64,${loggedInUser.Image}`}/>
                         <h5 className="font-applied">{loggedInUser.Name} {loggedInUser.FamilyName}</h5>
                     </div>
                     <ListItem button component={NavLink} to="/">
