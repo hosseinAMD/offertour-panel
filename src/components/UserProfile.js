@@ -24,7 +24,7 @@ class UserProfile extends React.Component {
                     className="bold">تاریخ تولد: </span>{moment.unix(loggedInUser.BirthDate).format('jDD jMMMM jYYYY')}
                 </p>
                 <p><span
-                    className="bold">تاریخ ثبت نام: </span>{role === 'support' ? moment.unix(loggedInUser.RegistartionDate).format('jDD jMMMM jYYYY') : moment.unix(loggedInUser.RegistrationDate).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ ثبت نام: </span>{moment.unix(loggedInUser.RegistrationDate).format('jDD jMMMM jYYYY')}
                 </p>
                 {role === 'support' ? '' :
                     <Button component={NavLink} to="/edit-agency-user" variant="contained" color="primary"
