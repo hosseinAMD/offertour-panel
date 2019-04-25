@@ -10,15 +10,15 @@ const TourDesc = (props) => (
             <TableBody>
                 <TableRow>
                     <TableCell align="center"><span className="bold">مدارک لازم</span></TableCell>
-                    <TableCell align="center">{props.tour.documents}</TableCell>
+                    <TableCell align="center">{props.tour.NecessaryDocument}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell align="center"><span className="bold">خدمات تور</span></TableCell>
-                    <TableCell align="center">{props.tour.services}</TableCell>
+                    <TableCell align="center">{props.tour.AgancyServices}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableCell align="center"><span className="bold">توضیحات</span></TableCell>
-                    <TableCell align="center">{props.tour.fullDescription}</TableCell>
+                    <TableCell align="center">{props.tour.Description}</TableCell>
                 </TableRow>
             </TableBody>
         </Table>
