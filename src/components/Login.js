@@ -35,8 +35,26 @@ class Login extends React.Component {
                 }
             }
         ).then(res => {
-            localStorage.setItem('user',JSON.stringify(res.data));
-            localStorage.setItem('role','agency');
+            localStorage.setItem('user', JSON.stringify(res.data));
+            localStorage.setItem('role', 'agency');
+            window.location.assign('/');
+        }).catch(err => console.log(err))
+    };
+
+    handleSupportLogin = () => {
+        const username = this.state.username;
+        const password = this.state.password;
+        axios.post(`${baseUrl}/Admin/Login`, JSON.stringify({
+                UserName: username,
+                Password: password
+            }), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).then(res => {
+            localStorage.setItem('user', JSON.stringify(res.data));
+            localStorage.setItem('role', 'support');
             window.location.assign('/');
         }).catch(err => console.log(err))
     };
@@ -83,6 +101,11 @@ class Login extends React.Component {
                         <Button onClick={this.handleLogin} variant="contained" color="secondary"
                                 className="font-applied">
                             ورود به پنل کاربری
+                        </Button>
+                        <Button onClick={this.handleSupportLogin} style={{marginTop: '3px'}} variant="contained"
+                                color="primary"
+                                className="font-applied">
+                            ورود به پنل پشتیبانی
                         </Button>
                     </Paper>
                 </div>

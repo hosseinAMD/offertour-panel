@@ -20,7 +20,6 @@ import LastCommentsAndRates from "./components/LastCommentsAndRates";
 import AgencyUsers from "./components/AgencyUsers";
 import AddAgencyUser from './components/AddAgencyUser';
 import EditAgencyUser from "./components/EditAgencyUser";
-import SupportLogin from "./components/SupportLogin";
 import EditPlan from "./components/EditPlan";
 import AddSupportAdmin from "./components/AddSupportAdmin";
 import AllUsers from "./components/AllUsers";
@@ -31,7 +30,7 @@ import AddManager from "./components/AddManager";
 class App extends Component {
     render() {
         const isLoggedIn = true;
-        if(isLoggedIn){
+        if (isLoggedIn) {
             return (
                 <BrowserRouter>
                     <div>
@@ -45,7 +44,6 @@ class App extends Component {
                             <Route path="/tours-list" component={ToursList}/>
                             <Route path="/tour/:id" component={TourDetail}/>
                             <Route path="/login" component={Login}/>
-                            <Route path="/support-login" component={SupportLogin}/>
                             <Route path="/settings" component={PanelSettings}/>
                             <Route path="/country-setting" component={CountriesSetting}/>
                             <Route path="/province-setting" component={ProvincesSetting}/>
