@@ -17,7 +17,7 @@ import TourDesc from "./TourDesc";
 import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import axios from 'axios';
-import baseUrl, {token} from "../config/config";
+import baseUrl, {token, role} from "../config/config";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -83,12 +83,12 @@ class TourDetail extends React.Component {
                         {this.state.value === 1 ? <TourTimeline id={tour.Id}/> : ''}
                         {this.state.value === 2 ? <TourHotels id={tour.Id}/> : ''}
                         {this.state.value === 3 ? <TourDesc tour={tour}/> : ''}
-                        <div className="tour-handlers">
+                        {role === 'support' ? <div className="tour-handlers">
                             <Button onClick={this.handleAccept} variant="contained" color="primary"
                                     className="edit-button">تایید تور</Button>
                             <Button onClick={this.handleReject} variant="contained" color="secondary"
                                     className="reject-button">حذف تور</Button>
-                        </div>
+                        </div> : ''}
                         <Dialog
                             open={this.state.openReject}
                             onClose={this.handleClose}
