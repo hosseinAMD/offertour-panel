@@ -9,28 +9,55 @@ import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
 import bills from '../data/bills';
 import RecentBillItem from "./RecentBillItem";
+import axios from 'axios';
+import baseUrl, {token} from "../config/config";
+import Loading from "./Loading";
 
-const RecentBills = () => (
-    <Paper elevation={1} className="right-dir plan-paper">
-        <HeaderChip label='آخرین فاکتورها' color='#0288d1' icon='attach_money'/>
-        <Divider/>
-        <Table className="font-applied">
-            <TableHead>
-                <TableRow>
-                    <TableCell align="center">محصول</TableCell>
-                    <TableCell align="center">قیمت</TableCell>
-                    <TableCell align="center">تاریخ</TableCell>
-                    <TableCell align="center">وضعیت</TableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {bills.map((bill) => (
-                    <RecentBillItem key={bill.id} bill={bill}/>
-                ))}
-            </TableBody>
+class RecentBills extends React.Component {
+    state = {
+        plans: '',
+        isLoaded: false
+    };
 
-        </Table>
-    </Paper>
-);
+    componentDidMount() {
+        axios.get(baseUrl + '/Agency/ActivePlan', {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        })
+            .then(res => this.setState(() => ({plans: res.data, isLoaded: true})));
+    }
+
+
+    render() {
+        if (this.state.isLoaded) {
+            return (
+                <Paper elevation={1} className="right-dir plan-paper">
+                    <HeaderChip label='آخرین فاکتورها' color='#0288d1' icon='attach_money'/>
+                    <Divider/>
+                    <Table className="font-applied">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">محصول</TableCell>
+                                <TableCell align="center">وضعیت</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.state.plans.map((bill,index) => (
+                                index < 6 ? <RecentBillItem key={bill.Id} bill={bill}/> : ''
+                            ))}
+                        </TableBody>
+
+                    </Table>
+                </Paper>
+            );
+        } else {
+            return (<Loading/>);
+        }
+
+    }
+}
+
 
 export default RecentBills;

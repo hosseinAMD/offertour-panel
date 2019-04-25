@@ -7,9 +7,9 @@ import busClasses from "../data/busClasses";
 import foodTypes from "../data/foodTypes";
 import busCompanies from "../data/busCompanies";
 import tours from '../data/tours';
-import plans from '../data/plans';
 import {connect} from "react-redux";
 
+const plans = JSON.parse(localStorage.getItem('plans'));
 
 const ItemRenderer = (props) => {
     let item = '';
@@ -169,8 +169,8 @@ const ItemRenderer = (props) => {
         case
         'plan':
             item = plans.find((item) => {
-                if (item.id === props.id) {
-                    return item.title;
+                if (item.Id === props.id) {
+                    return item.Title;
                 } else {
                     return undefined;
                 }
@@ -198,6 +198,7 @@ const ItemRenderer = (props) => {
             :
             <span>{item ? <span>{item.Name}</span> : 'نامشخص'}</span>
         }
+            {props.type === 'plan' ? <span>{item.Title}</span> : ''}
         </span>
     );
 };
