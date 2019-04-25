@@ -1,11 +1,11 @@
 const busClasses = [
     {
         id:1,
-        title:'عادی'
+        title:'VIP'
     },
     {
         id:2,
-        title:'VIP'
+        title:'عادی'
     }
 ];
 
