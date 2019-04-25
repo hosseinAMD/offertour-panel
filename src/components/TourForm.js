@@ -26,7 +26,8 @@ import TripItem from "./TripItem";
 import HotelItem from "./HotelItem";
 import ItemRenderer from "./ItemRenderer";
 import {connect} from "react-redux";
-
+import axios from 'axios';
+import baseUrl, {token} from "../config/config";
 
 class TourForm extends React.Component {
     constructor(props) {
@@ -140,6 +141,12 @@ class TourForm extends React.Component {
         tourFields.append('DiscountPercentage', this.state.discountPercentage);
         tourFields.append('TourModelID', this.state.tourModel);
         tourFields.append('StartPrice', this.state.startPrice);
+        axios.post(baseUrl + '/Agency/Tour', tourFields, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': ''
+            }
+        });
     };
 
     handleAddTrip = () => {
@@ -156,28 +163,37 @@ class TourForm extends React.Component {
         tripFields.append('DestinationAirportID', this.state.destinationAirport);
         tripFields.append('DestinationTerminalID', this.state.destinationTerminal);
         this.state.tripType === 1 ? tripFields.append('ClassID', this.state.flightClass) : tripFields.append('ClassID', this.state.busClass);
-        const trips = this.state.trips;
-        trips.push({
-            tripType: this.state.tripType,
-            startCategory: this.state.startCategory,
-            startCountry: this.state.startCountry,
-            startCity: this.state.startCity,
-            destinationCategory: this.state.destinationCategory,
-            destinationCountry: this.state.destinationCountry,
-            destinationCity: this.state.destinationCity,
-            startAirport: this.state.startAirport,
-            destinationAirport: this.state.destinationAirport,
-            tripTime: this.state.tripTime,
-            tripTitle: this.state.tripTitle,
-            tripDay: this.state.tripDay,
-            tripFlightCompany: this.state.tripFlightCompany,
-            tripBusCompany: this.state.tripBusCompany,
-            flightClass: this.state.flightClass,
-            startTerminal: this.state.startTerminal,
-            destinationTerminal: this.state.destinationTerminal,
-            busClass: this.state.busClass,
+        axios.post(baseUrl + '/Agency/TourStep', tripFields, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => {
+            const trips = this.state.trips;
+            trips.push({
+                tripType: this.state.tripType,
+                startCategory: this.state.startCategory,
+                startCountry: this.state.startCountry,
+                startCity: this.state.startCity,
+                destinationCategory: this.state.destinationCategory,
+                destinationCountry: this.state.destinationCountry,
+                destinationCity: this.state.destinationCity,
+                startAirport: this.state.startAirport,
+                destinationAirport: this.state.destinationAirport,
+                tripTime: this.state.tripTime,
+                tripTitle: this.state.tripTitle,
+                tripDay: this.state.tripDay,
+                tripFlightCompany: this.state.tripFlightCompany,
+                tripBusCompany: this.state.tripBusCompany,
+                flightClass: this.state.flightClass,
+                startTerminal: this.state.startTerminal,
+                destinationTerminal: this.state.destinationTerminal,
+                busClass: this.state.busClass,
+            });
+            this.setState(() => ({trips}));
+        }).catch(err => {
+            alert(err);
         });
-        this.setState(() => ({trips}));
     };
 
     handleAddHotel = () => {
@@ -202,18 +218,27 @@ class TourForm extends React.Component {
         hotelFields.append('PriceOFChildWithBedStead', this.state.babyWithBed);
         hotelFields.append('PriceOfChildWithOutBedStead', this.state.babyNoBed);
         hotelFields.append('Description', this.state.hotelDescription);
-        const hotels = this.state.hotels;
-        hotels.push({
-            hotelName: this.state.hotelName,
-            hotelStarts: this.state.hotelStarts,
-            hotelMenu: this.state.hotelMenu,
-            hotelDescription: this.state.hotelDescription,
-            singleBed: this.state.singleBed,
-            multiBed: this.state.multiBed,
-            babyWithBed: this.state.babyWithBed,
-            babyNoBed: this.state.babyNoBed,
+        axios.post(baseUrl + '/Agency/Hotel', hotelFields, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => {
+            const hotels = this.state.hotels;
+            hotels.push({
+                hotelName: this.state.hotelName,
+                hotelStarts: this.state.hotelStarts,
+                hotelMenu: this.state.hotelMenu,
+                hotelDescription: this.state.hotelDescription,
+                singleBed: this.state.singleBed,
+                multiBed: this.state.multiBed,
+                babyWithBed: this.state.babyWithBed,
+                babyNoBed: this.state.babyNoBed,
+            });
+            this.setState(() => ({hotels}));
+        }).catch(err => {
+            alert(err);
         });
-        this.setState(() => ({hotels}));
     };
 
 
@@ -1496,9 +1521,39 @@ class TourForm extends React.Component {
 
     handleNext = () => {
         const {activeStep} = this.state;
-        this.setState({
-            activeStep: activeStep + 1,
-        });
+        if (activeStep === 1) {
+            let tourFields = new FormData();
+            tourFields.append('Image', this.state.image);
+            tourFields.append('Title', this.state.title);
+            tourFields.append('TourDistance', 'Not set yet');
+            tourFields.append('TourCityID', this.state.city);
+            tourFields.append('TourDate', this.state.startDate);
+            tourFields.append('TourReturnDate', this.state.endDate);
+            tourFields.append('Duration', this.state.duration);
+            tourFields.append('TourTypeID', this.state.tourType);
+            tourFields.append('AgancyServices', this.state.services);
+            tourFields.append('Description', this.state.fullDescription);
+            tourFields.append('NecessaryDocument', this.state.documents);
+            tourFields.append('TagsInput', `${JSON.stringify(this.state.tags)}`);
+            tourFields.append('Discount', this.state.discount);
+            tourFields.append('DiscountPercentage', this.state.discountPercentage);
+            tourFields.append('TourModelID', this.state.tourModel);
+            tourFields.append('StartPrice', this.state.startPrice);
+            axios.post(baseUrl + '/Agency/Tour', tourFields, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            }).then(res => this.setState({
+                    activeStep: activeStep + 1,
+                })
+            ).catch(err => alert(err));
+        } else {
+            this.setState({
+                activeStep: activeStep + 1,
+            });
+        }
+
     };
 
     handleBack = () => {
