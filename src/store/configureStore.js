@@ -6,6 +6,7 @@ import cityReducer from "../reducers/cities";
 import airportReducer from "../reducers/airports";
 import terminalReducer from "../reducers/terminals";
 import agencyReducer from "../reducers/agencies";
+import tourReducer from "../reducers/tours";
 
 
 export default () => {
@@ -17,7 +18,8 @@ export default () => {
             cities: cityReducer,
             airports: airportReducer,
             terminals: terminalReducer,
-            agencies: agencyReducer
+            agencies: agencyReducer,
+            tours:tourReducer
         }),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );

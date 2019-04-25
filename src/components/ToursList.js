@@ -5,24 +5,31 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import tours from '../data/tours';
 import TourItem from "./TourItem";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
 import Loading from "./Loading";
+import {connect} from "react-redux";
+import {setTours} from "../actions/tours";
 
 class ToursList extends React.Component {
-    state = {
-        tours: [],
-        isLoaded: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            tours: [],
+            isLoaded: false
+        };
+    }
 
     componentDidMount() {
         axios.get(baseUrl + '/Agency/Tour', {
             headers: {
                 'token': token
             }
-        }).then(res => this.setState(() => ({tours: res.data, isLoaded: true})))
+        }).then(res => {
+            this.props.setTours(res.data);
+            this.setState(() => ({tours: res.data, isLoaded: true}));
+        })
             .catch(err => alert(err))
     }
 
@@ -57,7 +64,8 @@ class ToursList extends React.Component {
                 );
             } else {
                 return (
-                    <p className="font-applied center-txt right-dir">در حال حاضر تور فعالی موجود نمی باشد. در صورتی که توری ثبت کرده اید منتظر
+                    <p className="font-applied center-txt right-dir">در حال حاضر تور فعالی موجود نمی باشد. در صورتی که
+                        توری ثبت کرده اید منتظر
                         بمانید تا پشتیبان آفرتور تور شما را بررسی و تایید کند.</p>
                 );
             }
@@ -67,4 +75,8 @@ class ToursList extends React.Component {
     }
 }
 
-export default ToursList;
+const mapDispatchToProps = (dispatch) => ({
+    setTours: (tours) => dispatch(setTours(tours))
+});
+
+export default connect(undefined, mapDispatchToProps)(ToursList);
