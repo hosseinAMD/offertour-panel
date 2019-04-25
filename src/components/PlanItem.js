@@ -115,7 +115,7 @@ class PlanItem extends React.Component {
                             <Button onClick={this.handleSubmit} color="primary"
                                     className="font-applied accept-buy-button"
                                     autoFocus>
-                                تایید و انتقال به درگاه پرداخت
+                                تایید و ثبت درخواست
                             </Button>
                             <Button onClick={this.handleClose} color="primary" className="font-applied"
                                     autoFocus>
