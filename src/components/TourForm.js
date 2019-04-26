@@ -13,6 +13,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import FormControl from '@material-ui/core/FormControl';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
 import moment from 'moment-jalaali';
@@ -28,13 +33,14 @@ import ItemRenderer from "./ItemRenderer";
 import {connect} from "react-redux";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
+import Loading from "./Loading";
 
 class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0,
-            id: '',
+            activeStep: 2,
+            id: 29,
             title: '',
             category: '',
             country: '',
@@ -89,7 +95,9 @@ class TourForm extends React.Component {
             trips: [],
             hotels: [],
             tags: [],
-
+            openError: false,
+            openLoading: false,
+            openSuccess: false
         }
     };
 
@@ -105,6 +113,10 @@ class TourForm extends React.Component {
     endDateChange = (unix, formatted) => {
         const endDate = unix;
         this.setState(() => ({endDate}))
+    };
+
+    handleClose = () => {
+        this.setState({openError: false, openLoading: false, openSuccess: false});
     };
 
     addTag = () => {
@@ -151,7 +163,7 @@ class TourForm extends React.Component {
 
     handleAddTrip = () => {
         let tripFields = {};
-        if(this.state.tripType === 1){
+        if (this.state.tripType === 1) {
             tripFields = {
                 TourID: this.state.id,
                 StepTypeID: this.state.tripType,
@@ -162,6 +174,7 @@ class TourForm extends React.Component {
                 StepDuration: this.state.tripTime,
                 OriginAirportID: this.state.startAirport,
                 DestinationAirportID: this.state.destinationAirport,
+                FlightAgency: this.state.tripFlightCompany,
                 ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
             };
         } else {
@@ -173,6 +186,7 @@ class TourForm extends React.Component {
                 DestinationCityID: this.state.destinationCity,
                 StepDateTime: this.state.tripDay,
                 StepDuration: this.state.tripTime,
+                BusAgency: this.state.tripBusCompany,
                 OriginTerminalID: this.state.startTerminal,
                 DestinationTerminalID: this.state.destinationTerminal,
                 ClassID: this.state.tripType === 1 ? this.state.flightClass : this.state.busClass
@@ -206,9 +220,9 @@ class TourForm extends React.Component {
                 destinationTerminal: this.state.destinationTerminal,
                 busClass: this.state.busClass,
             });
-            this.setState(() => ({trips}));
+            this.setState(() => ({trips, openSuccess: true}));
         }).catch(err => {
-            alert(err);
+            this.setState(() => ({openError: true}));
         });
     };
 
@@ -246,9 +260,9 @@ class TourForm extends React.Component {
                 babyWithBed: this.state.babyWithBed,
                 babyNoBed: this.state.babyNoBed,
             });
-            this.setState(() => ({hotels}));
+            this.setState(() => ({hotels, openSuccess: true}));
         }).catch(err => {
-            alert(err);
+            this.setState(() => ({openError: true}));
         });
     };
 
@@ -894,9 +908,7 @@ class TourForm extends React.Component {
                                         ))}
                                     </TextField>
                                 </div>
-                                <Fab onClick={this.handleAddTrip} className="add-fab" color="primary" aria-label="Add">
-                                    <Icon>add</Icon>
-                                </Fab>
+
                             </div>
                             :
                             <div className="main-form">
@@ -1264,9 +1276,6 @@ class TourForm extends React.Component {
                                         ))}
                                     </TextField>
                                 </div>
-                                <Fab onClick={this.handleAddTrip} className="add-fab" color="primary" aria-label="Add">
-                                    <Icon>add</Icon>
-                                </Fab>
                             </div>
                         }
                     </div>
@@ -1533,6 +1542,7 @@ class TourForm extends React.Component {
     handleNext = () => {
         const {activeStep} = this.state;
         if (activeStep === 1) {
+            this.setState(() => ({openLoading: true}));
             let tourFields = new FormData();
             tourFields.append('Image', this.state.image);
             tourFields.append('Title', this.state.title);
@@ -1558,10 +1568,11 @@ class TourForm extends React.Component {
             }).then(res => {
                     this.setState({
                         activeStep: activeStep + 1,
-                        id: res.data.id
+                        id: res.data.id,
+                        openLoading: false
                     });
                 }
-            ).catch(err => alert(err));
+            ).catch(err => this.setState(() => ({openError: true})));
         } else {
             this.setState({
                 activeStep: activeStep + 1,
@@ -1583,6 +1594,62 @@ class TourForm extends React.Component {
             <div>
                 <Paper elevation={1} className="tour-form-paper">
                     <div className="right-dir">
+                        {this.state.activeStep === 2 ?
+                            <Fab onClick={this.handleAddTrip} className="add-fab" color="primary" aria-label="AddTrip">
+                                <Icon>add</Icon>
+                            </Fab> : ''}
+                        <Dialog
+                            open={this.state.openError}
+                            onClose={this.handleClose}
+                            className="right-dir font-applied"
+                        >
+                            <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                                 fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    خطا در ثبت اطلاعات
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                                    بستن
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                        <Dialog
+                            open={this.state.openSuccess}
+                            onClose={this.handleClose}
+                            className="right-dir font-applied"
+                        >
+                            <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon
+                                style={{color: 'green'}}
+                                fontSize="large">check_circle</Icon>{"انجام شد!"}
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    با موفقیت انجام شد!
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                                    بستن
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                        <Dialog
+                            open={this.state.openLoading}
+                            onClose={this.handleClose}
+                            className="right-dir font-applied"
+                        >
+                            <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    <Loading/>
+                                </DialogContentText>
+                            </DialogContent>
+                        </Dialog>
                         <Stepper activeStep={this.state.activeStep}>
                             {steps.map((label, index) => {
                                 const props = {};
