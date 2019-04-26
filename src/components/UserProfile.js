@@ -7,9 +7,12 @@ import HeaderChip from "./HeaderChip";
 import {NavLink} from "react-router-dom";
 import {loggedInUser} from "../config/config";
 import {role} from "../config/config";
+import enmoment from "moment";
 
 class UserProfile extends React.Component {
     render() {
+        const BirthDate = enmoment.unix(Number(loggedInUser.BirthDate)).format('YYYY/MM/DD');
+        const RegistrationDate = enmoment.unix(Number(loggedInUser.RegistrationDate)).format('YYYY/MM/DD');
         return (
             <Paper elevation={1} className="right-dir agency-paper">
                 <HeaderChip label='اطلاعات کاربری' color='#0288d1' icon='account_circle'/>
@@ -21,10 +24,10 @@ class UserProfile extends React.Component {
                 <p><span className="bold">نام خانوادگی: </span>{loggedInUser.FamilyName}</p>
                 <p><span className="bold">نام کاربری: </span>{loggedInUser.UserName}</p>
                 <p><span
-                    className="bold">تاریخ تولد: </span>{moment.unix(loggedInUser.BirthDate).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ تولد: </span>{moment(BirthDate).format('jDD jMMMM jYYYY')}
                 </p>
                 <p><span
-                    className="bold">تاریخ ثبت نام: </span>{moment.unix(loggedInUser.RegistrationDate).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ ثبت نام: </span>{moment(RegistrationDate).format('jDD jMMMM jYYYY')}
                 </p>
                 {role === 'support' ? '' :
                     <Button component={NavLink} to="/edit-agency-user" variant="contained" color="primary"
