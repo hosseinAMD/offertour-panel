@@ -16,15 +16,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
-import provinces from '../data/provinces';
-import cities from '../data/cities';
-import airports from '../data/airports';
 import axios from "axios";
 import baseUrl from "../config/config";
 import {token} from "../config/config";
 import {connect} from "react-redux";
+import {addAirport} from "../actions/airports";
 
 class AddAirport extends React.Component {
     constructor(props) {
@@ -61,7 +57,12 @@ class AddAirport extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            }).then(res => this.setState({open: true, error}));
+            }).then(res => this.props.addAirport({
+                Id: res.data.Id,
+                Name: this.state.name,
+                CityID: this.state.city
+            }));
+            this.setState({open: true, error})
         } else {
             const error = `کاربر گرامی! فرودگاه ${this.state.name} در لیست فرودگاه ها موجود می باشد.`;
             this.setState({open: true, error})
@@ -259,4 +260,9 @@ const mapStateToProps = (state) => ({
     airports: state.airports
 });
 
-export default connect(mapStateToProps)(AddAirport);
+
+const mapDispatchToProps = (dispatch) => ({
+    addAirport: (airport) => dispatch(addAirport(airport))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddAirport);

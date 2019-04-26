@@ -16,13 +16,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
-import provinces from '../data/provinces';
 import axios from 'axios';
 import baseUrl from '../config/config';
 import {token} from "../config/config";
 import {connect} from 'react-redux';
+import {addProvince} from "../actions/provinces";
 
 class AddProvince extends React.Component {
     constructor(props) {
@@ -58,7 +56,11 @@ class AddProvince extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            });
+            }).then(res => this.props.addProvince({
+                Id: res.data.Id,
+                Name: this.state.name,
+                CountryID: this.state.country
+            }));
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! استان ${this.state.name} در لیست استان ها موجود می باشد.`;
@@ -201,4 +203,9 @@ const mapStateToProps = (state) => ({
     provinces: state.provinces
 });
 
-export default connect(mapStateToProps)(AddProvince);
+
+const mapDispatchToProps = (dispatch) => ({
+    addProvince: (province) => dispatch(addProvince(province))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddProvince);

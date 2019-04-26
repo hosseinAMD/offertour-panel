@@ -16,14 +16,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
-import provinces from '../data/provinces';
-import cities from '../data/cities';
 import axios from "axios";
 import baseUrl from "../config/config";
 import {connect} from "react-redux";
 import {token} from "../config/config";
+import {addCity} from "../actions/cities";
 
 class AddCity extends React.Component {
     constructor(props) {
@@ -59,7 +56,11 @@ class AddCity extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            });
+            }).then(res => this.props.addCity({
+                Id: res.data.Id,
+                Name: this.state.name,
+                ProvinceID: this.state.province
+            }));
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! شهر ${this.state.name} در لیست شهر ها موجود می باشد.`;
@@ -230,4 +231,9 @@ const mapStateToProps = (state) => ({
     cities: state.cities
 });
 
-export default connect(mapStateToProps)(AddCity);
+
+const mapDispatchToProps = (dispatch) => ({
+    addCity: (city) => dispatch(addCity(city))
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddCity);

@@ -16,15 +16,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
-import provinces from '../data/provinces';
-import cities from '../data/cities';
-import terminals from '../data/busTerminals';
 import axios from "axios";
 import baseUrl from "../config/config";
 import {token} from "../config/config";
 import {connect} from "react-redux";
+import {addTerminal} from "../actions/terminals";
 
 class AddTerminal extends React.Component {
     constructor(props) {
@@ -61,7 +57,12 @@ class AddTerminal extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            }).then(res => this.setState({open: true, error}));
+            }).then(res => this.props.addTerminal({
+                Id: res.data.Id,
+                Name: this.state.name,
+                CityID: this.state.city
+            }));
+            this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! ترمینال ${this.state.name} در لیست ترمینال ها موجود می باشد.`;
             this.setState({open: true, error})
@@ -259,4 +260,9 @@ const mapStateToProps = (state) => ({
     terminals: state.terminals
 });
 
-export default connect(mapStateToProps)(AddTerminal);
+
+const mapDispatchToProps = (dispatch) => ({
+    addTerminal: (terminal) => dispatch(addTerminal(terminal))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTerminal);
