@@ -52,7 +52,7 @@ class TourForm extends React.Component {
             discountPercentage: 0,
             discount: '',
             startDate: '',
-            endDate:'',
+            endDate: '',
             duration: '',
             flightCompany: '',
             tripType: 1,
@@ -1666,7 +1666,8 @@ class TourForm extends React.Component {
                             {this.state.activeStep === steps.length ? (
                                 <div>
                                     <br/><br/>
-                                    <p>تور شما جهت بررسی به واحد پشتیبانی آفرتور ارسال شد.پس از تایید پشتیبانی تور شما نمایش داده می شود.</p>
+                                    <p>تور شما جهت بررسی به واحد پشتیبانی آفرتور ارسال شد.پس از تایید پشتیبانی تور شما
+                                        نمایش داده می شود.</p>
                                     <Grid container spacing={24} className="my-container">
                                         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                             <p><span className="bold">عنوان تور: </span>{this.state.title}</p>
@@ -1742,12 +1743,13 @@ class TourForm extends React.Component {
                                     <br/>
                                     <div>
                                         <Button
-                                            disabled={this.state.activeStep === 0}
+                                            disabled={this.state.activeStep === 0 || this.state.activeStep === 2}
                                             onClick={this.handleBack}
                                             className="font-applied"
                                         >
                                             مرحله قبل
                                         </Button>
+
                                         <Button
                                             variant="contained"
                                             color="primary"
