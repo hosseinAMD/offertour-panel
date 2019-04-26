@@ -39,8 +39,8 @@ class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 2,
-            id: 29,
+            activeStep: 0,
+            id: '',
             title: '',
             category: '',
             country: '',
@@ -51,8 +51,8 @@ class TourForm extends React.Component {
             tourModel: 1,
             discountPercentage: 0,
             discount: '',
-            startDate: moment(),
-            endDate: moment().add(10, 'days'),
+            startDate: '',
+            endDate:'',
             duration: '',
             flightCompany: '',
             tripType: 1,
@@ -1666,10 +1666,7 @@ class TourForm extends React.Component {
                             {this.state.activeStep === steps.length ? (
                                 <div>
                                     <br/><br/>
-                                    <p>
-                                        تور شما آماده انتشار در آفرتور می باشد.لطفا پس از بررسی موارد به طور کامل روی
-                                        ذخیره کلیک نمایید.
-                                    </p>
+                                    <p>تور شما جهت بررسی به واحد پشتیبانی آفرتور ارسال شد.پس از تایید پشتیبانی تور شما نمایش داده می شود.</p>
                                     <Grid container spacing={24} className="my-container">
                                         <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                                             <p><span className="bold">عنوان تور: </span>{this.state.title}</p>
