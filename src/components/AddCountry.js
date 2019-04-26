@@ -20,6 +20,7 @@ import axios from 'axios';
 import baseUrl from '../config/config';
 import {connect} from "react-redux";
 import {token} from "../config/config";
+import {addCountry} from "../actions/countries";
 
 class AddCountry extends React.Component {
     constructor(props) {
@@ -54,7 +55,11 @@ class AddCountry extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            });
+            }).then(res=>this.props.addCountry({
+                Id:res.data.Id,
+                Name:this.state.name,
+                CategoryID:this.state.category
+            }));
             this.setState({open: true, error});
         } else {
             const error = `کاربر گرامی! کشور ${this.state.name} در لیست کشورها موجود می باشد.`;
@@ -170,4 +175,9 @@ const mapStateToProps = (state) => ({
     countries: state.countries
 });
 
-export default connect(mapStateToProps)(AddCountry);
+const mapDispatchToProps = (dispatch) => ({
+    addCountry: (country) => dispatch(addCountry(country))
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddCountry);
