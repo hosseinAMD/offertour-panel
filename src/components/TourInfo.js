@@ -29,7 +29,7 @@ const TourInfo = (props) => {
                     </TableRow>
                     <TableRow>
                         <TableCell align="center"><span className="bold">شهر</span></TableCell>
-                        <TableCell align="center"><ItemRenderer id={props.tour.CityID}
+                        <TableCell align="center"><ItemRenderer id={props.tour.TourCityID}
                                                                 type="city"/></TableCell>
                     </TableRow>
                     <TableRow>

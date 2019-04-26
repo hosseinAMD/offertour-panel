@@ -44,7 +44,7 @@ class AdminTourList extends React.Component {
                                     <TableRow>
                                         <TableCell align="center">کد تور</TableCell>
                                         <TableCell align="center">عنوان تور</TableCell>
-                                        <TableCell align="center">کشور تور</TableCell>
+                                        <TableCell align="center">شهر تور</TableCell>
                                         <TableCell align="center">قیمت</TableCell>
                                         <TableCell align="center">تاریخ شروع</TableCell>
                                         <TableCell align="center">تاریخ پایان</TableCell>
