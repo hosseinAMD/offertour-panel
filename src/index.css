@@ -417,3 +417,19 @@ h1, h2, h3, h4, h5, h6 {
     left: 30px;
     bottom: 10px;
 }
+
+.article-form-wrapper{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
+.tag{
+    background-color: lightgray;
+    color: black;
+    font-family: IRANSans !important;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px;
+}
