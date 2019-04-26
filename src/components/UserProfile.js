@@ -12,7 +12,7 @@ import enmoment from "moment";
 class UserProfile extends React.Component {
     render() {
         const BirthDate = enmoment.unix(Number(loggedInUser.BirthDate)).format('YYYY/MM/DD');
-        const RegistrationDate = enmoment.unix(Number(loggedInUser.RegistrationDate)).format('YYYY/MM/DD');
+        const RegistrationDate = enmoment(Number(loggedInUser.RegistrationDate)).format('YYYY/MM/DD');
         return (
             <Paper elevation={1} className="right-dir agency-paper">
                 <HeaderChip label='اطلاعات کاربری' color='#0288d1' icon='account_circle'/>
