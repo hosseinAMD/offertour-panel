@@ -5,7 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
-import user from '../data/user';
 import {role, loggedInUser} from "../config/config";
 
 const NavItems = () => {
@@ -85,10 +84,6 @@ const NavItems = () => {
                     <ListItem button component={NavLink} to="/tours-list">
                         <ListItemIcon><Icon>list_alt</Icon></ListItemIcon>
                         <ListItemText classes={{primary: 'font-applied right-txt'}} primary="لیست تورها"/>
-                    </ListItem>
-                    <ListItem button component={NavLink} to="/add-article">
-                        <ListItemIcon><Icon>edit</Icon></ListItemIcon>
-                        <ListItemText classes={{primary: 'font-applied right-txt'}} primary="ارسال سفرنامه"/>
                     </ListItem>
                 </List>
             </div>
