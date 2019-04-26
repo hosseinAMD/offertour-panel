@@ -17,11 +17,11 @@ import Icon from "@material-ui/core/Icon";
 
 class PhoneNumberItem extends React.Component {
     state = {
-        PhoneNumber1: agencyPhoneNumbers.PhoneNumber1 ? agencyPhoneNumbers.PhoneNumber1 : '',
-        PhoneNumber2: agencyPhoneNumbers.PhoneNumber2 ? agencyPhoneNumbers.PhoneNumber2 : '',
-        PhoneNumber3: agencyPhoneNumbers.PhoneNumber3 ? agencyPhoneNumbers.PhoneNumber3 : '',
-        PhoneNumber4: agencyPhoneNumbers.PhoneNumber4 ? agencyPhoneNumbers.PhoneNumber4 : '',
-        PhoneNumber5: agencyPhoneNumbers.PhoneNumber5 ? agencyPhoneNumbers.PhoneNumber5 : '',
+        PhoneNumber1: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber1 ? agencyPhoneNumbers.PhoneNumber1 : '',
+        PhoneNumber2: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber2 ? agencyPhoneNumbers.PhoneNumber2 : '',
+        PhoneNumber3: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber3 ? agencyPhoneNumbers.PhoneNumber3 : '',
+        PhoneNumber4: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber4 ? agencyPhoneNumbers.PhoneNumber4 : '',
+        PhoneNumber5: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber5 ? agencyPhoneNumbers.PhoneNumber5 : '',
         openEdit: false,
         openAdd: false,
     };

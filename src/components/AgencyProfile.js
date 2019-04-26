@@ -21,7 +21,7 @@ class AgencyProfile extends React.Component {
                 <Divider/>
                 <br/>
                 <img className="agency-logo" alt={loggedInAgency.Name}
-                     src={`data:image/jpeg;base64,${loggedInAgency.Image}`}/>
+                     src={`data:image/jpeg;base64,${loggedInAgency.AgencyImage}`}/>
                 <p><span className="bold">نام آژانس: </span>{loggedInAgency.Name}</p>
                 <p><span className="bold">شهر: </span><ItemRenderer id={loggedInAgency.CityID} type="city"/></p>
                 <p><span className="bold">آدرس: </span>{loggedInAgency.Address}</p>
