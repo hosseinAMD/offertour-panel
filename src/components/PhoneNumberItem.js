@@ -40,7 +40,7 @@ class PhoneNumberItem extends React.Component {
         const PhoneNumber3 = this.state.PhoneNumber3;
         const PhoneNumber4 = this.state.PhoneNumber4;
         const PhoneNumber5 = this.state.PhoneNumber5;
-        if (agencyPhoneNumbers) {
+        if (agencyPhoneNumbers.PhoneNumber1) {
             axios.put(baseUrl + '/Agency/AgencyPhoneNumber', JSON.stringify({
                 PhoneNumber1,
                 PhoneNumber2,
