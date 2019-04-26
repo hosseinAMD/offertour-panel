@@ -10,9 +10,11 @@ import {loggedInAgency, loggedInUser} from "../config/config";
 import ItemRenderer from "./ItemRenderer";
 import {NavLink} from "react-router-dom";
 import {agencyPhoneNumbers} from "../config/config";
+import enmoment from "moment";
 
 class AgencyProfile extends React.Component {
     render() {
+        const EstabilishedDate = enmoment.unix(Number(loggedInAgency.EstabilishedDate)).format('YYYY/MM/DD');
         return (
             <Paper elevation={1} className="right-dir agency-paper">
                 <HeaderChip label="اطلاعات آژانس" color="#0288d1" icon="account_balance"/>
@@ -34,7 +36,7 @@ class AgencyProfile extends React.Component {
                     ''}
 
                 <p><span
-                    className="bold">تاریخ تاسیس: </span>{moment.unix(loggedInAgency.EstabilishedDate).format('jDD jMMMM jYYYY')}
+                    className="bold">تاریخ تاسیس: </span>{moment(EstabilishedDate).format('jDD jMMMM jYYYY')}
                 </p>
                 <p><Rate rate={agency.rate}/></p>
                 <Button component={NavLink} to="/phone-numbers" variant="contained" color="primary"
