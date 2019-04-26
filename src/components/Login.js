@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import baseUrl from '../config/config';
 import axios from 'axios';
+import {loggedInUser} from "../config/config";
 
 class Login extends React.Component {
     constructor(props) {
@@ -16,6 +17,13 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: ''
+        }
+    }
+
+    componentDidMount() {
+        if (loggedInUser) {
+            localStorage.removeItem('user');
+            localStorage.setItem('log', 'false');
         }
     }
 
@@ -37,6 +45,7 @@ class Login extends React.Component {
         ).then(res => {
             localStorage.setItem('user', JSON.stringify(res.data));
             localStorage.setItem('role', 'agency');
+            localStorage.setItem('log', 'true');
             window.location.assign('/');
         }).catch(err => console.log(err))
     };
@@ -55,6 +64,7 @@ class Login extends React.Component {
         ).then(res => {
             localStorage.setItem('user', JSON.stringify(res.data));
             localStorage.setItem('role', 'support');
+            localStorage.setItem('log', 'true');
             window.location.assign('/');
         }).catch(err => console.log(err))
     };

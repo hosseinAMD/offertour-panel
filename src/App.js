@@ -27,10 +27,14 @@ import AddAgency from "./components/AddAgency";
 import PhoneNumbersList from "./components/PhoneNumbersList";
 import AddManager from "./components/AddManager";
 import AdminTourList from "./components/AdminTourList";
+import {loggedInUser} from "./config/config";
 
 class App extends Component {
     render() {
-        const isLoggedIn = true;
+        let isLoggedIn = false;
+        if (loggedInUser) {
+            isLoggedIn = true;
+        }
         if (isLoggedIn) {
             return (
                 <BrowserRouter>
@@ -73,14 +77,32 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Switch>
-                            <Route path="/" exact={true} component={Dashboard}/>
-                            <Route path="/profile" component={Profile}/>
-                            <Route path="/plan" component={Plan}/>
-                            <Route path="/add-tour" component={AddTour}/>
-                            <Route path="/add-article" component={AddArticle}/>
-                            <Route path="/tours-list" component={ToursList}/>
-                            <Route path="/tour/:id" component={TourDetail}/>
+                            <Route path="/" exact={true} component={Login}/>
+                            <Route path="/profile" component={Login}/>
+                            <Route path="/plan" component={Login}/>
+                            <Route path="/add-tour" component={Login}/>
+                            <Route path="/add-article" component={Login}/>
+                            <Route path="/tours-list" component={Login}/>
+                            <Route path="/admin-tours-list" component={Login}/>
+                            <Route path="/tour/:id" component={Login}/>
                             <Route path="/login" component={Login}/>
+                            <Route path="/settings" component={Login}/>
+                            <Route path="/country-setting" component={Login}/>
+                            <Route path="/province-setting" component={Login}/>
+                            <Route path="/city-setting" component={Login}/>
+                            <Route path="/airport-setting" component={Login}/>
+                            <Route path="/terminal-setting" component={Login}/>
+                            <Route path="/rates-comments" component={Login}/>
+                            <Route path="/agency-users" component={Login}/>
+                            <Route path="/all-users" component={Login}/>
+                            <Route path="/phone-numbers" component={Login}/>
+                            <Route path="/add-agency" component={Login}/>
+                            <Route path="/add-manager" component={Login}/>
+                            <Route path="/add-agency-user" component={Login}/>
+                            <Route path="/add-support-admin" component={Login}/>
+                            <Route path="/edit-agency-user" component={Login}/>
+                            <Route path="/edit-plan/:id" component={Login}/>
+                            <Route path="/pg" component={Playground}/>
                         </Switch>
                     </div>
                 </BrowserRouter>
