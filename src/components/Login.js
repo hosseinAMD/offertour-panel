@@ -10,13 +10,18 @@ import Icon from '@material-ui/core/Icon';
 import baseUrl from '../config/config';
 import axios from 'axios';
 import {loggedInUser} from "../config/config";
+import {statusCodes} from "../config/errors";
+import DialogContentText from "./PlanItem";
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            loading: '',
+            error: '',
+            message: ''
         }
     }
 
@@ -32,6 +37,7 @@ class Login extends React.Component {
     };
 
     handleLogin = () => {
+        this.setState(() => ({loading: 'لطفا صبر کنید...', error: '', message: ''}));
         const username = this.state.username;
         const password = this.state.password;
         axios.post(`${baseUrl}/Agency/Login`, JSON.stringify({
@@ -43,14 +49,20 @@ class Login extends React.Component {
                 }
             }
         ).then(res => {
+            this.setState(() => ({loading: '', message: 'خوش امدید! ورود موفقیت آمیز بود.'}));
             localStorage.setItem('user', JSON.stringify(res.data));
             localStorage.setItem('role', 'agency');
             localStorage.setItem('log', 'true');
             window.location.assign('/');
-        }).catch(err => console.log(err))
+        }).catch(res => this.setState(() => ({
+            error: statusCodes.FA[res.response.data.code].message,
+            loading: '',
+            message: ''
+        })));
     };
 
     handleSupportLogin = () => {
+        this.setState(() => ({loading: 'لطفا صبر کنید...', error: '', message: ''}));
         const username = this.state.username;
         const password = this.state.password;
         axios.post(`${baseUrl}/Admin/Login`, JSON.stringify({
@@ -62,11 +74,16 @@ class Login extends React.Component {
                 }
             }
         ).then(res => {
+            this.setState(() => ({loading: '', message: 'خوش امدید! ورود موفقیت آمیز بود.'}));
             localStorage.setItem('user', JSON.stringify(res.data));
             localStorage.setItem('role', 'support');
             localStorage.setItem('log', 'true');
             window.location.assign('/');
-        }).catch(err => console.log(err))
+        }).catch(res => this.setState(() => ({
+            error: statusCodes.FA[res.response.data.code].message,
+            loading: '',
+            message: ''
+        })));
     };
 
     render() {
@@ -108,6 +125,12 @@ class Login extends React.Component {
                             />
                         </FormControl>
                         <p><a href="#" className="my-link">رمز عبور خود را فراموش کرده اید؟</a></p>
+                        {this.state.message ?
+                            <p style={{color: 'green', fontWeight: 'bold'}}>{this.state.message}</p> : ''}
+                        {this.state.error ?
+                            <p style={{color: 'red', fontWeight: 'bold'}}>{this.state.error}</p> : ''}
+                        {this.state.loading ?
+                            <p style={{color: 'blue', fontWeight: 'bold'}}>{this.state.loading}</p> : ''}
                         <Button onClick={this.handleLogin} variant="contained" color="secondary"
                                 className="font-applied">
                             ورود به پنل کاربری
