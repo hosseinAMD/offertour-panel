@@ -59,29 +59,37 @@ class SupportAdminForm extends React.Component {
     };
 
     handleSubmit = () => {
-        this.setState(() => ({openLoading: true}));
-        let supportUserDetail = new FormData();
-        supportUserDetail.append('Name', this.state.Name);
-        supportUserDetail.append('FamilyName', this.state.FamilyName);
-        supportUserDetail.append('UserName', this.state.UserName);
-        supportUserDetail.append('Password', this.state.Password);
-        supportUserDetail.append('Image', this.state.Image);
-        supportUserDetail.append('RoleID', this.state.RoleID);
-        supportUserDetail.append('EnableStatus', this.state.EnableStatus);
-        supportUserDetail.append('BirthDate', this.state.BirthDate);
-        axios.post(baseUrl + '/Admin/Admin', supportUserDetail, {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        }).then(res => this.setState(() => ({
-            openSuccess: true,
-            openLoading: false
-        }))).catch(res => this.setState(() => ({
-            openLoading: false,
-            error: statusCodes.FA[res.response.data.code].message,
-            openError: true
-        })));
+        if(this.state.Password === this.state.ConfirmPassword){
+            this.setState(() => ({openLoading: true}));
+            let supportUserDetail = new FormData();
+            supportUserDetail.append('Name', this.state.Name);
+            supportUserDetail.append('FamilyName', this.state.FamilyName);
+            supportUserDetail.append('UserName', this.state.UserName);
+            supportUserDetail.append('Password', this.state.Password);
+            supportUserDetail.append('Image', this.state.Image);
+            supportUserDetail.append('RoleID', this.state.RoleID);
+            supportUserDetail.append('EnableStatus', this.state.EnableStatus);
+            supportUserDetail.append('BirthDate', this.state.BirthDate);
+            axios.post(baseUrl + '/Admin/Admin', supportUserDetail, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            }).then(res => this.setState(() => ({
+                openSuccess: true,
+                openLoading: false
+            }))).catch(res => this.setState(() => ({
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message,
+                openError: true
+            })));
+        } else {
+            this.setState(() => ({
+                openError:true,
+                error:'رمز عبور و تایید رمز عبور یکسان نمی باشند.'
+            }));
+        }
+
     };
 
     render() {
@@ -218,9 +226,7 @@ class SupportAdminForm extends React.Component {
                     <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
                     </DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
                             <Loading/>
-                        </DialogContentText>
                     </DialogContent>
                 </Dialog>
             </div>
