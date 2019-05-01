@@ -38,8 +38,8 @@ class FilterCountry extends React.Component {
                                 <Input
                                     className="font-applied"
                                     id="name"
-                                    onChange={this.handleChange('name')}
-                                    value={this.state.name}
+                                    onChange={this.props.handleChange('name')}
+                                    value={this.props.name}
                                     startAdornment={
                                         <InputAdornment position="start">
                                             <Icon>flag</Icon>
@@ -55,14 +55,14 @@ class FilterCountry extends React.Component {
                                 label="انتخاب دسته بندی"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.category}
-                                onChange={this.handleChange('category')}
+                                value={this.props.category}
+                                onChange={this.props.handleChange('category')}
                                 InputProps={{
                                     startAdornment: <InputAdornment
                                         position="start"><Icon>layers</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={categories.length + 1}>همه موارد</MenuItem>
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
                                 {categories.map(option => (
                                     <MenuItem className="font-applied" key={option.id} value={option.id}>
                                         {option.title}

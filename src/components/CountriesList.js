@@ -25,7 +25,29 @@ const CountriesList = (props) => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {props.countries.map((item, index) => (<CountryItem key={item.id} country={item} num={index}/>))}
+                {props.countries.map((item, index) => {
+                    if (props.category && props.name) {
+                        if (props.category === item.CategoryID && item.Name.includes(props.name)) {
+                            return <CountryItem key={item.id} country={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.name) {
+                        if (item.Name.includes(props.name)) {
+                            return <CountryItem key={item.id} country={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.category) {
+                        if (props.category === item.CategoryID) {
+                            return <CountryItem key={item.id} country={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else {
+                        return <CountryItem key={item.id} country={item} num={index}/>
+                    }
+                })}
             </TableBody>
         </Table>
     </Paper>
