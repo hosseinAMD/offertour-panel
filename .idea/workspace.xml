@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/AirportsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AirportsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AirportsSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AirportsSetting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilterAirport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterAirport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FilterTerminal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterTerminal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TerminalsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerminalsList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TerminalsSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TerminalsSetting.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +20,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AirportsSetting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+            <state relative-caret-position="195">
+              <caret line="28" column="94" selection-start-line="26" selection-start-column="39" selection-end-line="28" selection-end-column="94" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/AirportsList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/TerminalsSetting.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,19 +51,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/AirportsList.js">
+        <entry file="file://$PROJECT_DIR$/src/components/TerminalsList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+            <state relative-caret-position="195">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/FilterAirport.js">
+        <entry file="file://$PROJECT_DIR$/src/components/FilterTerminal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1114">
-              <caret line="131" column="72" lean-forward="true" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
+            <state relative-caret-position="-182">
+              <caret line="132" column="48" lean-forward="true" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="48" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -82,8 +103,8 @@
       <find>Dialog</find>
       <find>Dial</find>
       <find>loading</find>
-      <find>state</find>
       <find>this.handleChange</find>
+      <find>state</find>
     </findStrings>
     <replaceStrings>
       <replace>id</replace>
@@ -95,8 +116,8 @@
       <replace>province</replace>
       <replace>supportUserDetail</replace>
       <replace>managerDetail</replace>
-      <replace>props</replace>
       <replace>this.props.handleChange</replace>
+      <replace>props</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/node_modules/@material-ui</dir>
@@ -108,9 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/reducers/categories.js" />
-        <option value="$PROJECT_DIR$/src/actions/cities.js" />
-        <option value="$PROJECT_DIR$/src/reducers/cities.js" />
         <option value="$PROJECT_DIR$/src/actions/provinces.js" />
         <option value="$PROJECT_DIR$/src/reducers/provinces.js" />
         <option value="$PROJECT_DIR$/src/actions/terminals.js" />
@@ -156,9 +174,12 @@
         <option value="$PROJECT_DIR$/src/components/FilterCity.js" />
         <option value="$PROJECT_DIR$/src/components/CitiesSetting.js" />
         <option value="$PROJECT_DIR$/src/components/CitiesList.js" />
-        <option value="$PROJECT_DIR$/src/components/AirportsSetting.js" />
         <option value="$PROJECT_DIR$/src/components/FilterAirport.js" />
         <option value="$PROJECT_DIR$/src/components/AirportsList.js" />
+        <option value="$PROJECT_DIR$/src/components/AirportsSetting.js" />
+        <option value="$PROJECT_DIR$/src/components/TerminalsSetting.js" />
+        <option value="$PROJECT_DIR$/src/components/FilterTerminal.js" />
+        <option value="$PROJECT_DIR$/src/components/TerminalsList.js" />
       </list>
     </option>
   </component>
@@ -268,12 +289,12 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="14984000" />
+      <workItem from="1556702927229" duration="16055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245137000" />
+    <option name="totallyTimeSpent" value="246208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -293,7 +314,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.35179153" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35179153" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -308,9 +329,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/TourInfo.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/ToursList.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/AddProvince.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AddTerminal.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AddAirport.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AddCity.js" />
@@ -600,26 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FilterAirport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1114">
-          <caret line="131" column="72" lean-forward="true" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AirportsSetting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CitiesList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -627,10 +625,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AirportsSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="28" column="94" selection-start-line="26" selection-start-column="39" selection-end-line="28" selection-end-column="94" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilterAirport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="158" column="31" lean-forward="true" selection-start-line="158" selection-start-column="31" selection-end-line="158" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilterTerminal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-182">
+          <caret line="132" column="48" lean-forward="true" selection-start-line="132" selection-start-column="48" selection-end-line="132" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AirportsList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        <state relative-caret-position="238">
+          <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TerminalsSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TerminalsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
         </state>
       </provider>
     </entry>

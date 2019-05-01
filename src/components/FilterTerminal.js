@@ -11,25 +11,10 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
-import provinces from '../data/provinces';
-import cities from '../data/cities';
+import {connect} from "react-redux";
+
 
 class FilterTerminal extends React.Component {
-    state = {
-        name: '',
-        category: categories.length + 1,
-        countries: countries.length + 1,
-        province: provinces.length + 1,
-        city: cities.length + 1
-    };
-
-    handleChange = name => event => {
-        this.setState({[name]: event.target.value});
-    };
-
-
     render() {
         return (
             <div>
@@ -44,8 +29,8 @@ class FilterTerminal extends React.Component {
                                 <Input
                                     className="font-applied"
                                     id="name"
-                                    onChange={this.handleChange('name')}
-                                    value={this.state.name}
+                                    onChange={this.props.handleChange('name')}
+                                    value={this.props.name}
                                     startAdornment={
                                         <InputAdornment position="start">
                                             <Icon>directions_bus</Icon>
@@ -61,16 +46,16 @@ class FilterTerminal extends React.Component {
                                 label="انتخاب دسته بندی"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.category}
-                                onChange={this.handleChange('category')}
+                                value={this.props.category}
+                                onChange={this.props.handleChange('category')}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={categories.length + 1}>همه موارد</MenuItem>
-                                {categories.map(option => (
-                                    <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                        {option.title}
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.categories.map(option => (
+                                    <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                        {option.Name}
                                     </MenuItem>
                                 ))}
                             </TextField>
@@ -82,18 +67,18 @@ class FilterTerminal extends React.Component {
                                 label="انتخاب کشور"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.country}
-                                onChange={this.handleChange('country')}
+                                value={this.props.country}
+                                onChange={this.props.handleChange('country')}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={countries.length + 1}>همه موارد</MenuItem>
-                                {countries.map(option => {
-                                    if (option.category === this.state.category) {
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.countries.map(option => {
+                                    if (option.CategoryID === this.props.category) {
                                         return (
-                                            <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                                {option.title}
+                                            <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                                {option.Name}
                                             </MenuItem>
                                         );
                                     } else {
@@ -109,18 +94,18 @@ class FilterTerminal extends React.Component {
                                 label="انتخاب استان"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.province}
-                                onChange={this.handleChange('province')}
+                                value={this.props.province}
+                                onChange={this.props.handleChange('province')}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><Icon>golf_course</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={provinces.length + 1}>همه موارد</MenuItem>
-                                {provinces.map(option => {
-                                    if (option.country === this.state.country) {
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.provinces.map(option => {
+                                    if (option.CountryID === this.props.country) {
                                         return (
-                                            <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                                {option.title}
+                                            <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                                {option.Name}
                                             </MenuItem>
                                         );
                                     } else {
@@ -136,18 +121,18 @@ class FilterTerminal extends React.Component {
                                 label="انتخاب شهر"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.city}
-                                onChange={this.handleChange('city')}
+                                value={this.props.city}
+                                onChange={this.props.handleChange('city')}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><Icon>location_on</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={cities.length + 1}>همه موارد</MenuItem>
-                                {cities.map(option => {
-                                    if (option.province === this.state.province) {
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.cities.map(option => {
+                                    if (option.ProvinceID === this.props.province) {
                                         return (
-                                            <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                                {option.title}
+                                            <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                                {option.Name}
                                             </MenuItem>
                                         );
                                     } else {
@@ -167,4 +152,11 @@ class FilterTerminal extends React.Component {
     }
 }
 
-export default FilterTerminal;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countries: state.countries,
+    provinces: state.provinces,
+    cities: state.cities
+});
+
+export default connect(mapStateToProps)(FilterTerminal);

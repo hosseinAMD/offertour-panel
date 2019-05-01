@@ -10,6 +10,7 @@ import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
 import {connect} from "react-redux";
 import TerminalItem from "./TerminalItem";
+import AirportItem from "./AirportsList";
 
 const TerminalsList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
@@ -25,7 +26,29 @@ const TerminalsList = (props) => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {props.terminals.map((item,index) => (<TerminalItem key={item.Id} terminal={item} num={index}/>))}
+                {props.terminals.map((item, index) => {
+                    if (props.city && props.name) {
+                        if (props.city === item.CityID && item.Name.includes(props.name)) {
+                            return <TerminalItem key={item.Id} terminal={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.name) {
+                        if (item.Name.includes(props.name)) {
+                            return <TerminalItem key={item.Id} terminal={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.city) {
+                        if (props.city === item.CityID) {
+                            return <TerminalItem key={item.Id} terminal={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else {
+                        return <TerminalItem key={item.Id} terminal={item} num={index}/>
+                    }
+                })}
             </TableBody>
         </Table>
     </Paper>
