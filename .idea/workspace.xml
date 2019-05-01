@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/PhoneNumberItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PhoneNumberItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddAgencyUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddAgencyUser.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/AgencyUserForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="-168">
               <caret line="81" column="16" selection-start-line="77" selection-start-column="18" selection-end-line="81" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -28,10 +28,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/PhoneNumberItem.js">
+        <entry file="file://$PROJECT_DIR$/src/components/AddAgencyUser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+            <state relative-caret-position="270">
+              <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -97,7 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/reducers/provinces.js" />
         <option value="$PROJECT_DIR$/src/actions/terminals.js" />
         <option value="$PROJECT_DIR$/src/reducers/terminals.js" />
         <option value="$PROJECT_DIR$/src/components/TourItem.js" />
@@ -148,6 +147,7 @@
         <option value="$PROJECT_DIR$/src/components/TerminalsList.js" />
         <option value="$PROJECT_DIR$/src/components/AgencyUserForm.js" />
         <option value="$PROJECT_DIR$/src/components/PhoneNumberItem.js" />
+        <option value="$PROJECT_DIR$/src/components/AddAgencyUser.js" />
       </list>
     </option>
   </component>
@@ -257,12 +257,12 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="16886000" />
+      <workItem from="1556702927229" duration="17137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247039000" />
+    <option name="totallyTimeSpent" value="247290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -282,7 +282,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35179153" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.35179153" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -297,9 +297,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/AddAirport.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/AddCity.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/AddCountry.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AgencyProfile.js" />
     <entry file="file://$PROJECT_DIR$/src/components/PhoneNumbersList.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AddArticle.js" />
@@ -645,9 +642,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PhoneNumberItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="91" column="27" lean-forward="true" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/AgencyUserForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="-168">
           <caret line="81" column="16" selection-start-line="77" selection-start-column="18" selection-end-line="81" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -655,10 +662,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PhoneNumberItem.js">
+    <entry file="file://$PROJECT_DIR$/src/components/EditAgencyUser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+        <state relative-caret-position="150">
+          <caret line="10" column="51" lean-forward="true" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/EditPlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddAgencyUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
