@@ -15,6 +15,8 @@ import Icon from "@material-ui/core/Icon";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import MenuItem from '@material-ui/core/MenuItem';
 import {connect} from "react-redux";
+import Loading from "./Loading";
+import {statusCodes} from "../config/errors";
 
 
 class ManagerForm extends React.Component {
@@ -28,16 +30,19 @@ class ManagerForm extends React.Component {
             BirthDate: '',
             Password: '',
             ConfirmPassword: '',
-            PhoneNumber:'',
+            PhoneNumber: '',
             RoleID: 1,
             EnableStatus: 1,
-            AgencyID:0,
-            open: false
+            AgencyID: 0,
+            openSuccess: false,
+            openLoading: false,
+            openError: false,
+            error: ''
         };
     }
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({openError: false, openLoading: false, openSuccess: false});
     };
 
     DatePickerInput = (props) => {
@@ -60,22 +65,36 @@ class ManagerForm extends React.Component {
     };
 
     handleSubmit = () => {
-        let managerDetail = new FormData();
-        managerDetail.append('Name', this.state.Name);
-        managerDetail.append('FamilyName', this.state.FamilyName);
-        managerDetail.append('UserName', this.state.UserName);
-        managerDetail.append('Password', this.state.Password);
-        managerDetail.append('Image', this.state.Image);
-        managerDetail.append('RoleID', this.state.RoleID);
-        managerDetail.append('PhoneNumber', this.state.PhoneNumber);
-        managerDetail.append('BirthDate', this.state.BirthDate);
-        managerDetail.append('AgencyID', this.state.AgencyID);
-        axios.post(baseUrl + '/Admin/AgencySuperUser', managerDetail, {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
+        if (!this.state.AgencyID) {
+            this.setState(() => ({openError: true, error: 'آژانس مورد نظر را انتخاب نمایید'}))
+        } else {
+            this.setState(() => ({openLoading: true}));
+            let managerDetail = new FormData();
+            managerDetail.append('Name', this.state.Name);
+            managerDetail.append('FamilyName', this.state.FamilyName);
+            managerDetail.append('UserName', this.state.UserName);
+            managerDetail.append('Password', this.state.Password);
+            managerDetail.append('Image', this.state.Image);
+            managerDetail.append('RoleID', this.state.RoleID);
+            managerDetail.append('PhoneNumber', this.state.PhoneNumber);
+            managerDetail.append('BirthDate', this.state.BirthDate);
+            managerDetail.append('AgencyID', this.state.AgencyID);
+            axios.post(baseUrl + '/Admin/AgencySuperUser', managerDetail, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            }).then(res => this.setState(() => ({
+                openLoading: false,
+                openSuccess: true
+            }))).catch((res) => {
+                this.setState(() => ({
+                    openLoading: false,
+                    openError: true,
+                    error: statusCodes.FA[res.response.data.code].message
+                }));
+            });
+        }
     };
 
     render() {
@@ -197,7 +216,7 @@ class ManagerForm extends React.Component {
                             color="primary" className="edit-button">افزودن</Button>
                 </div>
                 <Dialog
-                    open={this.state.open}
+                    open={this.state.openSuccess}
                     onClose={this.handleClose}
                     className="right-dir font-applied"
                 >
@@ -215,13 +234,45 @@ class ManagerForm extends React.Component {
                         </Button>
                     </DialogActions>
                 </Dialog>
+                <Dialog
+                    open={this.state.openError}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                         fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {this.state.error}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openLoading}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <Loading/>
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-   agencies:state.agencies
+    agencies: state.agencies
 });
 
 export default connect(mapStateToProps)(ManagerForm);
