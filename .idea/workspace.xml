@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/CountriesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CountriesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CountriesSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CountriesSetting.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FilterCountry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterCountry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FilterProvince.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterProvince.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProvincesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProvincesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProvincesSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProvincesSetting.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +20,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/CountriesSetting.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+            <state relative-caret-position="360">
+              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/CountriesList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="48" column="21" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="48" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ProvincesSetting.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,10 +51,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/CountriesList.js">
+        <entry file="file://$PROJECT_DIR$/src/components/ProvincesList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+            <state relative-caret-position="208">
+              <caret line="39" column="37" lean-forward="true" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FilterProvince.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-328">
+              <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,6 +115,8 @@
       <find>Dialog</find>
       <find>Dial</find>
       <find>loading</find>
+      <find>state</find>
+      <find>this.handleChange</find>
     </findStrings>
     <replaceStrings>
       <replace>id</replace>
@@ -93,6 +128,8 @@
       <replace>province</replace>
       <replace>supportUserDetail</replace>
       <replace>managerDetail</replace>
+      <replace>props</replace>
+      <replace>this.props.handleChange</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/node_modules/@material-ui</dir>
@@ -104,9 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/TourDetail.js" />
-        <option value="$PROJECT_DIR$/src/components/StatusRenderer.js" />
-        <option value="$PROJECT_DIR$/src/actions/countries.js" />
         <option value="$PROJECT_DIR$/src/reducers/countries.js" />
         <option value="$PROJECT_DIR$/src/actions/agencies.js" />
         <option value="$PROJECT_DIR$/src/reducers/agencies.js" />
@@ -155,6 +189,9 @@
         <option value="$PROJECT_DIR$/src/components/CountriesSetting.js" />
         <option value="$PROJECT_DIR$/src/components/FilterCountry.js" />
         <option value="$PROJECT_DIR$/src/components/CountriesList.js" />
+        <option value="$PROJECT_DIR$/src/components/FilterProvince.js" />
+        <option value="$PROJECT_DIR$/src/components/ProvincesSetting.js" />
+        <option value="$PROJECT_DIR$/src/components/ProvincesList.js" />
       </list>
     </option>
   </component>
@@ -264,12 +301,12 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="8964000" />
+      <workItem from="1556702927229" duration="11606000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="239117000" />
+    <option name="totallyTimeSpent" value="241759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -304,11 +341,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/reducers/provinces.js" />
-    <entry file="file://$PROJECT_DIR$/src/actions/terminals.js" />
-    <entry file="file://$PROJECT_DIR$/src/reducers/terminals.js" />
-    <entry file="file://$PROJECT_DIR$/src/reducers/tours.js" />
-    <entry file="file://$PROJECT_DIR$/src/reducers/countries.js" />
     <entry file="file://$PROJECT_DIR$/src/actions/countries.js" />
     <entry file="file://$PROJECT_DIR$/src/components/TourItem.js" />
     <entry file="file://$PROJECT_DIR$/src/components/AdminTourList.js" />
@@ -541,10 +573,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilterCity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CitiesSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CountriesSetting.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        <state relative-caret-position="360">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FilterProvince.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-328">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ProvincesSetting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -553,8 +622,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CountriesList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="42" column="29" selection-start-line="42" selection-start-column="29" selection-end-line="42" selection-end-column="29" />
+        <state relative-caret-position="178">
+          <caret line="48" column="21" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ProvincesList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="39" column="37" lean-forward="true" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
         </state>
       </provider>
     </entry>

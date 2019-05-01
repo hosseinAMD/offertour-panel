@@ -10,6 +10,7 @@ import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
 import ProvinceItem from "./ProvinceItem";
 import {connect} from "react-redux";
+import CountryItem from "./CountriesList";
 
 const ProvincesList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">
@@ -25,7 +26,29 @@ const ProvincesList = (props) => (
                 </TableRow>
             </TableHead>
             <TableBody>
-                {props.provinces.map((item,index) => (<ProvinceItem key={item.Id} province={item} num={index}/>))}
+                {props.provinces.map((item,index) => {
+                    if (props.country && props.name) {
+                        if (props.country === item.CountryID && item.Name.includes(props.name)) {
+                            return <ProvinceItem key={item.Id} province={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.name) {
+                        if (item.Name.includes(props.name)) {
+                            return <ProvinceItem key={item.Id} province={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else if (props.country) {
+                        if (props.country === item.CountryID) {
+                            return <ProvinceItem key={item.Id} province={item} num={index}/>
+                        } else {
+                            return ''
+                        }
+                    } else {
+                        return <ProvinceItem key={item.Id} province={item} num={index}/>
+                    }
+                })}
             </TableBody>
         </Table>
     </Paper>

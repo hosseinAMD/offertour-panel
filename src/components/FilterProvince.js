@@ -11,21 +11,9 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
-import countries from '../data/countries';
+import {connect} from "react-redux";
 
 class FilterProvince extends React.Component {
-    state = {
-        name: '',
-        category: categories.length + 1,
-        countries: countries.length + 1
-    };
-
-    handleChange = name => event => {
-        this.setState({[name]: event.target.value});
-    };
-
-
     render() {
         return (
             <div>
@@ -40,8 +28,8 @@ class FilterProvince extends React.Component {
                                 <Input
                                     className="font-applied"
                                     id="name"
-                                    onChange={this.handleChange('name')}
-                                    value={this.state.name}
+                                    onChange={this.props.handleChange('name')}
+                                    value={this.props.name}
                                     startAdornment={
                                         <InputAdornment position="start">
                                             <Icon>golf_course</Icon>
@@ -57,16 +45,17 @@ class FilterProvince extends React.Component {
                                 label="انتخاب دسته بندی"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.category}
-                                onChange={this.handleChange('category')}
+                                value={this.props.category}
+                                onChange={this.props.handleChange('category')}
                                 InputProps={{
-                                    startAdornment: <InputAdornment position="start"><Icon>layers</Icon></InputAdornment>,
+                                    startAdornment: <InputAdornment
+                                        position="start"><Icon>layers</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={categories.length + 1}>همه موارد</MenuItem>
-                                {categories.map(option => (
-                                    <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                        {option.title}
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.categories.map(option => (
+                                    <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                        {option.Name}
                                     </MenuItem>
                                 ))}
                             </TextField>
@@ -78,18 +67,18 @@ class FilterProvince extends React.Component {
                                 label="انتخاب کشور"
                                 inputProps={{className: 'font-applied'}}
                                 className="font-applied login-label field-margin"
-                                value={this.state.country}
-                                onChange={this.handleChange('country')}
+                                value={this.props.country}
+                                onChange={this.props.handleChange('country')}
                                 InputProps={{
                                     startAdornment: <InputAdornment position="start"><Icon>flag</Icon></InputAdornment>,
                                 }}
                             >
-                                <MenuItem className="font-applied" value={categories.length + 1}>همه موارد</MenuItem>
-                                {countries.map(option => {
-                                    if (option.category === this.state.category) {
+                                <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
+                                {this.props.countryList.map(option => {
+                                    if (option.CategoryID === this.props.category) {
                                         return (
-                                            <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                                {option.title}
+                                            <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                                {option.Name}
                                             </MenuItem>
                                         );
                                     } else {
@@ -109,4 +98,9 @@ class FilterProvince extends React.Component {
     }
 }
 
-export default FilterProvince;
+const mapStateToProps = (state) => ({
+    categories: state.categories,
+    countryList: state.countries
+});
+
+export default connect(mapStateToProps)(FilterProvince);
