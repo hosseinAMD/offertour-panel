@@ -7,7 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import HeaderChip from "./HeaderChip";
-import bills from '../data/bills';
 import RecentBillItem from "./RecentBillItem";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
@@ -32,6 +31,7 @@ class RecentBills extends React.Component {
 
     render() {
         if (this.state.isLoaded) {
+            const bills = this.state.plans.sort((a,b) => a.Id < b.Id);
             return (
                 <Paper elevation={1} className="right-dir plan-paper">
                     <HeaderChip label='آخرین فاکتورها' color='#0288d1' icon='attach_money'/>
@@ -44,7 +44,7 @@ class RecentBills extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.plans.map((bill,index) => (
+                            {bills.map((bill,index) => (
                                 index < 6 ? <RecentBillItem key={bill.Id} bill={bill}/> : ''
                             ))}
                         </TableBody>
