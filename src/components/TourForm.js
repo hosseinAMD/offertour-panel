@@ -34,6 +34,7 @@ import {connect} from "react-redux";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
 import Loading from "./Loading";
+import {statusCodes} from "../config/errors";
 
 class TourForm extends React.Component {
     constructor(props) {
@@ -97,7 +98,8 @@ class TourForm extends React.Component {
             tags: [],
             openError: false,
             openLoading: false,
-            openSuccess: false
+            openSuccess: false,
+            error: ''
         }
     };
 
@@ -106,12 +108,12 @@ class TourForm extends React.Component {
     };
 
     startDateChange = (unix, formatted) => {
-        const startDate = unix;
+        const startDate = moment(formatted, 'jYYYY/jMM/jDD').format('jYYYY/jMM/jDD');
         this.setState(() => ({startDate}))
     };
 
     endDateChange = (unix, formatted) => {
-        const endDate = unix;
+        const endDate = moment(formatted, 'jYYYY/jMM/jDD').format('jYYYY/jMM/jDD');
         this.setState(() => ({endDate}))
     };
 
@@ -135,33 +137,9 @@ class TourForm extends React.Component {
         this.setState(() => ({image}));
     };
 
-    handleAddTour = () => {
-        let tourFields = new FormData();
-        tourFields.append('Image', this.state.image);
-        tourFields.append('Title', this.state.title);
-        tourFields.append('TourDistance', 'Not set yet');
-        tourFields.append('TourCityID', this.state.city);
-        tourFields.append('TourDate', this.state.startDate);
-        tourFields.append('TourReturnDate', this.state.endDate);
-        tourFields.append('Duration', this.state.duration);
-        tourFields.append('TourTypeID', this.state.tourType);
-        tourFields.append('AgancyServices', this.state.services);
-        tourFields.append('Description', this.state.fullDescription);
-        tourFields.append('NecessaryDocument', this.state.documents);
-        tourFields.append('TagsInput', `${JSON.stringify(this.state.tags)}`);
-        tourFields.append('Discount', this.state.discount);
-        tourFields.append('DiscountPercentage', this.state.discountPercentage);
-        tourFields.append('TourModelID', this.state.tourModel);
-        tourFields.append('StartPrice', this.state.startPrice);
-        axios.post(baseUrl + '/Agency/Tour', tourFields, {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': ''
-            }
-        });
-    };
 
     handleAddTrip = () => {
+        this.setState(() => ({openLoading: true}));
         let tripFields = {};
         if (this.state.tripType === 1) {
             tripFields = {
@@ -220,13 +198,18 @@ class TourForm extends React.Component {
                 destinationTerminal: this.state.destinationTerminal,
                 busClass: this.state.busClass,
             });
-            this.setState(() => ({trips, openSuccess: true}));
-        }).catch(err => {
-            this.setState(() => ({openError: true}));
+            this.setState(() => ({trips, openSuccess: true, openLoading: false}));
+        }).catch(res => {
+            this.setState(() => ({
+                openError: true,
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message
+            }));
         });
     };
 
     handleAddHotel = () => {
+        this.setState(() => ({openLoading: true}));
         let hotelFields = {
             TourID: this.state.id,
             HotelName: this.state.hotelName,
@@ -260,9 +243,13 @@ class TourForm extends React.Component {
                 babyWithBed: this.state.babyWithBed,
                 babyNoBed: this.state.babyNoBed,
             });
-            this.setState(() => ({hotels, openSuccess: true}));
-        }).catch(err => {
-            this.setState(() => ({openError: true}));
+            this.setState(() => ({hotels, openSuccess: true, openLoading: false}));
+        }).catch(res => {
+            this.setState(() => ({
+                openError: true,
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message
+            }));
         });
     };
 
@@ -505,7 +492,6 @@ class TourForm extends React.Component {
                                     value={this.state.tag}
                                     onChange={this.handleChange('tag')}
                                     margin="normal"
-                                    autoFocus={true}
                                 />
                                 <Icon onClick={this.addTag} style={{color: 'blue', cursor: 'pointer'}}>add</Icon>
                             </div>
@@ -1548,6 +1534,7 @@ class TourForm extends React.Component {
             tourFields.append('Title', this.state.title);
             tourFields.append('TourDistance', 'Not set yet');
             tourFields.append('TourCityID', this.state.city);
+            tourFields.append('TourCategoryID', this.state.category);
             tourFields.append('TourDate', this.state.startDate);
             tourFields.append('TourReturnDate', this.state.endDate);
             tourFields.append('Duration', this.state.duration);
@@ -1572,7 +1559,11 @@ class TourForm extends React.Component {
                         openLoading: false
                     });
                 }
-            ).catch(err => this.setState(() => ({openError: true})));
+            ).catch(res => this.setState(() => ({
+                openError: true,
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message
+            })));
         } else {
             this.setState({
                 activeStep: activeStep + 1,
@@ -1608,7 +1599,7 @@ class TourForm extends React.Component {
                             </DialogTitle>
                             <DialogContent>
                                 <DialogContentText id="alert-dialog-description">
-                                    خطا در ثبت اطلاعات
+                                    {this.state.error}
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
