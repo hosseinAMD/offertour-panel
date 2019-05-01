@@ -14,6 +14,8 @@ import {agencyPhoneNumbers} from "../config/config";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
 import Icon from "@material-ui/core/Icon";
+import Loading from "./Loading";
+import {statusCodes} from "../config/errors";
 
 class PhoneNumberItem extends React.Component {
     state = {
@@ -24,6 +26,9 @@ class PhoneNumberItem extends React.Component {
         PhoneNumber5: agencyPhoneNumbers && agencyPhoneNumbers.PhoneNumber5 ? agencyPhoneNumbers.PhoneNumber5 : '',
         openEdit: false,
         openAdd: false,
+        openLoading: false,
+        openError: false,
+        error: ''
     };
 
     handleChange = name => event => {
@@ -31,7 +36,7 @@ class PhoneNumberItem extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({openEdit: false, openAdd: false});
+        this.setState({openEdit: false, openAdd: false, openLoading: false, openError: false});
     };
 
     handlePhoneNumber = () => {
@@ -41,6 +46,7 @@ class PhoneNumberItem extends React.Component {
         const PhoneNumber4 = this.state.PhoneNumber4;
         const PhoneNumber5 = this.state.PhoneNumber5;
         if (agencyPhoneNumbers.PhoneNumber1) {
+            this.setState(() => ({openLoading: true}));
             axios.put(baseUrl + '/Agency/AgencyPhoneNumber', JSON.stringify({
                 PhoneNumber1,
                 PhoneNumber2,
@@ -52,8 +58,14 @@ class PhoneNumberItem extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            }).then(res => this.setState(() => ({openEdit: true})));
+            }).then(res => this.setState(() => ({openEdit: true, openLoading: false})))
+                .catch(res => this.setState(() => ({
+                    openError: true,
+                    openLoading: false,
+                    error: statusCodes.FA[res.response.data.code].message,
+                })));
         } else {
+            this.setState(() => ({openLoading: true}));
             axios.post(baseUrl + '/Agency/AgencyPhoneNumber', JSON.stringify({
                 PhoneNumber1,
                 PhoneNumber2,
@@ -65,7 +77,12 @@ class PhoneNumberItem extends React.Component {
                     'Content-Type': 'application/json',
                     'token': token
                 }
-            }).then(res => this.setState(() => ({openEdit: true})));
+            }).then(res => this.setState(() => ({opanAdd: true, openLoading: false})))
+                .catch(res => this.setState(() => ({
+                    openError: true,
+                    openLoading: false,
+                    error: statusCodes.FA[res.response.data.code].message,
+                })));
         }
     };
 
@@ -131,7 +148,7 @@ class PhoneNumberItem extends React.Component {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            شماره مورد نظر افزوده شد!
+                            شماره مورد نظر افزوده شد!در نظر داشته باشید تغییرات پس از یکبار ورود و خروج اعمال خواهند شد.
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -150,7 +167,7 @@ class PhoneNumberItem extends React.Component {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            شماره مورد نظر تغییر کرد!
+                            شماره مورد نظر تغییر کرد!در نظر داشته باشید تغییرات پس از یکبار ورود و خروج اعمال خواهند شد.
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -158,6 +175,38 @@ class PhoneNumberItem extends React.Component {
                             بستن
                         </Button>
                     </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openError}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                         fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {this.state.error}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openLoading}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <Loading/>
+                        </DialogContentText>
+                    </DialogContent>
                 </Dialog>
             </Table>
         );
