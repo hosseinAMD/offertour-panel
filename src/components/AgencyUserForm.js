@@ -12,6 +12,8 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import baseUrl, {token} from '../config/config';
+import Loading from "./Loading";
+import {statusCodes} from "../config/errors";
 
 
 class AgencyUserForm extends React.Component {
@@ -28,7 +30,10 @@ class AgencyUserForm extends React.Component {
             Password: this.props.agencyUser ? this.props.agencyUser.Password : '',
             ConfirmPassword: this.props.agencyUser ? this.props.agencyUser.Password : '',
             RoleID: 1,
-            open: false
+            openSuccess: false,
+            openLoading: false,
+            openError: false,
+            error: ''
         };
     }
 
@@ -53,6 +58,7 @@ class AgencyUserForm extends React.Component {
     };
 
     handleSubmit = () => {
+        this.setState(() => ({openLoading: true}));
         let agencyUserDetail = new FormData();
         agencyUserDetail.append('Name', this.state.Name);
         agencyUserDetail.append('FamilyName', this.state.FamilyName);
@@ -68,10 +74,16 @@ class AgencyUserForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
+        }).then(res => this.setState(() => ({openSuccess: true, openLoading: false})))
+            .catch(res => this.setState(() => ({
+                openError: true,
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message,
+            })));
     };
 
     handleEdit = () => {
+        this.setState(() => ({openLoading: true}));
         let agencyUserDetail = new FormData();
         agencyUserDetail.append('Name', this.state.Name);
         agencyUserDetail.append('FamilyName', this.state.FamilyName);
@@ -85,11 +97,18 @@ class AgencyUserForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
+        }).then(res => this.setState(() => ({
+            openSuccess: true,
+            openLoading: false
+        }))).catch(res => this.setState(() => ({
+            openError: true,
+            openLoading: false,
+            error: statusCodes.FA[res.response.data.code].message,
+        })));
     };
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({openSuccess: false, openLoading: false, openError: false});
     };
 
     render() {
@@ -193,7 +212,7 @@ class AgencyUserForm extends React.Component {
                             color="primary" className="edit-button">افزودن</Button>
                 </div>
                 <Dialog
-                    open={this.state.open}
+                    open={this.state.openSuccess}
                     onClose={this.handleClose}
                     className="right-dir font-applied"
                 >
@@ -210,6 +229,38 @@ class AgencyUserForm extends React.Component {
                             بستن
                         </Button>
                     </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openError}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                         fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {this.state.error}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openLoading}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <Loading/>
+                        </DialogContentText>
+                    </DialogContent>
                 </Dialog>
             </div>
         );
