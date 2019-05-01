@@ -204,7 +204,7 @@ class AgencyForm extends React.Component {
                             color="primary" className="edit-button">افزودن</Button>
                 </div>
                 <Dialog
-                    open={this.state.open}
+                    open={this.state.openSuccess}
                     onClose={this.handleClose}
                     className="right-dir font-applied"
                 >
