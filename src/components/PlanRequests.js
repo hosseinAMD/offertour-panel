@@ -29,6 +29,7 @@ class PlanRequests extends React.Component {
 
     render() {
         if (this.state.isLoaded) {
+            const requests = this.state.requests.sort((a, b) => a.Id < b.Id);
             return (
                 <Paper elevation={1} className="right-dir agency-paper">
                     <HeaderChip label='درخواست ها' color='#0288d1' icon='account_circle'/>
@@ -45,7 +46,7 @@ class PlanRequests extends React.Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.requests.map((item, index) => (
+                            {requests.map((item, index) => (
                                 <PlanRequestItem key={item.Id} index={index} request={item}/>))}
                         </TableBody>
                     </Table>
