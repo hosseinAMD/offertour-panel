@@ -12,7 +12,8 @@ import Switch from '@material-ui/core/Switch';
 import numeral from 'numeral';
 import axios from 'axios';
 import baseUrl, {token} from '../config/config';
-
+import Loading from "./Loading";
+import {statusCodes} from "../config/errors";
 
 class PlanForm extends React.Component {
     constructor(props) {
@@ -25,13 +26,19 @@ class PlanForm extends React.Component {
             Duration: this.props.plan.Duration,
             DiscountStatus: this.props.plan.DiscountStatus,
             PriceAfterDiscount: this.props.plan.PriceAfterDiscount,
-            open: false
+            openSuccess: false,
+            openError: false,
+            openLoading: false,
+            error: ''
         };
     }
 
 
     handleChange = name => event => {
-        this.setState({[name]: event.target.value});
+        if (event.target.value.match(/^\d*?$/)) {
+            this.setState({[name]: event.target.value});
+        }
+        ;
     };
 
     handleDiscount = () => {
@@ -40,6 +47,7 @@ class PlanForm extends React.Component {
     };
 
     handleEditPlan = () => {
+        this.setState(() => ({openLoading: true}));
         const data = JSON.stringify({
             PlanID: `${this.state.PlanID}`,
             Price: `${this.state.Price}`,
@@ -53,11 +61,18 @@ class PlanForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('failed' + err));
+        }).then(res => this.setState(() => ({
+            openSuccess: true,
+            openLoading: false
+        }))).catch(res => this.setState(() => ({
+            openError: true,
+            openLoading: false,
+            error: statusCodes.FA[res.response.data.code].message
+        })));
     };
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({openError: false, openLoading: false, openSuccess: false});
     };
 
 
@@ -133,7 +148,7 @@ class PlanForm extends React.Component {
                             color="primary" className="edit-button">ویرایش</Button>
                 </div>
                 <Dialog
-                    open={this.state.open}
+                    open={this.state.openSuccess}
                     onClose={this.handleClose}
                     className="right-dir font-applied"
                 >
@@ -150,6 +165,36 @@ class PlanForm extends React.Component {
                             بستن
                         </Button>
                     </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openError}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                         fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {this.state.error}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openLoading}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <Loading/>
+                    </DialogContent>
                 </Dialog>
             </div>
         );
