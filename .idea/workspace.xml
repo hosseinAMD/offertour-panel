@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/PlanForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PlanForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PlanRequestItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PlanRequestItem.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,14 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PlanForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+            <state relative-caret-position="-525">
+              <caret line="37" column="45" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/PlanRequestItem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="32" column="118" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
             </state>
           </provider>
         </entry>
@@ -105,7 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/reducers/tours.js" />
         <option value="$PROJECT_DIR$/src/store/configureStore.js" />
         <option value="$PROJECT_DIR$/src/components/TripItem.js" />
         <option value="$PROJECT_DIR$/src/components/TourTimeline.js" />
@@ -156,6 +164,7 @@
         <option value="$PROJECT_DIR$/src/components/SupportAdminForm.js" />
         <option value="$PROJECT_DIR$/src/components/PlanRequests.js" />
         <option value="$PROJECT_DIR$/src/components/PlanForm.js" />
+        <option value="$PROJECT_DIR$/src/components/PlanRequestItem.js" />
       </list>
     </option>
   </component>
@@ -265,12 +274,12 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="5818000" />
+      <workItem from="1556702927229" duration="6113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235971000" />
+    <option name="totallyTimeSpent" value="236266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -305,7 +314,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/actions/airports.js" />
     <entry file="file://$PROJECT_DIR$/src/reducers/airports.js" />
     <entry file="file://$PROJECT_DIR$/src/actions/categories.js" />
     <entry file="file://$PROJECT_DIR$/src/reducers/categories.js" />
@@ -447,13 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PlanRequests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="48" column="29" lean-forward="true" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Plan.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -476,11 +477,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PlanForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+        <state relative-caret-position="-525">
+          <caret line="37" column="45" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PlanRequests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PlanRequestItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="32" column="118" selection-start-line="32" selection-start-column="118" selection-end-line="32" selection-end-column="118" />
         </state>
       </provider>
     </entry>

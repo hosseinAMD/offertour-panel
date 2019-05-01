@@ -30,8 +30,8 @@ const PlanRequestItem = (props) => {
             <TableCell align="center"><ItemRenderer id={props.request.PlanID} type="plan"/></TableCell>
             <TableCell align="center"><PaymentStatus status={props.request.Status}/></TableCell>
             <TableCell align="center"><Button onClick={() => handleAccept(status, id)}
-                                              variant="contained" color="primary"
-                                              className="edit-button">{props.request.Status ? 'غیرفعال' : 'فعال'}</Button></TableCell>
+                                              variant="contained" color={props.request.Status ? 'secondary' : 'primary'}
+                                              className="font-applied">{props.request.Status ? 'غیرفعال' : 'فعال'}</Button></TableCell>
         </TableRow>
     );
 };
