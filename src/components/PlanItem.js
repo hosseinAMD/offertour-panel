@@ -19,6 +19,7 @@ import numeral from 'numeral';
 import baseUrl, {role, token} from "../config/config";
 import {NavLink} from "react-router-dom";
 import axios from 'axios'
+import {statusCodes} from "../config/errors";
 
 class PlanItem extends React.Component {
     constructor(props) {
@@ -26,7 +27,8 @@ class PlanItem extends React.Component {
         this.state = {
             open: false,
             message: '',
-            error: ''
+            error: '',
+            loading: ''
         }
     }
 
@@ -39,6 +41,7 @@ class PlanItem extends React.Component {
     };
 
     handleSubmit = () => {
+        this.setState(() => ({loading: 'در حال ثبت درخواست...', message: '', error: ''}));
         axios.post(baseUrl + '/Agency/ActivePlan', JSON.stringify({
             PlanID: this.props.plan.Id
         }), {
@@ -48,8 +51,13 @@ class PlanItem extends React.Component {
             }
         }).then(res => this.setState(() => ({
             error: '',
-            message: 'درخواست شما با موفقیت ثبت شد.'
-        }))).catch(err => this.setState(() => ({error: 'مشکلی پیش  آمده است'})))
+            message: 'درخواست شما با موفقیت ثبت شد.',
+            loading: ''
+        }))).catch(res => this.setState(() => ({
+            error: statusCodes.FA[res.response.data.code].message,
+            loading: '',
+            message: ''
+        })))
     };
 
     render() {
@@ -109,6 +117,8 @@ class PlanItem extends React.Component {
                                     <p style={{color: 'green', fontWeight: 'bold'}}>{this.state.message}</p> : ''}
                                 {this.state.error ?
                                     <p style={{color: 'red', fontWeight: 'bold'}}>{this.state.error}</p> : ''}
+                                {this.state.loading ?
+                                    <p style={{color: 'blue', fontWeight: 'bold'}}>{this.state.loading}</p> : ''}
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
