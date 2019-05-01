@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change afterPath="$PROJECT_DIR$/src/config/errors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ManagerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ManagerForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SupportAdminForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SupportAdminForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,10 +16,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/AgencyForm.js">
+        <entry file="file://$PROJECT_DIR$/src/components/ManagerForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="218" column="35" lean-forward="true" selection-start-line="218" selection-start-column="35" selection-end-line="218" selection-end-column="35" />
+            <state relative-caret-position="270">
+              <caret line="93" column="73" lean-forward="true" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="73" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -30,10 +28,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/ManagerForm.js">
+        <entry file="file://$PROJECT_DIR$/src/components/SupportAdminForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="93" column="64" selection-start-line="93" selection-start-column="64" selection-end-line="93" selection-end-column="64" />
+            <state relative-caret-position="313">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -104,7 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/AllUsers.js" />
         <option value="$PROJECT_DIR$/src/data/busClasses.js" />
         <option value="$PROJECT_DIR$/src/actions/tours.js" />
         <option value="$PROJECT_DIR$/src/reducers/tours.js" />
@@ -155,10 +152,11 @@
         <option value="$PROJECT_DIR$/src/components/AgencyForm.js" />
         <option value="$PROJECT_DIR$/src/config/errors.js" />
         <option value="$PROJECT_DIR$/src/components/ManagerForm.js" />
+        <option value="$PROJECT_DIR$/src/components/SupportAdminForm.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="77" />
     <option name="y" value="47" />
     <option name="width" value="1151" />
@@ -264,12 +262,12 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="3487000" />
+      <workItem from="1556702927229" duration="3943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233640000" />
+    <option name="totallyTimeSpent" value="234096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -304,10 +302,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/AgencyUserForm.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/TripItem.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/TourTimeline.js" />
-    <entry file="file://$PROJECT_DIR$/src/data/foodTypes.js" />
     <entry file="file://$PROJECT_DIR$/src/components/HotelItem.js" />
     <entry file="file://$PROJECT_DIR$/src/components/TourHotels.js" />
     <entry file="file://$PROJECT_DIR$/src/components/TourDesc.js" />
@@ -353,13 +347,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/ArticleForm.js" />
     <entry file="file://$PROJECT_DIR$/src/config/config.js" />
     <entry file="file://$PROJECT_DIR$/src/components/Login.js" />
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/NavItems.js" />
     <entry file="file://$PROJECT_DIR$/src/components/NavbarUserPanel.js" />
     <entry file="file://$PROJECT_DIR$/package.json">
@@ -386,6 +373,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataSettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/errors.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -395,8 +416,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ManagerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="93" column="64" selection-start-line="93" selection-start-column="64" selection-end-line="93" selection-end-column="64" />
+        <state relative-caret-position="270">
+          <caret line="93" column="73" lean-forward="true" selection-start-line="93" selection-start-column="27" selection-end-line="93" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SupportAdminForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
