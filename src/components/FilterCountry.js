@@ -11,12 +11,12 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
-import categories from '../data/categories';
+import {connect} from "react-redux";
 
 class FilterCountry extends React.Component {
     state = {
         name: '',
-        category: categories.length + 1
+        category: ''
     };
 
     handleChange = name => event => {
@@ -63,9 +63,9 @@ class FilterCountry extends React.Component {
                                 }}
                             >
                                 <MenuItem className="font-applied" value=''>همه موارد</MenuItem>
-                                {categories.map(option => (
-                                    <MenuItem className="font-applied" key={option.id} value={option.id}>
-                                        {option.title}
+                                {this.props.categories.map(option => (
+                                    <MenuItem className="font-applied" key={option.Id} value={option.Id}>
+                                        {option.Name}
                                     </MenuItem>
                                 ))}
                             </TextField>
@@ -81,4 +81,8 @@ class FilterCountry extends React.Component {
     }
 }
 
-export default FilterCountry;
+const mapStateToProps = (state) => ({
+    categories:state.categories
+});
+
+export default connect(mapStateToProps)(FilterCountry);

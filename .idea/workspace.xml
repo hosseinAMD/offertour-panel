@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/FilterProvince.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FilterProvince.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProvincesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProvincesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProvincesSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProvincesSetting.js" afterDir="false" />
-    </list>
+    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -53,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/ProvincesList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="39" column="37" lean-forward="true" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+            <state relative-caret-position="313">
+              <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -301,18 +297,17 @@
       <workItem from="1556268924510" duration="12932000" />
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
-      <workItem from="1556702927229" duration="11606000" />
+      <workItem from="1556702927229" duration="12299000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241759000" />
+    <option name="totallyTimeSpent" value="242452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -326,7 +321,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35179153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35179153" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -629,8 +624,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ProvincesList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="39" column="37" lean-forward="true" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+        <state relative-caret-position="313">
+          <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
         </state>
       </provider>
     </entry>
