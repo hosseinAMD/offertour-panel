@@ -15,6 +15,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import MenuItem from '@material-ui/core/MenuItem';
 import Icon from '@material-ui/core/Icon';
 import {connect} from "react-redux";
+import Loading from "./Loading";
 
 class AgencyForm extends React.Component {
     constructor(props) {
@@ -28,12 +29,15 @@ class AgencyForm extends React.Component {
             EstabilishedDate: '',
             ProvinceID: 0,
             CityID: '',
-            open: false
+            openSuccess: false,
+            openError: false,
+            openLoading: false,
+            error:'',
         };
     }
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({openSuccess: false, openError: false, openLoading: false});
     };
 
     DatePickerInput = (props) => {
@@ -56,6 +60,7 @@ class AgencyForm extends React.Component {
     };
 
     handleSubmit = () => {
+        this.setState(() => ({openLoading: true}));
         let agencyUserDetail = new FormData();
         agencyUserDetail.append('Name', this.state.Name);
         agencyUserDetail.append('OwnerName', this.state.OwnerName);
@@ -69,7 +74,10 @@ class AgencyForm extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({open: true}))).catch(err => alert('error' + err));
+        }).then(res => this.setState(() => ({
+            openSuccess: true,
+            openLoading: false
+        }))).catch(err => this.setState(() => ({openError: true,error:'خطا در ثبت اطلاعات'})));
     };
 
 
@@ -213,6 +221,38 @@ class AgencyForm extends React.Component {
                             بستن
                         </Button>
                     </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openError}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                         fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            {this.state.error}
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                            بستن
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={this.state.openLoading}
+                    onClose={this.handleClose}
+                    className="right-dir font-applied"
+                >
+                    <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <Loading/>
+                        </DialogContentText>
+                    </DialogContent>
                 </Dialog>
             </div>
         );
