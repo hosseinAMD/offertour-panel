@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed" />
+    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
+      <change beforePath="$PROJECT_DIR$/src/components/TourForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TourForm.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,14 +15,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PlanRequestItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-107">
+            <state relative-caret-position="343">
               <caret line="45" column="6" lean-forward="true" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-990">
+              <caret line="1719" column="62" selection-start-line="1719" selection-start-column="62" selection-end-line="1719" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#10532#10617#0" />
+                <element signature="e#10651#87239#0" />
+                <element signature="e#10689#25180#0" />
+                <element signature="e#25193#71730#0" />
+                <element signature="e#71743#85207#0" />
+                <element signature="e#85220#87163#0" />
+                <element signature="e#87265#89458#0" />
+                <element signature="e#89484#89584#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/HotelItem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-240">
+              <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -41,7 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TableBody</find>
       <find>uv</find>
       <find>jDD jMMMM</find>
       <find>tour-fo</find>
@@ -71,6 +101,7 @@
       <find>addHo</find>
       <find>handleNe</find>
       <find>addTrip</find>
+      <find>addHote</find>
     </findStrings>
     <replaceStrings>
       <replace>id</replace>
@@ -137,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/components/TourInfo.js" />
         <option value="$PROJECT_DIR$/src/components/PlanForm.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/TourForm.js" />
         <option value="$PROJECT_DIR$/src/components/HotelItem.js" />
         <option value="$PROJECT_DIR$/src/components/TripItem.js" />
         <option value="$PROJECT_DIR$/src/components/AgencyItem.js" />
@@ -146,6 +176,7 @@
         <option value="$PROJECT_DIR$/src/components/ManagerItem.js" />
         <option value="$PROJECT_DIR$/src/components/AgencyUserForm.js" />
         <option value="$PROJECT_DIR$/src/components/PlanRequestItem.js" />
+        <option value="$PROJECT_DIR$/src/components/TourForm.js" />
       </list>
     </option>
   </component>
@@ -256,15 +287,16 @@
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
       <workItem from="1556702927229" duration="20195000" />
-      <workItem from="1556776489940" duration="8972000" />
+      <workItem from="1556776489940" duration="9370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259320000" />
+    <option name="totallyTimeSpent" value="259718000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -618,27 +650,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HotelItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1784">
-          <caret line="141" column="99" selection-start-line="141" selection-start-column="99" selection-end-line="141" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TripItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="24" lean-forward="true" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="220" column="24" selection-start-line="220" selection-start-column="16" selection-end-line="220" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -743,10 +758,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PlanRequestItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
+        <state relative-caret-position="343">
           <caret line="45" column="6" lean-forward="true" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/HotelItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-240">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-990">
+          <caret line="1719" column="62" selection-start-line="1719" selection-start-column="62" selection-end-line="1719" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#10532#10617#0" />
+            <element signature="e#10651#87239#0" />
+            <element signature="e#10689#25180#0" />
+            <element signature="e#25193#71730#0" />
+            <element signature="e#71743#85207#0" />
+            <element signature="e#85220#87163#0" />
+            <element signature="e#87265#89458#0" />
+            <element signature="e#89484#89584#0" />
           </folding>
         </state>
       </provider>

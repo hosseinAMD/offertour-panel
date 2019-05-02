@@ -12,7 +12,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Icon from '@material-ui/core/Icon';
-import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -28,7 +27,6 @@ import busClasses from "../data/busClasses";
 import Paper from "@material-ui/core/Paper";
 import TripItem from "./TripItem";
 import HotelItem from "./HotelItem";
-import ItemRenderer from "./ItemRenderer";
 import {connect} from "react-redux";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
@@ -36,13 +34,14 @@ import Loading from "./Loading";
 import {statusCodes} from "../config/errors";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import {NavLink} from "react-router-dom";
 
 class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 3,
-            id: 43,
+            activeStep: 0,
+            id: '',
             title: '',
             category: '',
             country: '',
@@ -1718,74 +1717,8 @@ class TourForm extends React.Component {
                                     <br/><br/>
                                     <p>تور شما جهت بررسی به واحد پشتیبانی آفرتور ارسال شد.پس از تایید پشتیبانی تور شما
                                         نمایش داده می شود.</p>
-                                    <Grid container spacing={24} className="my-container">
-                                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                                            <p><span className="bold">عنوان تور: </span>{this.state.title}</p>
-                                            <p><span
-                                                className="bold">شروع قیمت: </span>{numeral(this.state.startPrice).format('0,0')}
-                                            </p>
-                                            <p><span className="bold">مدت تور: </span>{this.state.duration}</p>
-                                            <p><span className="bold">دسته بندی: </span><ItemRenderer
-                                                id={this.state.category} type="category"/></p>
-                                            <p><span className="bold">کشور: </span><ItemRenderer id={this.state.country}
-                                                                                                 type="country"/></p>
-                                            <p><span className="bold">شهر: </span><ItemRenderer id={this.state.city}
-                                                                                                type="city"/></p>
-                                            <p><span className="bold">هواپیمایی: </span><ItemRenderer
-                                                id={this.state.flightCompany} type="flightCompany"/></p>
-                                            <p><span
-                                                className="bold">تاریخ شروع: </span>{moment(this.state.startDate).format('jYYYY/jMM/jDD')}
-                                            </p>
-                                            <p><span
-                                                className="bold">تاریخ پایان: </span>{moment(this.state.endDate).format('jYYYY/jMM/jDD')}
-                                            </p>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
-                                            <p><span className="bold">مدارک لازم: </span>{this.state.documents}</p>
-                                            <p><span className="bold">خدمات آژانس: </span>{this.state.services}</p>
-                                            <p><span className="bold">توضیحات: </span>{this.state.fullDescription}</p>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                            <Table className="font-applied">
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell align="center">نوع</TableCell>
-                                                        <TableCell align="center">عنوان</TableCell>
-                                                        <TableCell align="center">مبدا</TableCell>
-                                                        <TableCell align="center">مقصد</TableCell>
-                                                        <TableCell align="center">ساعت</TableCell>
-                                                        <TableCell align="center">مدت</TableCell>
-                                                        <TableCell align="center">جزئیات</TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody>
-                                                    {this.state.trips.map((trip) => (
-                                                        <TripItem trip={trip}/>
-                                                    ))}
-                                                </TableBody>
-                                            </Table>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                                            <Table className="font-applied">
-                                                <TableHead>
-                                                    <TableRow>
-                                                        <TableCell align="center">نام هتل</TableCell>
-                                                        <TableCell align="center">منو غذا</TableCell>
-                                                        <TableCell align="center">دوتخته</TableCell>
-                                                        <TableCell align="center">یک تخته</TableCell>
-                                                        <TableCell align="center">کودک با تخت</TableCell>
-                                                        <TableCell align="center">کودک بدون تخت</TableCell>
-                                                        <TableCell align="center">جزئیات</TableCell>
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody>
-                                                    {this.state.hotels.map((hotel) => (
-                                                        <HotelItem hotel={hotel}/>
-                                                    ))}
-                                                </TableBody>
-                                            </Table>
-                                        </Grid>
-                                    </Grid>
+                                    <Button variant="contained" className="edit-button font-applied" component={NavLink}
+                                            to="tours-list">لیست تورها</Button>
                                 </div>
                             ) : (
                                 <div>
