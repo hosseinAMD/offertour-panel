@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
-      <change beforePath="$PROJECT_DIR$/src/components/TripItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TripItem.js" afterDir="false" />
-    </list>
+    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,52 +14,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+        <entry file="file://$PROJECT_DIR$/src/components/AgencyItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-571">
-              <caret line="170" column="17" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/TripItem.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HotelItem.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1784">
-              <caret line="141" column="99" selection-start-line="141" selection-start-column="99" selection-end-line="141" selection-end-column="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="438" column="19" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/PlanForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="41" column="6" lean-forward="true" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
+            <state relative-caret-position="-540">
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -288,18 +243,18 @@
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
       <workItem from="1556702927229" duration="20195000" />
-      <workItem from="1556776489940" duration="5976000" />
+      <workItem from="1556776489940" duration="6498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256324000" />
+    <option name="totallyTimeSpent" value="256846000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="7" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -313,7 +268,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35179153" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.35179153" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -328,13 +283,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/config/errors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PlanDetail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-270">
@@ -760,8 +708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TripItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
+        <state relative-caret-position="855">
+          <caret line="57" column="24" lean-forward="true" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -770,8 +718,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-571">
-          <caret line="170" column="17" selection-start-line="170" selection-start-column="10" selection-end-line="170" selection-end-column="17" />
+        <state relative-caret-position="134">
+          <caret line="220" column="24" selection-start-line="220" selection-start-column="16" selection-end-line="220" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AgencyItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -46,7 +46,7 @@ class AgencyItem extends React.Component {
                 <TableCell align="center">{props.index}</TableCell>
                 <TableCell align="center">{props.agency.Name}</TableCell>
                 <TableCell align="center">{props.agency.OwnerName} {props.agency.OwnerFamilyName}</TableCell>
-                <TableCell align="center"><ItemRenderer id={props.agency.Id} type="city"/></TableCell>
+                <TableCell align="center"><ItemRenderer id={props.agency.CityID} type="city"/></TableCell>
                 <TableCell onClick={() => this.handleAgencyStatus(props.agency.Id, props.agency.EnableStatus)}
                            align="center"><StatusRenderer
                     status={props.agency.EnableStatus}/></TableCell>
