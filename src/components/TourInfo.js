@@ -9,8 +9,8 @@ import moment from "moment-jalaali";
 import enmoment from "moment";
 
 const TourInfo = (props) => {
-    const tourDate = enmoment.unix(Number(props.tour.TourDate)).format('YYYY/MM/DD');
-    const tourEndDate = enmoment.unix(Number(props.tour.TourReturnDate)).format('YYYY/MM/DD');
+    // const tourDate = enmoment.unix(Number(props.tour.TourDate)).format('YYYY/MM/DD');
+    // const tourEndDate = enmoment.unix(Number(props.tour.TourReturnDate)).format('YYYY/MM/DD');
     return (
         <div className="font-applied right-dir tour-info">
             <Table className="font-applied right-dir">
@@ -35,11 +35,11 @@ const TourInfo = (props) => {
                     <TableRow>
                         <TableCell align="center"><span className="bold">تاریخ شروع</span></TableCell>
                         <TableCell
-                            align="center">{moment(tourDate).format('jYYYY/jMM/jDD')}</TableCell>
+                            align="center">{props.tour.TourDate}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell align="center"><span className="bold">تاریخ پایان</span></TableCell>
-                        <TableCell align="center">{moment(tourEndDate).format('jYYYY/jMM/jDD')}</TableCell>
+                        <TableCell align="center">{props.tour.TourReturnDate}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

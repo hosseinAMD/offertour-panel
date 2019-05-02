@@ -10,8 +10,8 @@ import FeaturedStatusRenderer from "./FeaturedStatusRenderer";
 import {NavLink} from "react-router-dom";
 
 const TourItem = (props) => {
-        const tourDate = enmoment.unix(Number(props.tour.TourDate)).format('YYYY/MM/DD');
-        const tourEndDate = enmoment.unix(Number(props.tour.TourReturnDate)).format('YYYY/MM/DD');
+        // const tourDate = enmoment.unix(Number(props.tour.TourDate)).format('YYYY/MM/DD');
+        // const tourEndDate = enmoment.unix(Number(props.tour.TourReturnDate)).format('YYYY/MM/DD');
         return(
             <TableRow>
                     <TableCell align="center">{props.tour.Id}</TableCell>
@@ -19,13 +19,13 @@ const TourItem = (props) => {
                         className="bold">{props.tour.Title}</span></TableCell>
                     <TableCell align="center"><ItemRenderer id={props.tour.TourCityID} type="city"/></TableCell>
                     <TableCell align="center">{numeral(props.tour.StartPrice).format('0,0')}</TableCell>
-                    <TableCell align="center">{moment(tourDate).format('jYYYY/jMM/jDD')}</TableCell>
-                    <TableCell align="center">{moment(tourEndDate).format('jYYYY/jMM/jDD')}</TableCell>
+                    <TableCell align="center">{props.tour.TourDate}</TableCell>
+                    <TableCell align="center">{props.tour.TourReturnDate}</TableCell>
                     <TableCell align="center">{props.tour.Duration}</TableCell>
                     <TableCell align="center"><StatusRenderer status={props.tour.Status}/></TableCell>
                     <TableCell align="center"><FeaturedStatusRenderer featured={props.tour.TourModelID}/></TableCell>
             </TableRow>
         );
-}
+};
 
 export default TourItem;
