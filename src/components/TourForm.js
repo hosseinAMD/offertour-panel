@@ -103,7 +103,8 @@ class TourForm extends React.Component {
             openError: false,
             openLoading: false,
             openSuccess: false,
-            error: ''
+            error: '',
+            regexError: '',
         }
     };
 
@@ -135,6 +136,15 @@ class TourForm extends React.Component {
     endDateChange = (unix, formatted) => {
         const endDate = moment(formatted, 'jYYYY/jMM/jDD').format('jYYYY/jMM/jDD');
         this.setState(() => ({endDate}))
+    };
+
+    handleNumbersChange = name => event => {
+        if (event.target.value.match(/^\d*?$/)) {
+            this.setState(() => ({regexError: ''}));
+            this.setState({[name]: event.target.value});
+        } else {
+            this.setState(() => ({regexError: 'لطفا فقط اعداد انگلیسی وارد نمایید.'}))
+        }
     };
 
     handleClose = () => {
@@ -302,9 +312,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.startPrice).format('0,0')} تومان`}
                                 value={this.state.startPrice}
-                                onChange={this.handleChange('startPrice')}
+                                onChange={this.handleNumbersChange('startPrice')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="discountPercentage"
                                 label="درصد تخفیف"
@@ -314,9 +325,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText="درصد تخفیف تور"
                                 value={this.state.discountPercentage}
-                                onChange={this.handleChange('discountPercentage')}
+                                onChange={this.handleNumbersChange('discountPercentage')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="discount"
                                 label="قیمت پس از تخفیف"
@@ -325,9 +337,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.discount).format('0,0')} تومان`}
                                 value={this.state.discount}
-                                onChange={this.handleChange('discount')}
+                                onChange={this.handleNumbersChange('discount')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="duration"
                                 label="مدت تور"
@@ -1300,13 +1313,13 @@ class TourForm extends React.Component {
                             />
                             <TextField
                                 label="ستاره هتل"
-                                type="number"
                                 InputLabelProps={{className: 'input-labels'}}
                                 InputProps={{className: 'font-applied'}}
                                 value={this.state.hotelStarts}
-                                onChange={this.handleChange('hotelStarts')}
+                                onChange={this.handleNumbersChange('hotelStarts')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <FormControlLabel
                                 control={
                                     <Switch
@@ -1473,9 +1486,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.singleBed).format('0,0')} تومان`}
                                 value={this.state.singleBed}
-                                onChange={this.handleChange('singleBed')}
+                                onChange={this.handleNumbersChange('singleBed')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="دو تخته"
@@ -1484,9 +1498,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.multiBed).format('0,0')} تومان`}
                                 value={this.state.multiBed}
-                                onChange={this.handleChange('multiBed')}
+                                onChange={this.handleNumbersChange('multiBed')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="کودک بدون تخت"
@@ -1495,9 +1510,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.babyWithBed).format('0,0')} تومان`}
                                 value={this.state.babyWithBed}
-                                onChange={this.handleChange('babyWithBed')}
+                                onChange={this.handleNumbersChange('babyWithBed')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="کودک با تخت"
@@ -1506,9 +1522,10 @@ class TourForm extends React.Component {
                                 FormHelperTextProps={{className: 'font-applied'}}
                                 helperText={`${numeral(this.state.babyNoBed).format('0,0')} تومان`}
                                 value={this.state.babyNoBed}
-                                onChange={this.handleChange('babyNoBed')}
+                                onChange={this.handleNumbersChange('babyNoBed')}
                                 margin="normal"
                             />
+                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                         </div>
                         <Fab onClick={this.handleAddHotel} className="add-fab" color="primary" aria-label="Add">
                             <Icon>add</Icon>
