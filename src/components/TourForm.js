@@ -41,8 +41,8 @@ class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0,
-            id: '',
+            activeStep: 3,
+            id: 43,
             title: '',
             category: '',
             country: '',
@@ -245,9 +245,9 @@ class TourForm extends React.Component {
             HotelName: this.state.hotelName,
             HotelStar: this.state.hotelStarts,
             HotelCityID: this.state.hotelCity,
-            BreakFastService: this.state.BreakFastService,
-            LunchService: this.state.LunchService,
-            DinnerService: this.state.DinnerService,
+            BreakFastService: this.state.hotelBreakFast,
+            LunchService: this.state.hotelLunch,
+            DinnerService: this.state.hotelDinner,
             PriceOF4BedStead: '#',
             PriceOF3BedStead: '#',
             PriceOF2BedStead: this.state.multiBed,
@@ -266,8 +266,10 @@ class TourForm extends React.Component {
             hotels.push({
                 hotelName: this.state.hotelName,
                 hotelStarts: this.state.hotelStarts,
-                hotelMenu: this.state.hotelMenu,
                 hotelDescription: this.state.hotelDescription,
+                BreakFastService: this.state.hotelBreakFast,
+                LunchService: this.state.hotelLunch,
+                DinnerService: this.state.hotelDinner,
                 singleBed: this.state.singleBed,
                 multiBed: this.state.multiBed,
                 babyWithBed: this.state.babyWithBed,
@@ -1824,7 +1826,6 @@ class TourForm extends React.Component {
                                     <TableCell align="center">مقصد</TableCell>
                                     <TableCell align="center">ساعت</TableCell>
                                     <TableCell align="center">مدت</TableCell>
-                                    <TableCell align="center">جزئیات</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
