@@ -29,15 +29,17 @@ class HotelItem extends React.Component {
     };
 
     render() {
-        let foodType = 1;
-        if (this.props.hotel.LunchService === true) {
-            foodType = 2;
-        }
+        const BreakFastService = this.props.hotel.BreakFastService;
+        const LunchService = this.props.hotel.LunchService;
+        const DinnerService = this.props.hotel.DinnerService;
         return (
             <TableRow>
                 <TableCell align="center">{this.props.hotel.HotelName}</TableCell>
-                <TableCell align="center"><ItemRenderer id={foodType}
-                                                        type="foodType"/></TableCell>
+                <TableCell align="center">
+                    {BreakFastService ? 'صبحانه/' : ''}
+                    {LunchService ? 'ناهار/' : ''}
+                    {DinnerService ? 'شام' : ''}
+                </TableCell>
                 <TableCell align="center">{numeral(this.props.hotel.PriceOF2BedStead).format('0,0')}</TableCell>
                 <TableCell align="center">{numeral(this.props.hotel.PriceOF1BedStead).format('0,0')}</TableCell>
                 <TableCell align="center">{numeral(this.props.hotel.PriceOFChildWithBedStead).format('0,0')}</TableCell>
