@@ -245,9 +245,9 @@ class TourForm extends React.Component {
             HotelName: this.state.hotelName,
             HotelStar: this.state.hotelStarts,
             HotelCityID: this.state.hotelCity,
-            BreakFastService: true,
-            LunchService: this.state.hotelMenu !== 1,
-            DinnerService: this.state.hotelMenu !== 1,
+            BreakFastService: this.state.BreakFastService,
+            LunchService: this.state.LunchService,
+            DinnerService: this.state.DinnerService,
             PriceOF4BedStead: '#',
             PriceOF3BedStead: '#',
             PriceOF2BedStead: this.state.multiBed,
@@ -315,7 +315,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('startPrice')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="discountPercentage"
                                 label="درصد تخفیف"
@@ -328,7 +329,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('discountPercentage')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="discount"
                                 label="قیمت پس از تخفیف"
@@ -340,7 +342,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('discount')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="duration"
                                 label="مدت تور"
@@ -1319,7 +1322,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('hotelStarts')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <FormControlLabel
                                 control={
                                     <Switch
@@ -1489,7 +1493,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('singleBed')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="دو تخته"
@@ -1501,7 +1506,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('multiBed')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="کودک بدون تخت"
@@ -1513,7 +1519,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('babyWithBed')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="startPrice"
                                 label="کودک با تخت"
@@ -1525,7 +1532,8 @@ class TourForm extends React.Component {
                                 onChange={this.handleNumbersChange('babyNoBed')}
                                 margin="normal"
                             />
-                            {this.state.regexError ? <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
+                            {this.state.regexError ?
+                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                         </div>
                         <Fab onClick={this.handleAddHotel} className="add-fab" color="primary" aria-label="Add">
                             <Icon>add</Icon>
