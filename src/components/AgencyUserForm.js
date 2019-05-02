@@ -29,7 +29,7 @@ class AgencyUserForm extends React.Component {
             BirthDate: this.props.agencyUser ? this.props.agencyUser.BirthDate : '',
             Password: this.props.agencyUser ? this.props.agencyUser.Password : '',
             ConfirmPassword: this.props.agencyUser ? this.props.agencyUser.Password : '',
-            RoleID: 1,
+            RoleID: 2,
             openSuccess: false,
             openLoading: false,
             openError: false,
