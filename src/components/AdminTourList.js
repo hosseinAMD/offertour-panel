@@ -36,6 +36,7 @@ class AdminTourList extends React.Component {
     render() {
         if (this.state.isLoaded) {
             if (this.state.tours.length > 0) {
+                const tours = this.state.tours.sort((a, b) => a.Id < b.Id);
                 return (
                     <Grid container spacing={24} className="my-container">
                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -54,7 +55,7 @@ class AdminTourList extends React.Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {this.state.tours.map((tour) => (
+                                    {tours.map((tour) => (
                                         <TourItem key={tour.Id} tour={tour}/>
                                     ))}
                                 </TableBody>
