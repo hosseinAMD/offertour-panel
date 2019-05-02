@@ -25,7 +25,6 @@ import numeral from 'numeral';
 import tripTypes from "../data/tripTypes";
 import flightClasses from "../data/flightClasses";
 import busClasses from "../data/busClasses";
-import foodTypes from "../data/foodTypes";
 import Paper from "@material-ui/core/Paper";
 import TripItem from "./TripItem";
 import HotelItem from "./HotelItem";
@@ -35,12 +34,14 @@ import axios from 'axios';
 import baseUrl, {token} from "../config/config";
 import Loading from "./Loading";
 import {statusCodes} from "../config/errors";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0,
+            activeStep: 3,
             id: '',
             title: '',
             category: '',
@@ -83,6 +84,9 @@ class TourForm extends React.Component {
             hotelProvince: '',
             hotelCity: '',
             hotelMenu: '',
+            hotelBreakFast: false,
+            hotelLunch: false,
+            hotelDinner: false,
             hotelDescription: '',
             singleBed: '',
             multiBed: '',
@@ -101,6 +105,22 @@ class TourForm extends React.Component {
             openSuccess: false,
             error: ''
         }
+    };
+
+
+    handleBreakFast = () => {
+        const hotelBreakFast = this.state.hotelBreakFast;
+        this.setState(() => ({hotelBreakFast: !hotelBreakFast}))
+    };
+
+    handleLunch = () => {
+        const hotelLunch = this.state.hotelLunch;
+        this.setState(() => ({hotelLunch: !hotelLunch}))
+    };
+
+    handleDinner = () => {
+        const hotelDinner = this.state.hotelDinner;
+        this.setState(() => ({hotelDinner: !hotelDinner}))
     };
 
     DatePickerInput = (props) => {
@@ -1280,35 +1300,49 @@ class TourForm extends React.Component {
                             />
                             <TextField
                                 label="ستاره هتل"
+                                type="number"
                                 InputLabelProps={{className: 'input-labels'}}
                                 InputProps={{className: 'font-applied'}}
                                 value={this.state.hotelStarts}
                                 onChange={this.handleChange('hotelStarts')}
                                 margin="normal"
                             />
-                            <TextField
-                                id="city"
-                                select
-                                label="نوع منو هتل"
-                                value={this.state.hotelMenu}
-                                onChange={this.handleChange('hotelMenu')}
-                                InputLabelProps={{className: 'input-labels'}}
-                                InputProps={{className: 'font-applied'}}
-                                FormHelperTextProps={{className: 'font-applied'}}
-                                SelectProps={{
-                                    MenuProps: {
-                                        className: 'font-applied',
-                                    }
-                                }}
-                                helperText="لطفا نوع منو هتل را انتخاب نمایید."
-                                margin="normal"
-                            >
-                                {foodTypes.map(option => (
-                                    <MenuItem key={option.id} value={option.id}>
-                                        {option.title}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={this.state.hotelBreakFast}
+                                        onChange={this.handleBreakFast}
+                                        value={this.state.hotelBreakFast}
+                                        color="primary"
+                                    />
+                                }
+                                label="صبحانه"
+                                classes={{label: 'font-applied'}}
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={this.state.hotelLunch}
+                                        onChange={this.handleLunch}
+                                        value={this.state.hotelLunch}
+                                        color="primary"
+                                    />
+                                }
+                                label="ناهار"
+                                classes={{label: 'font-applied'}}
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Switch
+                                        checked={this.state.hotelDinner}
+                                        onChange={this.handleDinner}
+                                        value={this.state.hotelDinner}
+                                        color="primary"
+                                    />
+                                }
+                                label="شام"
+                                classes={{label: 'font-applied'}}
+                            />
                             <TextField
                                 label="توضیحات"
                                 InputLabelProps={{className: 'input-labels'}}
