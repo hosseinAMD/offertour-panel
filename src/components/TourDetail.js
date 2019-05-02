@@ -18,6 +18,8 @@ import {connect} from "react-redux";
 import {NavLink} from "react-router-dom";
 import axios from 'axios';
 import baseUrl, {token, role} from "../config/config";
+import Loading from './Loading';
+import {statusCodes} from "../config/errors";
 
 class TourDetail extends React.Component {
     constructor(props) {
@@ -26,6 +28,9 @@ class TourDetail extends React.Component {
             value: 0,
             openAccept: false,
             openReject: false,
+            openError: false,
+            opanLoading: false,
+            error: ''
         }
     }
 
@@ -33,8 +38,13 @@ class TourDetail extends React.Component {
         this.setState({value});
     };
 
+    handleClose = () => {
+        this.setState(() => ({openError: false, openLoading: false}));
+    };
+
     handleAccept = () => {
-        const TourID = parseInt(this.props.match.params.id)
+        this.setState(() => ({openLoading: true}));
+        const TourID = parseInt(this.props.match.params.id);
         axios.put(baseUrl + '/Admin/Tour', JSON.stringify({
             TourID,
             Status: true
@@ -43,12 +53,18 @@ class TourDetail extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({openAccept: true}))).catch(err => alert(err))
+        }).then(res => this.setState(() => ({openLoading: false, openAccept: true})))
+            .catch(res => this.setState(() => ({
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message,
+                openError: true
+            })));
 
     };
 
     handleReject = () => {
-        const TourID = parseInt(this.props.match.params.id)
+        this.setState(() => ({openLoading: true}));
+        const TourID = parseInt(this.props.match.params.id);
         axios.put(baseUrl + '/Admin/Tour', JSON.stringify({
             TourID,
             Status: false
@@ -57,7 +73,12 @@ class TourDetail extends React.Component {
                 'Content-Type': 'application/json',
                 'token': token
             }
-        }).then(res => this.setState(() => ({openReject: true}))).catch(err => alert(err))
+        }).then(res => this.setState(() => ({openReject: true, openLoading: false})))
+            .catch(res => this.setState(() => ({
+                openLoading: false,
+                error: statusCodes.FA[res.response.data.code].message,
+                openError: true
+            })));
     };
 
     render() {
@@ -131,6 +152,36 @@ class TourDetail extends React.Component {
                                     لیست تورها
                                 </Button>
                             </DialogActions>
+                        </Dialog>
+                        <Dialog
+                            open={this.state.openError}
+                            onClose={this.handleClose}
+                            className="right-dir font-applied"
+                        >
+                            <DialogTitle id="alert-dialog-title" className="font-applied"> <Icon style={{color: 'red'}}
+                                                                                                 fontSize="large">close_circle</Icon>{"خطا در بروزرسانی اطلاعات"}
+                            </DialogTitle>
+                            <DialogContent>
+                                <DialogContentText id="alert-dialog-description">
+                                    {this.state.error}
+                                </DialogContentText>
+                            </DialogContent>
+                            <DialogActions>
+                                <Button className="font-applied" onClick={this.handleClose} color="primary" autoFocus>
+                                    بستن
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                        <Dialog
+                            open={this.state.openLoading}
+                            onClose={this.handleClose}
+                            className="right-dir font-applied"
+                        >
+                            <DialogTitle id="alert-dialog-title" className="font-applied">{"در حال انجام عملیات!"}
+                            </DialogTitle>
+                            <DialogContent>
+                                <Loading/>
+                            </DialogContent>
                         </Dialog>
                     </Paper>
                 </Grid>
