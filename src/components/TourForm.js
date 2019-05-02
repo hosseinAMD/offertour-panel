@@ -41,7 +41,7 @@ class TourForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 3,
+            activeStep: 0,
             id: '',
             title: '',
             category: '',
@@ -320,7 +320,6 @@ class TourForm extends React.Component {
                             <TextField
                                 id="discountPercentage"
                                 label="درصد تخفیف"
-                                type="number"
                                 InputLabelProps={{className: 'input-labels'}}
                                 InputProps={{className: 'font-applied'}}
                                 FormHelperTextProps={{className: 'font-applied'}}
@@ -334,16 +333,14 @@ class TourForm extends React.Component {
                             <TextField
                                 id="discount"
                                 label="قیمت پس از تخفیف"
+                                disabled={true}
                                 InputLabelProps={{className: 'input-labels'}}
                                 InputProps={{className: 'font-applied'}}
                                 FormHelperTextProps={{className: 'font-applied'}}
-                                helperText={`${numeral(this.state.discount).format('0,0')} تومان`}
-                                value={this.state.discount}
-                                onChange={this.handleNumbersChange('discount')}
+                                helperText={`${numeral((this.state.startPrice * (100 - this.state.discountPercentage)) / 100).format('0,0')} تومان`}
+                                value={(this.state.startPrice * (100 - this.state.discountPercentage)) / 100}
                                 margin="normal"
                             />
-                            {this.state.regexError ?
-                                <p className="font-applied regex-error">{this.state.regexError}</p> : ''}
                             <TextField
                                 id="duration"
                                 label="مدت تور"
@@ -1589,6 +1586,7 @@ class TourForm extends React.Component {
         if (activeStep === 1) {
             this.setState(() => ({openLoading: true}));
             let tourFields = new FormData();
+            const discount = (this.state.startPrice * (100 - this.state.discountPercentage)) / 100;
             tourFields.append('Image', this.state.image);
             tourFields.append('Title', this.state.title);
             tourFields.append('TourDistance', 'Not set yet');
@@ -1602,7 +1600,7 @@ class TourForm extends React.Component {
             tourFields.append('Description', this.state.fullDescription);
             tourFields.append('NecessaryDocument', this.state.documents);
             tourFields.append('TagsInput', `${JSON.stringify(this.state.tags)}`);
-            tourFields.append('Discount', this.state.discount);
+            tourFields.append('Discount', discount);
             tourFields.append('DiscountPercentage', this.state.discountPercentage);
             tourFields.append('TourModelID', this.state.tourModel);
             tourFields.append('StartPrice', this.state.startPrice);

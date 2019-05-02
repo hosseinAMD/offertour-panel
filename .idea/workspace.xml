@@ -18,14 +18,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="1319" column="87" selection-start-line="1319" selection-start-column="87" selection-end-line="1319" selection-end-column="87" />
+            <state relative-caret-position="195">
+              <caret line="342" column="30" selection-start-line="342" selection-start-column="30" selection-end-line="342" selection-end-column="30" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#9697#23827#0" />
-                <element signature="e#23840#70377#0" />
-                <element signature="e#82435#84378#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="438" column="19" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -46,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ID</find>
       <find>this.state</find>
       <find>TableBody</find>
       <find>uv</find>
@@ -72,10 +77,11 @@
       <find>this.handleChange</find>
       <find>state</find>
       <find>Dial</find>
-      <find>handleNe</find>
       <find>handleNex</find>
       <find>food</find>
       <find>foodTy</find>
+      <find>addHo</find>
+      <find>handleNe</find>
     </findStrings>
     <replaceStrings>
       <replace>id</replace>
@@ -110,7 +116,6 @@
         <option value="$PROJECT_DIR$/src/components/PhoneNumbersList.js" />
         <option value="$PROJECT_DIR$/src/components/AgencyProfile.js" />
         <option value="$PROJECT_DIR$/src/components/AddArticle.js" />
-        <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/components/ArticleForm.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/config/config.js" />
@@ -150,11 +155,12 @@
         <option value="$PROJECT_DIR$/src/components/TourInfo.js" />
         <option value="$PROJECT_DIR$/src/components/HotelItem.js" />
         <option value="$PROJECT_DIR$/src/components/PlanForm.js" />
+        <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/components/TourForm.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="77" />
     <option name="y" value="47" />
     <option name="width" value="1151" />
@@ -261,12 +267,12 @@
       <workItem from="1556285732379" duration="5236000" />
       <workItem from="1556515956398" duration="18000" />
       <workItem from="1556702927229" duration="20195000" />
-      <workItem from="1556776489940" duration="2982000" />
+      <workItem from="1556776489940" duration="5330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253330000" />
+    <option name="totallyTimeSpent" value="255678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="7" />
@@ -301,29 +307,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@material-ui/core/CircularProgress/CircularProgress.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Loading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -740,15 +723,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+    <entry file="file://$PROJECT_DIR$/src/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="1319" column="87" selection-start-line="1319" selection-start-column="87" selection-end-line="1319" selection-end-column="87" />
+        <state relative-caret-position="313">
+          <caret line="438" column="19" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AddArticle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#9697#23827#0" />
-            <element signature="e#23840#70377#0" />
-            <element signature="e#82435#84378#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ArticleForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1305">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="342" column="30" selection-start-line="342" selection-start-column="30" selection-end-line="342" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
