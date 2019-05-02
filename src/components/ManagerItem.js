@@ -15,6 +15,7 @@ class ManagerItem extends React.Component {
                 <TableCell align="center">{props.manager.Name} {props.manager.FamilyName}</TableCell>
                 <TableCell align="center">{props.manager.UserName}</TableCell>
                 <TableCell align="center">{role === 'support' ? <ItemRenderer id={props.manager.AgencyID} type="agency"/> : <span>{loggedInAgency.Name}</span>}</TableCell>
+                <TableCell align="center">{props.manager.RoleID === 1 ? 'مدیر آژانس' : 'اپراتور آژانس'}</TableCell>
                 <TableCell align="center"><StatusRenderer
                     status={1}/></TableCell>
             </TableRow>

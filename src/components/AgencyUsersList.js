@@ -39,6 +39,7 @@ class AgencyUsersList extends React.Component {
                             <TableCell align="center">نام و نام خانوادگی</TableCell>
                             <TableCell align="center">نام کاربری</TableCell>
                             <TableCell align="center">آژانس</TableCell>
+                            <TableCell align="center">نقش</TableCell>
                             <TableCell align="center">وضعیت</TableCell>
                         </TableRow>
                     </TableHead>
