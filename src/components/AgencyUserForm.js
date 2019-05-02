@@ -58,53 +58,61 @@ class AgencyUserForm extends React.Component {
     };
 
     handleSubmit = () => {
-        this.setState(() => ({openLoading: true}));
-        let agencyUserDetail = new FormData();
-        agencyUserDetail.append('Name', this.state.Name);
-        agencyUserDetail.append('FamilyName', this.state.FamilyName);
-        agencyUserDetail.append('PhoneNumber', this.state.PhoneNumber);
-        agencyUserDetail.append('UserName', this.state.UserName);
-        agencyUserDetail.append('Password', this.state.Password);
-        agencyUserDetail.append('Image', this.state.Image);
-        agencyUserDetail.append('RoleID', this.state.RoleID);
-        agencyUserDetail.append('RegistrationDate', this.state.RegistrationDate);
-        agencyUserDetail.append('BirthDate', this.state.BirthDate);
-        axios.post(baseUrl + '/Agency/AgencyUser', agencyUserDetail, {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        }).then(res => this.setState(() => ({openSuccess: true, openLoading: false})))
-            .catch(res => this.setState(() => ({
+        if (this.state.Password === this.state.ConfirmPassword) {
+            this.setState(() => ({openLoading: true}));
+            let agencyUserDetail = new FormData();
+            agencyUserDetail.append('Name', this.state.Name);
+            agencyUserDetail.append('FamilyName', this.state.FamilyName);
+            agencyUserDetail.append('PhoneNumber', this.state.PhoneNumber);
+            agencyUserDetail.append('UserName', this.state.UserName);
+            agencyUserDetail.append('Password', this.state.Password);
+            agencyUserDetail.append('Image', this.state.Image);
+            agencyUserDetail.append('RoleID', this.state.RoleID);
+            agencyUserDetail.append('RegistrationDate', this.state.RegistrationDate);
+            agencyUserDetail.append('BirthDate', this.state.BirthDate);
+            axios.post(baseUrl + '/Agency/AgencyUser', agencyUserDetail, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            }).then(res => this.setState(() => ({openSuccess: true, openLoading: false})))
+                .catch(res => this.setState(() => ({
+                    openError: true,
+                    openLoading: false,
+                    error: statusCodes.FA[res.response.data.code].message,
+                })));
+        } else {
+            this.setState(() => ({error: 'رمز عبور و تایید رمز عبور یکسان نمی باشند.', openError: true}));
+        }
+    };
+
+    handleEdit = () => {
+        if (this.state.Password === this.state.ConfirmPassword) {
+            this.setState(() => ({openLoading: true}));
+            let agencyUserDetail = new FormData();
+            agencyUserDetail.append('Name', this.state.Name);
+            agencyUserDetail.append('FamilyName', this.state.FamilyName);
+            agencyUserDetail.append('PhoneNumber', this.state.PhoneNumber);
+            agencyUserDetail.append('UserName', this.state.UserName);
+            agencyUserDetail.append('Password', this.state.Password);
+            agencyUserDetail.append('Image', this.state.Image);
+            agencyUserDetail.append('BirthDate', this.state.BirthDate);
+            axios.put(baseUrl + '/Agency/AgencyUserInformation', agencyUserDetail, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'token': token
+                }
+            }).then(res => this.setState(() => ({
+                openSuccess: true,
+                openLoading: false
+            }))).catch(res => this.setState(() => ({
                 openError: true,
                 openLoading: false,
                 error: statusCodes.FA[res.response.data.code].message,
             })));
-    };
-
-    handleEdit = () => {
-        this.setState(() => ({openLoading: true}));
-        let agencyUserDetail = new FormData();
-        agencyUserDetail.append('Name', this.state.Name);
-        agencyUserDetail.append('FamilyName', this.state.FamilyName);
-        agencyUserDetail.append('PhoneNumber', this.state.PhoneNumber);
-        agencyUserDetail.append('UserName', this.state.UserName);
-        agencyUserDetail.append('Password', this.state.Password);
-        agencyUserDetail.append('Image', this.state.Image);
-        agencyUserDetail.append('BirthDate', this.state.BirthDate);
-        axios.put(baseUrl + '/Agency/AgencyUserInformation', agencyUserDetail, {
-            headers: {
-                'Content-Type': 'application/json',
-                'token': token
-            }
-        }).then(res => this.setState(() => ({
-            openSuccess: true,
-            openLoading: false
-        }))).catch(res => this.setState(() => ({
-            openError: true,
-            openLoading: false,
-            error: statusCodes.FA[res.response.data.code].message,
-        })));
+        } else {
+            this.setState(() => ({error: 'رمز عبور و تایید رمز عبور یکسان نمی باشند.', openError: true}));
+        }
     };
 
     handleClose = () => {

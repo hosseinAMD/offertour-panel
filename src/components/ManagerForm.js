@@ -68,32 +68,36 @@ class ManagerForm extends React.Component {
         if (!this.state.AgencyID) {
             this.setState(() => ({openError: true, error: 'آژانس مورد نظر را انتخاب نمایید'}))
         } else {
-            this.setState(() => ({openLoading: true}));
-            let managerDetail = new FormData();
-            managerDetail.append('Name', this.state.Name);
-            managerDetail.append('FamilyName', this.state.FamilyName);
-            managerDetail.append('UserName', this.state.UserName);
-            managerDetail.append('Password', this.state.Password);
-            managerDetail.append('Image', this.state.Image);
-            managerDetail.append('RoleID', this.state.RoleID);
-            managerDetail.append('PhoneNumber', this.state.PhoneNumber);
-            managerDetail.append('BirthDate', this.state.BirthDate);
-            managerDetail.append('AgencyID', this.state.AgencyID);
-            axios.post(baseUrl + '/Admin/AgencySuperUser', managerDetail, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': token
-                }
-            }).then(res => this.setState(() => ({
-                openLoading: false,
-                openSuccess: true
-            }))).catch((res) => {
-                this.setState(() => ({
+            if (this.state.Password === this.state.ConfirmPassword) {
+                this.setState(() => ({openLoading: true}));
+                let managerDetail = new FormData();
+                managerDetail.append('Name', this.state.Name);
+                managerDetail.append('FamilyName', this.state.FamilyName);
+                managerDetail.append('UserName', this.state.UserName);
+                managerDetail.append('Password', this.state.Password);
+                managerDetail.append('Image', this.state.Image);
+                managerDetail.append('RoleID', this.state.RoleID);
+                managerDetail.append('PhoneNumber', this.state.PhoneNumber);
+                managerDetail.append('BirthDate', this.state.BirthDate);
+                managerDetail.append('AgencyID', this.state.AgencyID);
+                axios.post(baseUrl + '/Admin/AgencySuperUser', managerDetail, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'token': token
+                    }
+                }).then(res => this.setState(() => ({
                     openLoading: false,
-                    openError: true,
-                    error: statusCodes.FA[res.response.data.code].message
-                }));
-            });
+                    openSuccess: true
+                }))).catch((res) => {
+                    this.setState(() => ({
+                        openLoading: false,
+                        openError: true,
+                        error: statusCodes.FA[res.response.data.code].message
+                    }));
+                });
+            } else {
+                this.setState(() => ({error: 'رمز عبور و تایید رمز عبور یکسان نمی باشند.', openError: true}));
+            }
         }
     };
 
