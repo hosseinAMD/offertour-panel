@@ -1829,7 +1829,7 @@ class TourForm extends React.Component {
                             </TableHead>
                             <TableBody>
                                 {this.state.trips.map((trip) => (
-                                    <TripItem trip={trip}/>
+                                    <TripItem trip={trip} type="form"/>
                                 ))}
                             </TableBody>
                         </Table>
@@ -1852,7 +1852,7 @@ class TourForm extends React.Component {
                             </TableHead>
                             <TableBody>
                                 {this.state.hotels.map((hotel) => (
-                                    <HotelItem hotel={hotel}/>
+                                    <HotelItem hotel={hotel} type="form"/>
                                 ))}
                             </TableBody>
                         </Table>
