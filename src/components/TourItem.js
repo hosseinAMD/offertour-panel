@@ -3,8 +3,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import ItemRenderer from "./ItemRenderer";
 import numeral from 'numeral';
-import moment from 'moment-jalaali';
-import enmoment from 'moment';
 import StatusRenderer from "./StatusRenderer";
 import FeaturedStatusRenderer from "./FeaturedStatusRenderer";
 import {NavLink} from "react-router-dom";

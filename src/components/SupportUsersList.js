@@ -6,7 +6,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
-import AgencyItem from "./AgencyItem";
 import Loading from "./Loading";
 import SupportUserItem from "./SupportUserItem";
 

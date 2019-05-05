@@ -5,8 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import numeral from "numeral";
 import ItemRenderer from './ItemRenderer';
-import moment from "moment-jalaali";
-import enmoment from "moment";
+
 
 const TourInfo = (props) => {
     // const tourDate = enmoment.unix(Number(props.tour.TourDate)).format('YYYY/MM/DD');

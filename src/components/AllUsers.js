@@ -11,7 +11,6 @@ import HeaderChip from './HeaderChip';
 import {NavLink} from "react-router-dom";
 import AgencyList from "./AgencyList";
 import SupportUsersList from "./SupportUsersList";
-import ManagerItem from "./ManagerItem";
 import ManagersList from "./ManagersList";
 
 class AllUsers extends React.Component {

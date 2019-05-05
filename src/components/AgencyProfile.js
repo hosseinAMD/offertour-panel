@@ -6,7 +6,7 @@ import Rate from "./Rate";
 import moment from 'moment-jalaali';
 import Button from "@material-ui/core/Button";
 import HeaderChip from "./HeaderChip";
-import {loggedInAgency, loggedInUser} from "../config/config";
+import {loggedInAgency} from "../config/config";
 import ItemRenderer from "./ItemRenderer";
 import {NavLink} from "react-router-dom";
 import {agencyPhoneNumbers} from "../config/config";

@@ -10,7 +10,6 @@ import HeaderChip from "./HeaderChip";
 import {headerBlue} from "../config/colors";
 import CityItem from "./CityItem";
 import {connect} from "react-redux";
-import ProvinceItem from "./ProvincesList";
 
 const CitiesList = (props) => (
     <Paper elevation={1} className="right-dir setting-forms-paper">

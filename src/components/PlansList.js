@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import plans from '../data/plans';
 import PlanItem from "./PlanItem";
 import axios from 'axios';
 import baseUrl from '../config/config';

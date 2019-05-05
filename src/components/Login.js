@@ -11,7 +11,6 @@ import baseUrl from '../config/config';
 import axios from 'axios';
 import {loggedInUser} from "../config/config";
 import {statusCodes} from "../config/errors";
-import DialogContentText from "./PlanItem";
 
 class Login extends React.Component {
     constructor(props) {
@@ -124,7 +123,7 @@ class Login extends React.Component {
                                 }
                             />
                         </FormControl>
-                        <p><a href="#" className="my-link">رمز عبور خود را فراموش کرده اید؟</a></p>
+                        {/*<p><a href="#" className="my-link">رمز عبور خود را فراموش کرده اید؟</a></p>*/}
                         {this.state.message ?
                             <p style={{color: 'green', fontWeight: 'bold'}}>{this.state.message}</p> : ''}
                         {this.state.error ?
