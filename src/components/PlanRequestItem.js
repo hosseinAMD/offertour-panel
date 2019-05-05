@@ -24,7 +24,7 @@ class PlanRequestItem extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({openSuccess: false, opanLoading: false, openError: false});
+        this.setState({openSuccess: false, openLoading: false, openError: false});
     };
 
     handleAccept = (status, id) => {
