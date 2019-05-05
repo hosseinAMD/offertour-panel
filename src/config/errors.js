@@ -73,6 +73,9 @@ export const statusCodes = {
         },
         730: {
             message: "پلن های شما دیگر ظرفیت ندارد"
+        },
+        740: {
+            message: "فرمت عکس مجاز نمی باشد."
         }
     },
     EN: {
