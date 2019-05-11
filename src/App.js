@@ -28,6 +28,7 @@ import PhoneNumbersList from "./components/PhoneNumbersList";
 import AddManager from "./components/AddManager";
 import AdminTourList from "./components/AdminTourList";
 import {loggedInUser} from "./config/config";
+import AddAdminTour from "./components/AddAdminTour";
 
 class App extends Component {
     render() {
@@ -64,6 +65,7 @@ class App extends Component {
                             <Route path="/add-manager" component={AddManager}/>
                             <Route path="/add-agency-user" component={AddAgencyUser}/>
                             <Route path="/add-support-admin" component={AddSupportAdmin}/>
+                            <Route path="/admin-add-tour" component={AddAdminTour}/>
                             <Route path="/edit-agency-user" component={EditAgencyUser}/>
                             <Route path="/edit-plan/:id" component={EditPlan}/>
                             <Route path="/pg" component={Playground}/>

@@ -37,6 +37,10 @@ const NavItems = () => {
                         <ListItemIcon><Icon>list_alt</Icon></ListItemIcon>
                         <ListItemText classes={{primary: 'font-applied right-txt'}} primary="لیست تورها"/>
                     </ListItem>
+                    <ListItem button component={NavLink} to="/admin-add-tour">
+                        <ListItemIcon><Icon>airplanemode_active</Icon></ListItemIcon>
+                        <ListItemText classes={{primary: 'font-applied right-txt'}} primary="افزودن تور"/>
+                    </ListItem>
                     <ListItem button component={NavLink} to="/add-article">
                         <ListItemIcon><Icon>edit</Icon></ListItemIcon>
                         <ListItemText classes={{primary: 'font-applied right-txt'}} primary="ارسال سفرنامه"/>
