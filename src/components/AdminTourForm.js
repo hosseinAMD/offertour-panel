@@ -21,20 +21,12 @@ import FormControl from '@material-ui/core/FormControl';
 import {DatePicker} from 'react-advance-jalaali-datepicker';
 import moment from 'moment-jalaali';
 import numeral from 'numeral';
-import tripTypes from "../data/tripTypes";
-import flightClasses from "../data/flightClasses";
-import busClasses from "../data/busClasses";
 import Paper from "@material-ui/core/Paper";
-import TripItem from "./TripItem";
-import HotelItem from "./HotelItem";
 import {connect} from "react-redux";
 import axios from 'axios';
 import baseUrl, {token} from "../config/config";
 import Loading from "./Loading";
 import {statusCodes} from "../config/errors";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {NavLink} from "react-router-dom";
 
 class AdminTourForm extends React.Component {
     constructor(props) {
@@ -42,6 +34,7 @@ class AdminTourForm extends React.Component {
         this.state = {
             title: '',
             agency: '',
+            agencyPhoneNumber:'',
             category: '',
             country: '',
             province: '',
@@ -129,6 +122,7 @@ class AdminTourForm extends React.Component {
         tourFields.append('TourModelID', this.state.tourModel);
         tourFields.append('StartPrice', this.state.startPrice);
         tourFields.append('AgencyName', this.state.agency);
+        tourFields.append('AgencyPhoneNumber', this.state.agencyPhoneNumber);
         axios.post(baseUrl + '/Agency/Tour', tourFields, {
             headers: {
                 'Content-Type': 'application/json',
@@ -173,7 +167,6 @@ class AdminTourForm extends React.Component {
                                     value={this.state.agency}
                                     onChange={this.handleChange('agency')}
                                     margin="normal"
-                                    autoFocus={true}
                                 />
                                 <TextField
                                     id="startPrice"
@@ -223,6 +216,15 @@ class AdminTourForm extends React.Component {
                                 />
                             </div>
                             <div className="sub-form">
+                                <TextField
+                                    id="agencyPhoneNumber"
+                                    label="شماره تماس آژانس"
+                                    InputLabelProps={{className: 'input-labels'}}
+                                    InputProps={{className: 'font-applied'}}
+                                    value={this.state.agencyPhoneNumber}
+                                    onChange={this.handleChange('agencyPhoneNumber')}
+                                    margin="normal"
+                                />
                                 <TextField
                                     id="category"
                                     select
