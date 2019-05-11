@@ -110,52 +110,41 @@ class AdminTourForm extends React.Component {
         this.setState(() => ({image}));
     };
 
-    handleNext = () => {
-        const {activeStep} = this.state;
-        if (activeStep === 1) {
-            this.setState(() => ({openLoading: true}));
-            let tourFields = new FormData();
-            const discount = (this.state.startPrice * (100 - this.state.discountPercentage)) / 100;
-            tourFields.append('Image', this.state.image);
-            tourFields.append('Title', this.state.title);
-            tourFields.append('TourDistance', 'Not set yet');
-            tourFields.append('TourCityID', this.state.city);
-            tourFields.append('TourCategoryID', this.state.category);
-            tourFields.append('TourDate', this.state.startDate);
-            tourFields.append('TourReturnDate', this.state.endDate);
-            tourFields.append('Duration', this.state.duration);
-            tourFields.append('TourTypeID', this.state.tourType);
-            tourFields.append('AgancyServices', this.state.services);
-            tourFields.append('Description', this.state.fullDescription);
-            tourFields.append('NecessaryDocument', this.state.documents);
-            tourFields.append('TagsInput', `${JSON.stringify(this.state.tags)}`);
-            tourFields.append('Discount', discount);
-            tourFields.append('DiscountPercentage', this.state.discountPercentage);
-            tourFields.append('TourModelID', this.state.tourModel);
-            tourFields.append('StartPrice', this.state.startPrice);
-            axios.post(baseUrl + '/Agency/Tour', tourFields, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'token': token
-                }
-            }).then(res => {
-                    this.setState({
-                        activeStep: activeStep + 1,
-                        id: res.data.id,
-                        openLoading: false
-                    });
-                }
-            ).catch(res => this.setState(() => ({
-                openError: true,
-                openLoading: false,
-                error: statusCodes.FA[res.response.data.code].message
-            })));
-        } else {
-            this.setState({
-                activeStep: activeStep + 1,
-            });
-        }
-
+    handleSave = () => {
+        this.setState(() => ({openLoading: true}));
+        let tourFields = new FormData();
+        const discount = (this.state.startPrice * (100 - this.state.discountPercentage)) / 100;
+        tourFields.append('Image', this.state.image);
+        tourFields.append('Title', this.state.title);
+        tourFields.append('TourDistance', 'Not set yet');
+        tourFields.append('TourCityID', this.state.city);
+        tourFields.append('TourCategoryID', this.state.category);
+        tourFields.append('TourDate', this.state.startDate);
+        tourFields.append('TourReturnDate', this.state.endDate);
+        tourFields.append('Duration', this.state.duration);
+        tourFields.append('TourTypeID', this.state.tourType);
+        tourFields.append('TagsInput', `${JSON.stringify(this.state.tags)}`);
+        tourFields.append('Discount', discount);
+        tourFields.append('DiscountPercentage', this.state.discountPercentage);
+        tourFields.append('TourModelID', this.state.tourModel);
+        tourFields.append('StartPrice', this.state.startPrice);
+        tourFields.append('AgencyName', this.state.agency);
+        axios.post(baseUrl + '/Agency/Tour', tourFields, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': token
+            }
+        }).then(res => {
+                this.setState({
+                    openLoading: false,
+                    openSuccess: true
+                });
+            }
+        ).catch(res => this.setState(() => ({
+            openError: true,
+            openLoading: false,
+            error: statusCodes.FA[res.response.data.code].message
+        })));
     };
 
 
@@ -444,7 +433,8 @@ class AdminTourForm extends React.Component {
                                 </FormControl>
                             </div>
                         </div>
-                        <Button variant="contained" color="primary" className="font-applied">ذخیره</Button>
+                        <Button variant="contained" onClick={this.handleSave} color="primary"
+                                className="font-applied">ذخیره</Button>
                         <Dialog
                             open={this.state.openError}
                             onClose={this.handleClose}
