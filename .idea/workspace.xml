@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed" />
+    <list default="true" id="d13b062e-8fd3-475e-8d43-f7ff1420d900" name="Default Changelist" comment="Some bugs fixed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AdminTourForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminTourForm.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -12,7 +15,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/AdminTourForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="123" column="33" selection-start-line="123" selection-end-line="124" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -70,7 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/AddManager.js" />
         <option value="$PROJECT_DIR$/src/components/CountriesSetting.js" />
         <option value="$PROJECT_DIR$/src/components/CountriesList.js" />
         <option value="$PROJECT_DIR$/src/components/FilterProvince.js" />
@@ -120,11 +135,12 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/NavItems.js" />
         <option value="$PROJECT_DIR$/src/components/AddAdminTour.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/AdminTourForm.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="77" />
     <option name="y" value="47" />
     <option name="width" value="1151" />
@@ -135,6 +151,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,7 +180,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -236,16 +252,19 @@
       <workItem from="1557057363417" duration="41000" />
       <workItem from="1557057439744" duration="31000" />
       <workItem from="1557603006909" duration="1403000" />
+      <workItem from="1557605031657" duration="278000" />
+      <workItem from="1557733200612" duration="1205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269288000" />
+    <option name="totallyTimeSpent" value="270771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26645768" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23275863" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -259,7 +278,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.35166666" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.35166666" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -274,16 +293,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Some bugs fixed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/TourHotels.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="46" column="41" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ItemRenderer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -417,16 +426,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/PlanRequests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-405">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AdminTourList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -671,16 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="1809" column="50" selection-start-line="1809" selection-start-column="50" selection-end-line="1809" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ManagerItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-35">
@@ -708,20 +697,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AdminTourForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AddAdminTour.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="139" column="31" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
+        <state relative-caret-position="161">
+          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddAdminTour.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AdminTourList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="23">
+          <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TourForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="1599" column="69" lean-forward="true" selection-start-line="1599" selection-start-column="69" selection-end-line="1599" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#constructor#0;n#TourForm#0" />
+            <element signature="e#3724#3854#0" />
+            <element signature="e#4023#4141#0" />
+            <element signature="e#4177#4245#0" />
+            <element signature="e#4291#4427#0" />
+            <element signature="e#4471#4603#0" />
+            <element signature="e#4649#4930#0" />
+            <element signature="e#4957#5047#0" />
+            <element signature="e#5069#5220#0" />
+            <element signature="e#5259#5319#0" />
+            <element signature="e#5347#5435#0" />
+            <element signature="e#5465#8611#0" />
+            <element signature="e#8641#10577#0" />
+            <element signature="e#10602#10687#0" />
+            <element signature="e#10721#87309#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AdminTourForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="123" column="33" selection-start-line="123" selection-end-line="124" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

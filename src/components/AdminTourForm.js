@@ -121,9 +121,11 @@ class AdminTourForm extends React.Component {
         tourFields.append('DiscountPercentage', this.state.discountPercentage);
         tourFields.append('TourModelID', this.state.tourModel);
         tourFields.append('StartPrice', this.state.startPrice);
-        tourFields.append('AgencyName', this.state.agency);
         tourFields.append('AgencyPhoneNumber', this.state.agencyPhoneNumber);
-        axios.post(baseUrl + '/Agency/Tour', tourFields, {
+        tourFields.append('AgancyServices', 'Not set yet');
+        tourFields.append('Description', 'Not set yet');
+        tourFields.append('NecessaryDocument', 'Not set yet');
+        axios.post(baseUrl + '/Admin/Tour', tourFields, {
             headers: {
                 'Content-Type': 'application/json',
                 'token': token
@@ -160,12 +162,12 @@ class AdminTourForm extends React.Component {
                                     autoFocus={true}
                                 />
                                 <TextField
-                                    id="agency"
-                                    label="آژانس تور"
+                                    id="agencyPhoneNumber"
+                                    label="شماره تماس آژانس"
                                     InputLabelProps={{className: 'input-labels'}}
                                     InputProps={{className: 'font-applied'}}
-                                    value={this.state.agency}
-                                    onChange={this.handleChange('agency')}
+                                    value={this.state.agencyPhoneNumber}
+                                    onChange={this.handleChange('agencyPhoneNumber')}
                                     margin="normal"
                                 />
                                 <TextField
@@ -216,15 +218,6 @@ class AdminTourForm extends React.Component {
                                 />
                             </div>
                             <div className="sub-form">
-                                <TextField
-                                    id="agencyPhoneNumber"
-                                    label="شماره تماس آژانس"
-                                    InputLabelProps={{className: 'input-labels'}}
-                                    InputProps={{className: 'font-applied'}}
-                                    value={this.state.agencyPhoneNumber}
-                                    onChange={this.handleChange('agencyPhoneNumber')}
-                                    margin="normal"
-                                />
                                 <TextField
                                     id="category"
                                     select
